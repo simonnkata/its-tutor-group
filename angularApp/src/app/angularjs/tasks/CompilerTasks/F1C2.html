@@ -1,0 +1,71 @@
+<div ng-controller="FreeCodeTaskController">
+    <table class="task-body">
+        <tr>
+            <h3>F1C2</h3>
+            <td colspan="2" class="td-task-description" >
+                The function below takes <b>two arguments</b> - in our case 3 and 2 - adds five to both arguments and is
+                supposed to output the new numbers. <br>
+                Hence the code below should return the following output: <b>(8,7)</b> <br>
+                At the moment, the <b>code is faulty</b> and does not provide the requested output! <b>Identify the
+                    error(s) and
+                    fix the code.</b> <br>
+                Modify the body of the function to provide the corrected output. Rewrite the code in the code editor.
+                <p class="code-style">
+    1   def add5(a,b):
+    2   a=a+5, b=b+5
+    3
+    4   result = add5 (3,2)
+    5   print(result)
+                </p>
+            </td>
+
+
+        </tr>
+        <tr style="height: 10px;"></tr>
+        <tr class="freeCodeInput">
+            <td>
+                <div
+                    ng-class="{'correct-answer': isCorrectAnswer && isAnswered, 'incorrect-answer': !isCorrectAnswer && isAnswered}">
+                    <script type="mpy-editor" env="test_env" setup
+                        ng-class="{'correct-answer-compiler': isCorrectAnswer && isAnswered, 'incorrect-answer-compiler': !isCorrectAnswer && isAnswered}">
+                    </script>
+                    <script id="F1C2" type="mpy-editor" env="test_env" ng-if="!correctAnswerAfterHints">
+                    def add5(a,b):
+                        a=a+5, b=b+5
+                    result = add5 (3,2)
+                    print(result)
+                    </script>
+                    <script id="F1C2" type="mpy-editor" env="test_env" ng-if="correctAnswerAfterHints">
+                        def add5(a,b):
+                            return a+5, b+5
+                        result = add5(3,2)
+                        print(result)
+                        </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="button-check-hint">
+                <button ng-click="checkFreeCodeAnswer()" class="check-button disabled"
+                    ng-disabled="isCorrectAnswer && isAnswered"><i class="fas fa-check"></i>Check</button>
+                <button ng-click="getHint()" ng-disabled="allHintsShown || hintButtonDisabled"
+                    class="button-with-progress">
+                    <span class="hint-text"> <i class="fas fa-lightbulb"></i>Hint</span>
+                    <span ng-show="hintButtonDisabled" class="progress-bar-hint"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div class="hint-position">
+        <div ng-class="{'hint-text-freeCode-F1C2': hintIndex === 3, 'hint-text-freeCode': hintIndex !== 3}" ng-show="hintText" class="hint-navigation">
+            <!--<div class="hint-text">{{ hintText }}</div>-->
+            <div class="hint-text" ng-bind-html="hintText | toTrusted"></div>
+            <div class="buttons" ng-show="!noButtonsOnFeedback">
+                <button class="hint-button-prev" ng-click="previousHint()" ng-disabled="hintIndex <= 0">←</button>
+                <button class="hint-button-next" ng-click="nextHint()"
+                    ng-disabled="hintIndex >= maxHintIndex">→</button>
+            </div>
+            <button ng-show="noButtonsOnFeedback && hintsGiven" ng-click="backToHints()">Back to Hints</button>
+        </div>
+    </div>
+</div>

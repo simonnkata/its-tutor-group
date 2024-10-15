@@ -1,0 +1,54 @@
+<div ng-controller="FreeCodeTaskController">
+    <table class="task-body">
+        <tr>
+            <h3>L2C2</h3>
+            <td colspan="2" class="td-task-description">
+                <b>Convert</b> the following output <b>into code</b> that uses a <b>for loop:</b>
+            <p class="code-style">
+    2
+    4
+    6
+    8
+    10
+    Goodbye!
+            </p>
+            </td>
+        </tr>
+        <tr style="height: 10px;"></tr>
+        <tr class="freeCodeInput">
+            <td>
+                <div
+                    ng-class="{'correct-answer': isCorrectAnswer && isAnswered, 'incorrect-answer': !isCorrectAnswer && isAnswered}">
+                    <script id="L2C2" type="mpy-editor" env="test_env" ng-if="!correctAnswerAfterHints">
+                    </script>
+                    <script id="L2C2" type="mpy-editor" env="test_env" ng-if="correctAnswerAfterHints">
+                    for x in range (2,12,2):
+                        print(x)
+                    print ("Goodbye!")
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="button-check-hint">
+                <button ng-click="checkFreeCodeAnswer()" class="check-button disabled" ng-disabled="isCorrectAnswer && isAnswered"><i class="fas fa-check"></i>Check</button>
+                <button ng-click="getHint()" ng-disabled="allHintsShown || hintButtonDisabled" class="button-with-progress">
+                    <span class="hint-text"> <i class="fas fa-lightbulb"></i>Hint</span>
+                    <span ng-show="hintButtonDisabled" class="progress-bar-hint"></span>
+                </button>
+            </td>
+        </tr>          
+    </table>
+    <div class="hint-position">
+        <div ng-class="{'hint-text-freeCode-L2C2': hintIndex === 4, 'hint-text-freeCode': hintIndex !== 4}" ng-show="hintText" class="hint-navigation">
+        <!--<div class="hint-navigation hint-text-freeCode" ng-show="hintText">-->
+            <!--<div class="hint-text">{{ hintText }}</div>-->
+            <div class="hint-text" ng-bind-html="hintText | toTrusted"></div>
+            <div class="buttons" ng-show="!noButtonsOnFeedback">
+                <button class="hint-button-prev" ng-click="previousHint()" ng-disabled="hintIndex <= 0">←</button>
+                <button class="hint-button-next"ng-click="nextHint()" ng-disabled="hintIndex >= maxHintIndex">→</button>
+            </div>
+            <button ng-show="noButtonsOnFeedback && hintsGiven" ng-click="backToHints()">Back to Hints</button>
+        </div>
+    </div>
+</div>

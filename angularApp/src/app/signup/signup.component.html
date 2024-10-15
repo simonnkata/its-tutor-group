@@ -1,0 +1,63 @@
+<div class="signup-main-container">
+  <!-- <div class="login-background"> -->
+    <!-- <img class="tail-end" src="assets/g1.svg">
+    <img class="tail-left" src="assets/g3.svg">
+    <img class="tail-right" src="assets/g2.svg">
+    <img class="python-head" src="assets/g4.svg"> -->
+    <!--  -->
+    <!-- <img class="unten" src="assets/unten.png">
+  </div> -->
+  <img class="oben" src="assets/oben.png">
+  <img class="unten" src="assets/unten.png">
+    <div class="login-container" id="disclaimer">
+    <div class="login-heading">Register</div>
+    <form *ngIf="(authService.isLoggedIn | async) === false" [formGroup]="signupForm" (ngSubmit)="onSubmitRegister()"
+      class="signup-form">
+      <div>
+        <input class="login-input" type="text" formControlName="username" placeholder="Username">
+      </div>
+      <div>
+        <input class="login-input" type="password" formControlName="password" placeholder="Password">
+      </div>
+      
+  
+        <div class="disclaimer">
+          <table>
+            <tr>
+              <td>
+                <label>
+                  <div  class="disclaimerCheckbox">
+                    <input type="checkbox" formControlName="disclaimerAccepted">
+                  </div>
+                </label>
+              </td>
+              <td class="disclaimerText">
+                Dear Participant,
+                As part of our research project, we aim to investigate your ability to solve Python exercises using our
+                intelligent programming tutor.
+                All data is collected anonymously and treated with strict confidentiality. Thank you for your
+                participation.
+              </td>
+            </tr>
+          </table>
+        </div>
+      
+      <button type="submit" class="login-button" [disabled]="!signupForm.get('disclaimerAccepted')?.value">Sign
+        Up</button>
+    </form>
+  </div>
+  <div class="login-container">
+    
+    <div class="login-heading">Log in</div>
+    <form *ngIf="(authService.isLoggedIn | async) === false" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()"
+      class="login-form">
+      <div>
+        <input class="login-input" type="text" formControlName="username" placeholder="Username">
+      </div>
+      <div>
+        <input class="login-input" type="password" formControlName="password" placeholder="Password">
+      </div>
+      <button type="submit" class="login-button">Log In</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created using Krita: https://krita.org -->
+
+<svg
+   width="76.805336pt"
+   height="73.855003pt"
+   viewBox="0 0 76.805336 73.855006"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="g2"
+     transform="translate(-187.58998,-1.4499207)">
+    <path
+       id="shape2"
+       transform="translate(191.69999,2.8898762)"
+       fill="#ffffff"
+       fill-rule="evenodd"
+       stroke="#001029"
+       stroke-width="2.88"
+       stroke-linecap="square"
+       stroke-linejoin="bevel"
+       d="m 11.623709,28.529582 c 5.375402,-3.652608 6.863407,-4.769853 16.85543,-6.98495 C 45.386139,22.778932 53.1485,42.3648 46.5396,51.0237 L 46.74,71.1501 C 93.507474,45.709476 69.428719,-24.665988 7.9155867,8.8999238 5.3417791,10.304375 1.1974534,12.848514 -1.504981,14.627815" />
+    <path
+       id="shape8"
+       transform="translate(196.78124,5.5008159)"
+       fill="#82e5ea"
+       fill-rule="evenodd"
+       stroke-opacity="0"
+       stroke="#000000"
+       stroke-width="0"
+       stroke-linecap="square"
+       stroke-linejoin="bevel"
+       d="M -2.1890632,12.281399 6.88875,11.0292 C 48.4243,-1.47654 56.5284,35.2106 42.2587,57.6192 l -0.03,9.12 C 66.1476,45.1487 60.849937,-27.114501 -2.1890632,12.281399 Z" />
+    <path
+       id="shape10"
+       transform="translate(187.58999,4.066993)"
+       fill="#337d98"
+       fill-rule="evenodd"
+       stroke-opacity="0"
+       stroke="#000000"
+       stroke-width="0"
+       stroke-linecap="square"
+       stroke-linejoin="bevel"
+       d="M 49.23,69.553 C 73.3483,43.8599 73.427,-24.1617 0,17.143 65.2267,-32.7765 102.608,39.2158 49.23,69.553 Z" />
+  </g>
+</svg>

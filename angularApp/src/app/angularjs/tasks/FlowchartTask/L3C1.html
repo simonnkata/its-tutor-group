@@ -1,0 +1,174 @@
+<div ng-controller="DragDropController">
+    <table class="task-body" style="background-color: #b9cdda; border-collapse: separate; ;
+   ; 
+    margin-top: -10px;  ">
+        <tr>
+            <h3>L5C1</h3>
+            <td class="td-task-description" colspan="2" style="border: solid 3px #000000;
+             background-color: #ffffff; padding: 0 10px; ">
+                <p style="margin-bottom: 5px; margin-top: 5px;">Visualize the code below by creating a flowchart.</p> 
+
+                <p  class="code-style" id="flow-code-style">
+    1   i = 1 
+    2   while i < 6:
+    3      if i == 3:
+    4         break
+    5      i += 1
+                </p>
+                <p style="margin-top: 5px; margin-bottom: 0;">Click on <i class="fa-solid fa-question" style="color: #1e1e1e;"></i> to learn how to navigate the canvas. Under <i class="fa-solid fa-shapes" ></i> you will find the meaning of the different shapes used in a flowchart. </p> 
+            </td>
+        </tr>
+        
+            <tr style="display: inline-flex; justify-content: space-between; width: 100%; ">
+            <td colspan="1" style="vertical-align: top;">
+
+                <div class="accordion-flow">
+                    <details>
+                      <summary><i class="fa-solid fa-question fa-xl canvas-nav" ></i></summary>
+                      
+<p class="flip-text"><i class="fa-solid fa-arrow-pointer"></i> drags the Node and <i class="fa-regular fa-hand-pointer"></i> draws an arrow from one node to another.
+
+<i class="fa-solid fa-computer-mouse"></i> Right-click an arrow to set it to "True" or "False".
+
+<i class="fa-solid fa-keyboard"></i> Press  the <kbd>Del</kbd>-key on your keyboard to delete a selected element or click on the "Refresh"-button to reset the canvas.</p>
+                    </details>
+                </div>
+            </td>
+            <td colspan="1" style="vertical-align: top;" >
+
+                <div class="accordion-flow">
+                    <details>
+                        <summary><i class="fa-solid fa-shapes fa-xl canvas-nav" ></i></summary>
+                        <p class="flip-text"><i class="fa-solid fa-circle"></i> The oval terminator symbol indicates the starting or ending point of a system.
+
+<i class="fa-solid fa-square-full"></i> A rectangle box represents actions and basic within the process.
+
+<i class="fa-solid fa-diamond"></i> The diamond shaped descision symbol represents a point, requiring a choice to proceed.</p>
+                    </details>
+                </div>
+            </td>
+
+        </tr>
+        
+        <tr >
+            <td colspan="3" style="border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #1e1e1e;">
+                <div class="flowchart-diagram" id="myDiagramDiv" ng-class="{'correct-answer-flow': isCorrectAnswer,'incorrect-answer-flow': !isCorrectAnswer && isAnswered,'incomplete-answer-flow': isAnswerIncomplete && isAnswered }" style="height: 350px;  border-radius: 4px; background-color: #1e1e1e; box-sizing: border-box; margin-bottom: 0;"></div>
+                <img class="flowchart-diagram" id="solutionImage" src="assets/solution_flowchart.png" style="width: 100%; height: auto; border-radius: 4px;display: none;" alt="Solution">
+            </td>
+        </tr>
+        <tr style="width: 100%; ">
+            <td colspan="3" class="td-flow-options" style="border: solid 1px #1e1e1e;
+            border-style: solid none; background-color: #1e1e1e;
+            ">
+                <div class="flowchart-options" style="margin-top: -5px;">
+                    <select ng-model="selectedLine" style="width: 150px; height: 40px; " ng-options="line for line in availableLines" style="width: 100px; height: 40px;">
+                        <option value="" disabled selected>Select a line:</option>
+                    </select>
+                    <select ng-model="selectedShape" style="width: 150px; height: 40px;">
+                        <option value="" disabled selected>Select a shape:</option>
+                        <option value="Ellipse"><p>Terminator </p></option>
+                        <option value="Rectangle">Process</option>
+                        <option value="Diamond">Condition</option>
+                    </select>
+                    <div class="button-check-hint"><button ng-click="addNode()" class="check-button">Add Node</button>
+                    <button ng-click="refresh()" class="check-button">Refresh</button></div>
+                </div>
+            </td>
+        </tr>
+        
+        <tr style="background-color: #b9cdda;">
+            <td colspan="3" ><div class="flowchart-buttons button-check-hint">
+                
+                <button ng-click="checkFlowchart()" class="check-button"  ><i class="fas fa-check" ></i>Check</button>
+                <button ng-click="getHint()" ng-disabled="allHintsShown || hintButtonDisabled" class="button-with-progress">
+                    <span class="hint-text"> <i class="fas fa-lightbulb"></i>Hint</span>
+                    <span ng-show="hintButtonDisabled" class="progress-bar-hint"></span>
+                </button>
+                </div>
+            </td>
+        </tr>
+        
+        <div class="hint-position">
+            <div class="hint-navigation hint-text-flowChart" ng-show="hintText">
+                <div class="hint-text">{{ hintText }}</div>
+                <div class="buttons" ng-show="!noButtonsOnFeedback">
+                    <button class="hint-button-prev" ng-click="previousHint()" ng-disabled="hintIndex <= 0">←</button>
+                    <button class="hint-button-next" ng-click="nextHint()" ng-disabled="hintIndex >= maxHintIndex">→</button>
+                </div>
+                <button ng-show="noButtonsOnFeedback && hintsGiven" ng-click="backToHints()">Back to Hints</button>
+            </div>
+        </div>
+</div>
+<!-- <div ng-controller="DragDropController">
+    <div  >
+        
+        <div class="flowchart-body">
+            <div class="flowtask-description"><h3>L3C1</h3>
+            <span>Create a <b>flowchart</b> based on the code below.</span></div>
+        <div class="flow-code " id="flow-code">   
+            <p  class="code-style" id="flow-code-style">
+    1   i = 1 
+    2   while i < 6:
+    3      if i == 3:
+    4         break
+    5      i += 1
+            </p>
+        </div>
+        
+        <div class="flowchart-diagram" id="myDiagramDiv" style="height: 100%; border:1px solid black; border-radius: 4px; background-color: #d4d4d4"></div>
+        <img class="flowchart-diagram" id="solutionImage" src="assets/solution_flowchart.png" style="height: 100%; border-radius: 4px;display: none;" alt="Solution">
+        <div class="flowchart-options">
+            <select ng-model="selectedLine" style="width: 150px; height: 40px;" ng-options="line for line in availableLines" style="width: 100px; height: 40px;">
+                <option value="" disabled selected>Select a line:</option>
+            </select>
+            <select ng-model="selectedShape" style="width: 150px; height: 40px;">
+                <option value="" disabled selected>Select a shape:</option>
+                <option value="Ellipse"><p> &#x1F785; Terminal</p></option>
+                <option value="Rectangle"><b>&#x25AD;</b> Process</option>
+                <option value="Diamond">&#x25C7; Condition</option>
+            </select>
+            <button ng-click="addNode()" class="check-button">Add Node</button>
+            <button ng-click="refresh()" class="check-button">Refresh</button>
+        </div>
+        <div class="flowchart-buttons button-check-hint">
+            <button ng-click="deleteSelected()" class="check-button">Delete Selected</button> 
+            
+            <button ng-click="checkFlowchart()" class="check-button" ng-disabled="isCorrectAnswer && isAnswered" ><i class="fas fa-check" ></i>Check</button>
+            <button ng-click="getHint()" ng-disabled="allHintsShown || hintButtonDisabled" class="button-with-progress">
+                <span class="hint-text"> <i class="fas fa-lightbulb"></i>Hint</span>
+                <span ng-show="hintButtonDisabled" class="progress-bar-hint"></span>
+            </button>
+        </div>
+        
+        <div class="how-to-flow">
+            <div class="flow-task-how-to-text">
+                <i class="fa-solid fa-question fa-2xl"></i>
+            </div>
+            <span>1. Select a line of code you want to place on the Canvas.</span>
+            <span>2. Select the Shape for the action the line of code represents:</span>
+            <div class="shape-explanation">
+                <span><b>&#x1F785;</b>The oval terminator symbol indicates the starting or ending point of a system.</span>
+                <span><b>&#x25AD;</b>A rectangle box represents actions and basic within the process.</span>
+                <span><b>&#x25C7;</b>The diamond shaped descision symbol represents a point, requiring a choice to proceed.</span>
+            </div>
+            <span>3. When you are happy with your selection, click on the <kbd>Add node</kbd>-button to place it.</span>
+            <span>4. To draw an arrow from one node to another, hold the left mousebutton on a node and drag it to the one it should connect to.</span>
+            <span>5. Right click on an Arrow to add "True" or "False" for conditionl statements.</span>
+            <span>To delete an element, you select it and press the <kbd>Del</kbd>-key on your keyboard or you can start over by clicking the <kbd>Refresh</kbd>-button</span>
+        </div>  
+    </div>  
+    
+    
+    
+    <div class="hint-position">
+        <div class="hint-navigation hint-text-flowChart" ng-show="hintText">
+            <div class="hint-text">{{ hintText }}</div>
+            <div class="buttons" ng-show="!noButtonsOnFeedback">
+                <button class="hint-button-prev" ng-click="previousHint()" ng-disabled="hintIndex <= 0">←</button>
+                <button class="hint-button-next" ng-click="nextHint()" ng-disabled="hintIndex >= maxHintIndex">→</button>
+            </div>
+            <button ng-show="noButtonsOnFeedback && hintsGiven" ng-click="backToHints()">Back to Hints</button>
+        </div>
+    </div>
+    </div>
+    </div> -->

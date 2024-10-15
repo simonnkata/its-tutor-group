@@ -1,0 +1,67 @@
+<div ng-controller="FreeCodeTaskController">
+    <table class="task-body">
+        <tr>
+            <h3>F2C3</h3>
+            <td colspan="2" class="td-task-description">
+                Write a program to create a <b>function</b> that accepts <b>three numbers</b> ['num1', 'num2', 'num3'] and finds the <b>largest
+                number</b> <br>
+                along the three numbers. If you have two numbers that are identical and larger than the third number,
+                print out <br>
+                one of the two numbers. Your code should just <b>return the largest number</b> without any text. <b>The numbers
+                are already initialized!</b>
+            </td>
+        </tr>
+        <tr style="height: 10px;"></tr>
+        <tr class="freeCodeInput">
+            <td>
+                <div
+                    ng-class="{'correct-answer': isCorrectAnswer && isAnswered, 'incorrect-answer': !isCorrectAnswer && isAnswered}">
+                    <script type="mpy-editor" env="test_env" setup>
+                        num1 = 10
+                        num2 = 15
+                        num3 = 15
+                    </script>
+
+                    <script id="F2C3" type="mpy-editor" env="test_env" ng-if="!correctAnswerAfterHints">
+                        res = maximum(num1, num2, num3)
+                        print(res)
+                    </script>
+                    <script id="F2C3" type="mpy-editor" env="test_env" ng-if="correctAnswerAfterHints">
+                        def maximum(a, b, c):
+                            if (a >= b) and (a >= c):
+                                largest = a
+                            elif (b >= a) and (b >= c):
+                                largest = b
+                            else:
+                                largest = c
+                            return largest
+                        print(maximum(num1,num2,num3))
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="button-check-hint">
+                <button ng-click="checkFreeCodeAnswer()" class="check-button disabled" ng-disabled="isCorrectAnswer && isAnswered"><i
+                        class="fas fa-check" ></i>Check</button>
+                <button ng-click="getHint()" ng-disabled="allHintsShown || hintButtonDisabled"
+                    class="button-with-progress">
+                    <span class="hint-text"> <i class="fas fa-lightbulb"></i>Hint</span>
+                    <span ng-show="hintButtonDisabled" class="progress-bar-hint"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div class="hint-position">
+        <div ng-class="{'hint-text-freeCode-F2C3': hintIndex === 4, 'hint-text-freeCode': hintIndex !== 4}" ng-show="hintText" class="hint-navigation">
+            <!--<div class="hint-text">{{ hintText }}</div>-->
+            <div class="hint-text" ng-bind-html="hintText | toTrusted"></div>
+            <div class="buttons" ng-show="!noButtonsOnFeedback">
+                <button class="hint-button-prev" ng-click="previousHint()" ng-disabled="hintIndex <= 0">←</button>
+                <button class="hint-button-next" ng-click="nextHint()"
+                    ng-disabled="hintIndex >= maxHintIndex">→</button>
+            </div>
+            <button ng-show="noButtonsOnFeedback && hintsGiven" ng-click="backToHints()">Back to Hints</button>
+        </div>
+    </div>
+</div>

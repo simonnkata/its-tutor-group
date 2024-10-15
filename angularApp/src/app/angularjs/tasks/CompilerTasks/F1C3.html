@@ -1,0 +1,65 @@
+<div ng-controller="FreeCodeTaskController">
+    <table class="task-body">
+        <tr>
+            <h3>F1C3</h3>
+            <td colspan="2" class="td-task-description">
+                Write a program to create a <b>function</b> that accepts <b>two
+                arguments</b> ('num1', 'num2') and calculates <b>addition and subtraction.</b>
+                Additionally, it must return both addition and subtraction <b>in
+                a single return call</b>. The numbers are already initialized.
+            </td>
+        </tr>
+        <tr style="height: 10px;"></tr>
+        <tr class="freeCodeInput">
+            <td>
+                <div
+                    ng-class="{'correct-answer': isCorrectAnswer && isAnswered, 'incorrect-answer': !isCorrectAnswer && isAnswered}">
+                    <script type="mpy-editor" env="test_env" setup>
+                    # This code will not be visible, but will run before the next editor's code is
+                    # evaluated.
+                    num1 = 10
+                    num2 = 5
+                </script>
+
+                    <script id="F1C3" type="mpy-editor" env="test_env" ng-if="!correctAnswerAfterHints">
+                result_addition, result_subtraction = calculation(num1, num2)
+                print(result_addition, result_subtraction)
+                </script>
+                <script id="F1C3" type="mpy-editor" env="test_env" ng-if="correctAnswerAfterHints">
+                def calculation(a, b):
+                    addition = a + b
+                    subtraction = a - b
+                    return addition, subtraction
+                result_addition, result_subtraction = calculation(num1, num2)
+                print(result_addition, result_subtraction)
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="button-check-hint">
+                <!-- ng class ergänzen-->
+                <button ng-click="checkFreeCodeAnswer()" class="check-button disabled" ng-disabled="isCorrectAnswer && isAnswered"><i
+                        class="fas fa-check" ></i>Check</button>
+                <button ng-click="getHint()" ng-disabled="allHintsShown || hintButtonDisabled"
+                    class="button-with-progress">
+                    <span class="hint-text"> <i class="fas fa-lightbulb"></i>Hint</span>
+                    <span ng-show="hintButtonDisabled" class="progress-bar-hint"></span>
+                </button>
+            </td>
+        </tr>
+
+    </table>
+    <div class="hint-position">
+        <div ng-class="{'hint-text-freeCode-F1C3-code': hintIndex === 4, 'hint-text-freeCode-F1C3': hintIndex !== 4}" ng-show="hintText" class="hint-navigation">
+            <!--<div class="hint-text">{{ hintText }}</div>-->
+            <div class="hint-text" ng-bind-html="hintText | toTrusted"></div>
+            <div class="buttons" ng-show="!noButtonsOnFeedback">
+                <button class="hint-button-prev" ng-click="previousHint()" ng-disabled="hintIndex <= 0">←</button>
+                <button class="hint-button-next" ng-click="nextHint()"
+                    ng-disabled="hintIndex >= maxHintIndex">→</button>
+            </div>
+            <button ng-show="noButtonsOnFeedback && hintsGiven" ng-click="backToHints()">Back to Hints</button>
+        </div>
+    </div>
+</div>

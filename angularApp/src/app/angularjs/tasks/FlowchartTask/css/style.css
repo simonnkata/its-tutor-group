@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.sources {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.source {
+  padding: 10px;
+  cursor: grab;
+  position: relative;
+  z-index: 3;
+}
+
+.dropzones {
+  width: 70%;
+}
+
+.dropzone {
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.5;
+  fill-opacity: 0.3;
+  position: relative;
+  z-index: 2;
+}
+
+.dropzone:hover {
+  fill-opacity: 0.5;
+  cursor: pointer;
+}
+
+svg {
+    position: relative;
+    z-index: 1;
+}
+
+/*
+Unterscheidung der Dropzones
+#zone1 {
+    fill:aqua;
+}
+#zone2 {
+    fill:rgb(255, 0, 0);
+}
+#zone3 {
+    fill:rgb(21, 0, 255);
+}
+#zone4 {
+    fill:rgb(242, 255, 0);
+}
+#zone5 {
+    fill:rgb(0, 255, 21);
+}

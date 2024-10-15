@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Python-Tutor</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="app/angularjs/css/general.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gojs@3.0/release/go.js"></script>
+  
+
+  <script src="app/angularjs/js/TaskController.js"></script>
+
+  <script src="app/angularjs/js/CorrectAnswerService.js"></script>
+  <script src="app/angularjs/js/GapTaskController.js"></script>
+  <script src="app/angularjs/js/FreeTextTaskController.js"></script>
+  <script src="app/angularjs/js/FreeCodeTaskController.js"></script>
+
+  <script src="app/angularjs/js/DragDropController.js"></script>
+
+  <script src="app/angularjs/js/FeedbackService.js"></script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-drag-and-drop-lists/2.1.0/angular-drag-and-drop-lists.min.js"></script>
+  <script src="app/angularjs/js/DragAndDropController.js"></script>
+  
+  <script src="app/angularjs/js/FreeCodeAdditions.js"></script>
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.6.2/core.css">
+  <script type="module" src="https://pyscript.net/releases/2024.6.2/core.js"></script>
+</head>
+<body ng-controller="TaskController">
+  <div >
+
+  
+  <!--<div id="difficulty-popup" class="popup" ng-if="!isDifficultySet()">
+    <div class="popup-content" ng-controller="DifficultyController">
+      <h2>Select Difficulty Level</h2>
+      <button ng-click="selectDifficulty('Beginner')">Beginner</button>
+      <button ng-click="selectDifficulty('Advanced')">Advanced</button>
+      <button ng-click="selectDifficulty('Expert')">Expert</button>
+    </div>
+  </div>-->
+  <app-root></app-root>
+</div>
+</body>
+</html>

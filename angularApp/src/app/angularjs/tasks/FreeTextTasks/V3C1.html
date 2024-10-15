@@ -1,0 +1,41 @@
+<div ng-controller="FreeTextTaskController">
+    <table class="task-body">
+        <tr>
+            <h3>V3C1</h3>
+            <td colspan="2" class="td-task-description">Given the following code, what is the <b>output?</b> Provide the answer in a free <b>text field.</b>
+        
+                <p class="code-style">
+    1   a=100
+    <span ng-class="{'code-highlighting': highlightLine === 2}">2   a=a+1</span>
+    3   print(a)
+                </p>
+            </td>
+        </tr>
+        <tr style="height: 10px;"></tr>
+        <tr>
+            <td>
+                <div ng-class="{'correct-answer': isCorrectAnswer && isAnswered, 'incorrect-answer': !isCorrectAnswer && isAnswered}">
+                    <input type="text" ng-model="userAnswer" ng-disabled="isAnswered && isCorrectAnswer">
+                </div>
+            </td >
+            <td class="button-check-hint">
+                <button ng-click="checkFreeTextAnswer(userAnswer)" class="check-button" ng-disabled="!userAnswer || isCorrectAnswer && isAnswered"><i class="fas fa-check"></i>Check</button>
+                <button ng-click="getHint(userAnswer)" ng-disabled="allHintsShown || hintButtonDisabled" class="button-with-progress">
+                    <span class="hint-text"> <i class="fas fa-lightbulb"></i>Hint</span>
+                    <span ng-show="hintButtonDisabled" class="progress-bar-hint"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div class="hint-position">
+        <div class="hint-navigation hint-text-freeText" ng-show="hintText">
+            <div class="hint-text">{{ hintText }}</div>
+            <div class="buttons" ng-show="!noButtonsOnFeedback">
+                <button class="hint-button-prev" ng-click="previousHint()" ng-disabled="hintIndex <= 0">←</button>
+                <button class="hint-button-next" ng-click="nextHint()" ng-disabled="hintIndex >= maxHintIndex">→</button>
+            </div>
+            <button ng-show="noButtonsOnFeedback && hintsGiven" ng-click="backToHints()">Back to Hints</button>
+        </div>
+    </div>
+</div>
+    

@@ -1,0 +1,37 @@
+<div ng-controller="GapTaskController">
+<table class="task-body">
+    <tr>
+        <h3>L1C1</h3>
+        <td colspan="2" class="td-task-description"><b>Print 'i'</b> as long as 'i' is less than 6:</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <p class="code-style">
+    1   i = 1
+    2   <span><input class="gap_input" type="text" ng-model="userAnswer1" ng-disabled="isAnswered1 && isCorrectAnswer1" ng-class="{'correct-answer-gap': isCorrectAnswer1 && isAnswered1, 'incorrect-answer-gap': !isCorrectAnswer1 && isAnswered1}" placeholder="Enter code here" ng-change="checkGapAnswerOneAnswer(userAnswer1, 'L1C1')" ng-blur="provideFeedback()"> i<6:</span>
+    3       print(i)
+    4       i += 1
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td class="button-check-hint">
+            <!--<button ng-click="checkGapAnswerOneAnswer(userAnswer1)" class="check-button">Check</button> -->
+            <button ng-click="getHint(userAnswer1)" ng-disabled="allHintsShown || hintButtonDisabled" class="button-with-progress">
+                <span class="hint-text"> <i class="fas fa-lightbulb"></i>Hint</span>
+                <span ng-show="hintButtonDisabled" class="progress-bar-hint"></span>
+            </button>
+        </td>
+    </tr>
+</table>
+<div class="hint-position">
+    <div class="hint-navigation hint-text-gap" ng-show="hintText">
+        <div class="hint-text">{{ hintText }}</div>
+        <div class="buttons" ng-show="!noButtonsOnFeedback">
+            <button class="hint-button-prev" ng-click="previousHint()" ng-disabled="hintIndex <= 0">←</button>
+            <button class="hint-button-next" ng-click="nextHint()" ng-disabled="hintIndex >= maxHintIndex">→</button>
+        </div>
+        <button ng-show="noButtonsOnFeedback && hintsGiven" ng-click="backToHints()">Back to Hints</button>
+    </div>
+</div>
+</div>

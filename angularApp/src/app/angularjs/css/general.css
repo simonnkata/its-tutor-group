@@ -1,0 +1,1681 @@
+.code-style {
+    border-radius: 4px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    display: block;
+    white-space: pre; /* Behält die Formatierung der Leerzeichen bei */
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: left !important;
+}
+
+
+.code-style-feedback {
+    border-radius: 4px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    display: block;
+    white-space: pre; /* Behält die Formatierung der Leerzeichen bei */
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 12px;
+    text-align: left !important;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.correct-answer input {
+    border: 2px solid #5CAE63 ;
+    border-radius: 10px;
+    /* Grüne Umrandung für korrekte Antwort */
+}
+
+.incorrect-answer input {
+    border: 2px solid #C26A77;
+    border-radius: 10px;
+    /* Rote Umrandung für falsche Antwort */
+}
+
+.incorrect-answer {
+    border: 6px solid #C26A77;
+    border-radius: 10px;
+    /* Rote Umrandung für falsche Antwort */
+}
+
+.correct-answer-gap {
+    border: 6px solid #5CAE63  !important;
+    border-radius: 10px;
+}
+
+.incorrect-answer-gap {
+    border: 6px solid #C26A77 !important;
+    border-radius: 10px;
+}
+
+.correct-answer {
+    border: 6px solid #5CAE63  !important;
+    border-radius: 10px;
+}
+
+.correct-answer-compiler {
+    border: 6px solid #5CAE63  !important;
+    border-radius: 10px;
+}
+
+.incorrect-answer-compiler {
+    border: 6px solid #C26A77 !important;
+    border-radius: 10px;
+}
+
+
+img.python-tutor {
+    height: 150px;
+    width: 150px;
+    /* Höhe des Bildes */
+    /* Optional: Abstand zwischen Bild und Text */
+}
+
+.hint-navigation {
+    position: absolute;
+    right: -95%;
+    background-color: white;
+    padding: 4px;
+    bottom: 200px;
+    border-radius: 5px;
+    min-height: 30px;
+    z-index: 50;
+}
+
+
+.hint-navigation-relative {
+    position: relative;
+    right: -95%;
+    background-color: white;
+    padding: 4px;
+    bottom: 200px;
+    border-radius: 5px;
+    min-height: 30px;
+    z-index: 50;
+}
+
+
+.hint-navigation::after {
+    content: "";
+    position: absolute;
+    top: 110%;
+    right: 70%;
+    /* Positionierung auf der rechten Seite */
+    transform: translateY(-50%) rotate(270deg);
+    /* Dreht das Dreieck um 45 Grad */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent white transparent transparent;
+   
+}
+
+.hint-navigation .buttons {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    padding-bottom: 0px;
+    justify-content: right;
+}
+
+.hint-navigation button {}
+
+.hint-text {
+    line-height: 1;
+    text-align: left;
+    font-size: 10pt;
+}
+
+.hint-text-freeCode-L2C2{
+    background-color: green;
+    width: 300px;
+    left: 60%;
+    bottom: 27%;
+}
+
+.hint-text-freeCode-V2C2{
+    width: 300px;
+    left: 91%;
+    bottom: 280px;
+    position: relative;
+}
+
+.hint-text-freeCode-F2C3{
+    position: relative;
+    width: 300px;
+    left: 91%;
+    bottom: 310px;
+}
+
+
+.hint-text-freeText{
+    width: 300px;
+    left: 60%;
+    bottom: 58%;
+}
+
+.hint-text-freeText-L5C1{
+    width: 300px;
+    left: 60%;
+    bottom: 27%;
+}
+
+
+
+.hint-text-flowChart{
+    width: 300px;
+    left: 61%;
+    bottom: -7%;
+}
+
+.hint-text-gap{
+    width: 300px;
+    left: 60%;
+    bottom: 53%;
+}
+
+.hint-text-freeCode{
+    position:relative;
+    width: 300px;
+    left: 88%;
+    bottom: 225px;
+}
+
+.hint-text-freeCode-V1C3{
+    position:relative;
+    width: 300px;
+    left: 88%;
+    bottom: 278px;
+}
+
+.hint-text-freeCode-L4C2{
+    position:relative;
+    width: 300px;
+    left: 88%;
+    bottom: 260px;
+}
+
+.hint-text-freeCode-F5C2{
+    position:relative;
+    width: 325px;
+    left: 89%;
+    bottom: 250px;
+}
+
+/*.hint-text-freeCode-F1C2{
+    position:relative;
+    width: 300px;
+    left: 85%;
+    bottom: 250px;
+}*/
+
+
+
+.hint-text-freeCode-F1C3{
+    position:relative;
+    width: 300px;
+    left: 93%;
+    bottom: 240px;
+}
+
+.hint-text-freeCode-F1C2{
+    position:relative;
+    width: 300px;
+    left: 91%;
+    bottom: 283px;
+}
+
+.hint-text-freeCode-F1C3-code{
+    position:relative;
+    width: 460px;
+    left: 95%;
+    bottom: 285px;
+}
+
+.hint-text-freeCode-L2C3{
+    position:relative;
+    width: 300px;
+    left: 88%;
+    bottom: 295px;
+}
+
+
+.hint-text-gap-F1C1{
+    width: 300px;
+    left: 60%;
+    bottom: 47%;
+}
+
+.hint-text-V2C2{
+    position: relative;
+    width: 300px;
+    left: 90%;
+    bottom: 220px;
+}
+
+.code-highlighting {
+    background-color: yellow;
+    color: black;
+}
+
+
+.arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.arrow.down {
+    transform: rotate(180deg);
+}
+
+
+
+.submenu div:hover {
+    background-color: #34495E;
+    color: white !important;
+}
+
+.active {
+    font-weight: bold;
+    background-color: white;
+    color: #001029 !important;
+    font-size: 20px;
+}
+
+.status-icon-active {
+    color: #001029 !important;
+}
+
+/*.python-tutor {
+    width: 100px;
+}*/
+
+.status-icon {
+    margin-left: 10px;
+    font-size: 16px;
+    color: white;
+    padding-right: 10px;
+}
+
+.status-icon:hover {
+    color: black !important;
+}
+
+
+/* Flowchart */
+
+/* .flowchart {
+    height: 100%;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 40% 60%;
+    gap: 5px 5px;
+    margin-bottom: 5px;
+    grid-template-areas:
+        "codeblock dropzones"
+        "sources dropzones";
+} */
+
+.selected {
+    background-color: #c0c0c0;
+    border: 2px solid #808080;
+}
+
+.progress-container {
+    width: 90%;
+    /* Breite des Container-Elements */
+    text-align: center;
+    /* Zentriere den Inhalt horizontal */
+    margin-left: 5%;
+}
+
+
+.progress-bar {
+    width: 0%;
+    height: 20px;
+    background-color: #8497b5;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+    /*margin: 0 20px;*/
+}
+
+.borderProgressBar {
+    border: 2px solid white;
+    height: 20px;
+    border-radius: 10px;
+    /*margin: 0 20px;*/
+    margin-top: -21.5px;
+}
+
+
+
+
+#progress-text {
+    margin-top: 5px;
+    /* Abstand nach oben */
+    font-size: 14px;
+    /* Schriftgröße */
+}
+
+.progress-text {
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 20px;
+    /* Muss mit der Höhe der progress-bar übereinstimmen */
+    color: black;
+    /* Textfarbe für den Fortschrittstext */
+}
+
+.tutorTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    /* Größe der Überschrift */
+    font-weight: bold;
+    color: white;
+    /* Dunkles Blaugrün */
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    width: 100%;
+}
+
+.userInfos {
+    font-size: 10pt;
+    text-align: right;
+}
+
+.button-with-progress {
+    position: relative;
+    display: inline-block;
+    width: 115px;
+    /* Breite des Buttons */
+    height: 40px;
+    /* Höhe des Buttons */
+}
+
+.progress-bar-hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: darkgray;
+    animation: progressAnimation 5s linear forwards;
+    width: 100%;
+    /* Breite des Fortschrittsbalkens */
+}
+
+
+
+@keyframes progressAnimation {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+/** Angefangen **/
+
+.check-button {
+    width: 115px;
+    /* Breite des Buttons */
+    height: 40px;
+    /* Höhe des Buttons */
+}
+
+.task-body{
+    width: 87%;
+    height: 100%;
+    overflow: auto;
+}
+
+.hint-position {
+    height: 0px;
+}
+
+/*.tutor-general{
+    width: 70%;
+    margin-left: 5%;
+    margin-right: 10%;
+    margin-top: 5%;
+}*/
+
+.task-layout {
+    width: 100%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+.button-check-hint {
+    float: right;
+}
+
+
+
+
+.gap_input {
+    background-color: #1e1e1e;
+    /* Hintergrundfarbe dunkel */
+    color: #d4d4d4;
+    /* Textfarbe hell */
+    border: 1px solid #3d3d3d;
+    /* Randfarbe dunkler */
+    padding: 8px;
+    /* Abstand um den Text herum */
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    /* Monospace Schriftart für den Code */
+    font-size: 14px;
+    /* Schriftgröße des Codes */
+    text-align: left;
+    /* Links ausgerichtet */
+    width: 35% !important;
+}
+
+/* Stil für den Fokuszustand des Eingabefeldes */
+.gap_input:focus {
+    outline: none;
+    /* Kein Fokusumriss */
+    border-color: #4d90fe;
+    /* Randfarbe hervorgehoben heller */
+    box-shadow: 0 0 5px #4d90fe;
+    /* Leichte Schatten für den Fokuszustand */
+
+}
+
+.hint-navi-editor-run-button:hover {
+    opacity: 100% !important;
+    background-color: #34495e;
+}
+
+.hint-navi-editor-run-button {
+    opacity: 100% !important;
+    background-color: #83e6eb;
+}
+
+.mpy-editor-run-button svg {
+    color: white !important;
+}
+
+
+.menu-item[ng-disabled="true"] {
+    color: grey;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.submenu div[ng-style*="grey"] {
+    pointer-events: auto;
+    /* Trotzdem anklickbar */
+    opacity: 0.6;
+}
+
+
+.inactiveTaskDifficulty {
+    color: #A9A9A9;
+}
+
+/********************************************* START **************************************************/
+body,
+tr,
+td,
+div,
+i {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    /* Primäre Textfarbe anwenden */
+    /*color: #001029;*/
+    color: #001029;
+}
+
+
+
+.activeTaskDifficulty {
+    color: white;
+    font-size: 12pt;
+}
+
+
+
+.primary-bg {
+    background-color: #34495e;
+    /* Dunkles Blaugrün für Hintergründe */
+}
+
+.primary-accent {
+    color: #83E6EB;
+    /* Türkis für Akzentfarben */
+}
+
+.accent-bg {
+    background-color: #83E6EB;
+    /* Türkis für Akzentfarben in Hintergründen */
+}
+
+
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    /* Überschriften */
+    color: #001029;
+}
+
+/* Buttons */
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7082A9;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #34495e;
+    color: white;
+}
+
+/* Beispiel für eine Navigation */
+.navbar {
+    background-color: #FFFFFF;
+    /* Weißer Hintergrund */
+    padding: 10px;
+    border-bottom: 1px solid #E0E0E0;
+    /* Leichte Trennlinie */
+}
+
+.navbar a {
+    color: #001029;
+    /* Dunkles Blaugrün für Links */
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #83E6EB;
+    /* Türkis bei Hover */
+}
+
+
+select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #001029;
+    /* Dunkles Blaugrün für Text */
+    background-color: #FFFFFF;
+    /* Hintergrundfarbe */
+    border: 1px solid #CCCCCC;
+    /* Randfarbe */
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    /* Breite anpassen */
+    box-sizing: border-box;
+    /* Box-Modell */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Stil für Fokus-Zustand */
+select:focus {
+    outline: none;
+    border-color: #83E6EB;
+    /* Türkis für Fokus-Zustand */
+    box-shadow: 0 0 5px rgba(131, 230, 235, 0.5);
+    /* Leichter Schatten */
+}
+
+/* Primäre Textfarbe für Eingabefelder */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #001029;
+    /* Dunkles Blaugrün für Text */
+    background-color: #FFFFFF;
+    /* Hintergrundfarbe */
+    border: 1px solid #CCCCCC;
+    /* Randfarbe */
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    /* Breite anpassen */
+    box-sizing: border-box;
+    /* Box-Modell */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Stil für Fokus-Zustand */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #83E6EB;
+    /* Türkis für Fokus-Zustand */
+    box-shadow: 0 0 5px rgba(131, 230, 235, 0.5);
+    /* Leichter Schatten */
+}
+
+/* Container für das Login-Formular */
+.login-container {
+    max-width: 450px;
+    /* Maximalbreite des Containers */
+    margin: auto;
+    /* Zentrieren auf der Seite */
+    padding: 20px;
+    background-color: #fff;
+    /* Hintergrundfarbe */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Schatten */
+    margin-top: 70px;
+    z-index: 3;
+}
+
+/* Überschrift des Formulars */
+.login-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: #001029;
+    /* Dunkles Blaugrün */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Stil für Eingabefelder */
+.login-input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #001029;
+    /* Dunkles Blaugrün für Text */
+    background-color: #FFFFFF;
+    /* Hintergrundfarbe */
+    border: 1px solid #CCCCCC;
+    /* Randfarbe */
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    /* Breite anpassen */
+    box-sizing: border-box;
+    /* Box-Modell */
+    margin-bottom: 10px;
+    /* Abstand unten */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Stil für Fokus-Zustand der Eingabefelder */
+.login-input:focus {
+    outline: none;
+    border-color: #83E6EB;
+    /* Türkis für Fokus-Zustand */
+    box-shadow: 0 0 5px rgba(131, 230, 235, 0.5);
+    /* Leichter Schatten */
+}
+
+/* Stil für den Anmelde-Button */
+.login-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #7082a9;
+    /* Türkis für Button-Hintergrund */
+    color: #FFFFFF;
+    /* Textfarbe */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover-Effekt für den Anmelde-Button */
+.login-button:hover {
+    background-color: #34495e;
+    /* Dunkles Blaugrün bei Hover */
+}
+
+/* Nachrichten für Fehler oder Erfolg */
+.login-message {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Link für das Zurücksetzen des Passworts oder andere Optionen */
+.login-options {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-options a {
+    color: #001029;
+    /* Dunkles Blaugrün für Links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-options a:hover {
+    color: #83E6EB;
+    /* Türkis bei Hover */
+}
+
+
+/* Container für den Benutzerinfo-Bereich */
+.user-info-container {
+    background-color: #B9CDDA;
+    /* Hintergrundfarbe */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Schatten */
+    z-index: 1000;
+    /* Z-Index für die Stapelreihenfolge */
+    width: 10%;
+}
+
+/* Stil für den Benutzernamen */
+.user-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: black;
+    /* Dunkles Blaugrün für Text */
+    margin-bottom: 5px;
+    /* Abstand unten */
+    text-align: center;
+}
+
+/* Stil für das Schwierigkeitsgrad-Dropdown */
+.difficulty-dropdown {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #001029;
+    /* Dunkles Blaugrün für Text */
+    background-color: #FFFFFF;
+    /* Hintergrundfarbe */
+    border: 1px solid #CCCCCC;
+    /* Randfarbe */
+    padding: 6px;
+    border-radius: 4px;
+    width: 150px;
+    /* Breite des Dropdowns */
+    box-sizing: border-box;
+    /* Box-Modell */
+    margin-bottom: 5px;
+    /* Abstand unten */
+}
+
+/* Stil für den Logout-Button */
+.logout-button {
+    display: block;
+    padding: 8px;
+    background-color: #FFFFFF;
+    /* Hintergrundfarbe */
+    color: #001029;
+    /* Textfarbe */
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+}
+
+/* Hover-Effekt für den Logout-Button */
+.logout-button:hover {
+    background-color: #34495e;
+    /* Dunkles Blaugrün bei Hover */
+    color: #FFFFFF;
+    /* Textfarbe bei Hover */
+}
+
+.logout-button i {
+    margin-left: 20px;
+}
+
+/* Hover-Effekt für das Icon */
+.logout-button:hover i {
+    color: #FFFFFF;
+    /* Textfarbe des Icons bei Hover */
+}
+
+/* Stil für die Seitenleiste insgesamt */
+.sidebar-general {
+    background-color: #34495e;
+    /* Dunkles Blaugrün */
+    color: #FFFFFF;
+    /* Textfarbe */
+    overflow-y: auto;
+    /* Scrollen bei Überlauf */
+    width: 15%;
+    /* Task Groups fixed am oberen Rand */
+    vertical-align: top;
+}
+
+/* Header der Seitenleiste */
+.sidebar-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+    /* Textfarbe */
+}
+
+/* Stil für die Hauptmenüpunkte */
+.menu-item {
+    list-style: none;
+    /* Listenstil entfernen */
+    margin-bottom: 0;
+    /* Abstand unten entfernt */
+    color: #FFFFFF;
+    /* Textfarbe */
+    font-size: 14pt;
+    top: 0;
+}
+
+
+.menu-item a:hover {
+    background-color: #83E6EB;
+    /* Türkis bei Hover */
+    color: #001029;
+    /* Textfarbe bei Hover */
+}
+
+/* Stil für Untermenüs */
+.submenu {
+    display: none;
+    list-style: none;
+}
+
+
+
+.has-submenu>a::after {
+    content: "\f078";
+    /* Pfeil-Icon (FontAwesome) */
+    font-family: "Font Awesome 5 Free";
+    /* Font Awesome Icons */
+    float: right;
+    margin-right: 10px;
+}
+
+/* Anzeigen der Untermenüs beim Klick */
+.has-submenu.show .submenu {
+    display: block;
+    padding-left: 0;
+    /* Padding für Submenu entfernt */
+}
+
+
+/* Abstand nach dem letzten Submenu-Element */
+.menu-item.has-submenu:last-child {
+    margin-bottom: 20px;
+    /* Abstand nach dem letzten Submenu */
+}
+
+
+.navigation .menu-item {
+    cursor: pointer;
+}
+
+.navigation .submenu {
+    display: none;
+}
+
+.navigation .submenu.show {
+    display: block;
+}
+
+.navigation .menu-item .arrow {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.navigation .menu-item .arrow.down {
+    transform: rotate(180deg);
+}
+
+
+.submenu {
+    display: none;
+    margin-top: 0;
+    color: #f8f9fa !important;
+    padding: 0;
+}
+
+.submenu.show {
+    display: block;
+    
+}
+
+.submenu.show div:hover {
+    background-color: #98acba;
+}
+
+.non-selected-group .submenu div:hover {
+    background-color: #778b9c;
+}
+.current-group .submenu div:hover {
+    background-color: #34495e;
+}
+.submenu div {
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-item:hover {
+    background-color: white;
+    color: #001029;
+}
+
+/* Current Group Style */
+.current-group {
+    background-color: #B9CDDA80;
+    /* Dunkles Grau für aktuelle Gruppe */
+}
+
+
+
+.widthTD1 {
+    width: 300px;
+    
+}
+
+
+.task-container {
+    height: 100%;
+    /*border-right: 4px solid #34495e;
+    border-bottom: 4px solid #34495e;*/
+    border-bottom-right-radius: 1px;
+    background-color: #B9CDDA;
+    display: flex;
+
+}
+
+.task-container-nav {
+    display: flex;
+    border-bottom-right-radius: 10px;
+    background-color: #fff;
+}
+
+.navigationTitle {
+    color: #FFFFFF;
+    /* Textfarbe */
+    font-size: 14pt;
+    background-color: #34495e;
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+}
+
+
+
+.previousTask,
+.nextTask {
+    background-color: #7082a9;
+    margin: 5px;
+}
+
+.previousTask i,
+.nextTask i {
+    margin: 0 5px;
+    color: #fff;
+}
+
+.hint-text i{
+    color: #fff;
+    margin-right: 10px;
+}
+
+.check-button i{
+    color: #fff;
+    margin-right: 5px;
+}
+
+.previousTask:hover,
+.nextTask:hover {
+    background-color: #34495e;
+    /* Dunkles Blaugrün */
+    color: #fff;
+    /* Weiße Sch; /* Türkisfarbene Hover-Farbe */
+}
+
+.previousTask:disabled,
+.nextTask:disabled {
+    background-color: #ccc;
+    /* Grau, wenn deaktiviert */
+    color: #666;
+}
+
+.previousTask:disabled i,
+.nextTask:disabled i {
+    color: #666;
+    /* Grau, wenn deaktiviert */
+}
+
+.test1 {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+.python-tutor-container {
+    height: 100px;
+
+}
+
+.python-tutor-div {
+    margin-top: 0px;
+    margin-left: auto;
+}
+
+.task-area {
+    width: 70%;
+    height: 100%;
+}
+
+.tutor-area {
+    width: 30%;
+    height: 100%;
+}
+
+.backgroundDarkBlue {
+    background-color: #34495e;
+    
+}
+
+.hint-button-prev {
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 5px;
+    color: #001029;
+}
+
+.hint-button-next {
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 5px;
+    margin-right: 10px;
+    color: #001029;
+}
+
+.freeCodeInput {
+    background-color: white;
+}
+
+.taskGroup-container {
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+}
+
+button:disabled {
+    background-color: #ccc;
+    color: #666;
+}
+
+
+
+.disclaimer{
+    font-size: 8pt;
+}
+
+
+.bottom-left-align {
+    display: flex;
+    flex-direction: column-reverse;
+    /*justify-content: flex-end; /* Vertikale Ausrichtung nach unten */
+    /*align-items: flex-start; /* Horizontale Ausrichtung nach links */
+    /*height: 100%;
+    /*padding: 0;
+    /*border: none; /* Entfernen von Grenzen für saubere Darstellung */
+}
+
+.bottom-left-element {
+    margin: 0; /* Entfernt eventuelle äußere Abstände des Bildes */
+    align-self: flex-start; /* Optional, falls mehrere Elemente unterschiedlich ausgerichtet werden sollen */
+    width: 20%;
+  height: auto; /* Beibehaltung des Seitenverhältnisses */
+}
+
+.mpy-editor-run-button{
+    opacity: 1;
+}
+
+
+.welcome-container {
+    display: flex;
+    
+    left:0;
+    right:0;
+    top: 0;
+    bottom: 0;
+
+    
+    overflow: hidden;
+    background: url(src/assets/welcome3.png) no-repeat center center ;
+   background-size: cover;
+    
+    width: 100%;
+    height: auto;
+}
+
+/* .welcome-container img{
+    display: flex;
+
+    width: 100%;
+    height: auto;
+    left:0;
+right:0;
+top: 0;
+bottom: 0;
+} */
+
+ 
+
+.welcome-btn-container {
+    margin-top: calc((100vh — Y)/2);
+margin-left: calc((100vw — X)/2);
+
+    display: grid;
+    grid-template-columns: repeat(5, 25%);
+    grid-template-rows: repeat(5, 20%);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .welcome-btn { grid-area: 3 / 3 / 4 / 4; } 
+    
+/* https://codepen.io/jpbarth/pen/VyyegV as reference */
+.welcome-btn {
+    
+
+    width: 200px;
+    height: 200px;
+ 
+    top: 75%;
+    bottom: 35%;
+    left: -42%;
+    
+    border: none;
+    color: #3E3E4F !important;
+    
+    font-weight: bold;
+    
+    border-radius: 50%;
+    box-shadow: 
+        inset 0 0 50px #fff,
+        inset 20px 0 60px rgb(107, 89, 176),
+        inset -20px 0 60px #0ff,
+        inset 20px 0 300px rgb(191, 129, 242),
+        inset -20px 0 300px #0ff,
+        0 0 50px #fff,
+        -10px 0 60px rgb(191, 129, 242),
+        10px 0 60px #0ff;
+    position: relative;
+    overflow: hidden;
+}
+.welcome-btn:hover {
+    cursor: pointer;
+    animation:pulse 4s linear infinite;
+}
+
+
+.welcome-btn .btn-text {
+    position: relative;
+    z-index: 1;
+    color: #fff !important;
+    text-shadow: 0 0 3px #9e9e9e;
+    font-size: 18px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* .welcome-btn {
+    width: 150px;
+    height: 60px;
+    font-size: 1em ;
+    margin: auto;
+    
+    
+}
+.welcome-btn:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(45deg, #f15523, #ef3224, #7c3697);
+    background-size: 400%;
+    border-radius: 40px;
+    opacity: 0;
+    transition: 0.5%;
+  }
+  .welcome-btn:hover:before {
+    filter: blur(20px);
+    opacity: 1;
+    animation: animate 8s linear infinite;
+  } */
+  
+
+
+.welcome-text {
+    
+    
+}
+.welcome-bubble {
+    text-align: center;
+    padding: 19% 36.5%;
+    align-items: center;
+    grid-template-rows: repeat(5,20%);
+    grid-template-columns: repeat(5,20%);
+    
+   
+}
+
+textarea{
+    height: 200px;
+    resize: none;
+}
+/* Flowchart Task */
+
+.flowchart-options {
+    
+    margin:  5px 0;
+    
+}
+
+#flow-code-style {
+    padding: 0 ;
+    margin:  0 ;
+}
+.correct-answer-flow {
+    border: 6px solid #5CAE63  !important;
+    border-radius: 10px;
+}
+
+.incorrect-answer-flow {
+    border: 6px solid #C26A77 !important;
+    border-radius: 10px;
+}
+.incomplete-answer-flow {
+    border: 6px solid #c2ab6a !important;
+    border-radius: 10px;
+}
+/* https://codepen.io/mayank26/pen/dyvweme */
+:root {
+    --bg-color: #1E1E1E; /* Default background color */
+    --text-color: #d4d4d4; /* Default text color */
+    --hover-bg-color: #d4d4d4; /* Hover background color */
+    --hover-text-color: #1E1E1E; /* Hover text color */
+}
+
+
+
+.accordion-flow {
+    width: 280px;
+}
+
+
+
+details {
+    background-color: var(--bg-color);
+    width: 100%;
+    transition: background-color 0.3s ease;
+    position: relative;
+    vertical-align: top;
+    box-sizing: border-box;
+    border: 5px solid #ffffff
+    
+}
+
+details:hover {
+    background-color: var(--hover-bg-color);
+    box-sizing: border-box;
+    border: 5px solid #1E1E1E
+    
+}
+
+details > summary {
+    color: var(--text-color);
+    padding: 5px;
+    font-size: 1.3em;
+    cursor: pointer;
+    height: fit-content;
+    max-height: 100%;
+    
+}
+details > summary::marker {
+    text-align: left;
+}
+
+details > summary > i{
+    position: relative;
+    left: 103px
+}
+
+
+details [open] {
+    width: 100px;
+}
+details:hover summary {
+    color: var(--hover-text-color);
+}
+
+.canvas-nav {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+details:hover .canvas-nav {
+    color: var(--hover-text-color);
+}
+
+
+
+
+details > p {
+    padding: 10px;
+    color: #1e1e1e;
+    font-size: 1.1em;
+    background-color: #d4d4d4;
+    max-width: 100%;
+    margin: 0;
+    height: 180px;
+    display: table-cell;
+    vertical-align: middle;
+    border: 4px solid #1e1e1e;
+}
+  
+  
+  .flip-text {
+    /* margin: 10px; */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .flowchart-options {
+    background-color: #1E1E1E;
+    padding: 0 10px;
+    height: 100%;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border: 2px solid #1E1E1E;
+    
+  }
+  .flowchart-options > select {
+   margin: 0;
+}
+.flowchart-buttons{
+    padding: 0 10px ;
+}
+.td-flow-options:first-child {
+    border-left-style: solid;
+    /* border-top-left-radius: 10px;  */
+    border-bottom-left-radius: 10px;
+}
+
+.td-flow-options:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px; 
+    /* border-top-right-radius: 10px;  */
+
+}
+
+
+.td-task-description:first-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px; 
+    border-top-right-radius: 10px; 
+
+}
+
+.td-task-description:last-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+
+}
+.td-task-description{
+    border: solid 3px #000000;
+    background-color: #ffffff; 
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow:
+      0 1px 1px rgba(0, 0, 0, 0.2),
+      0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+    color: #333;
+    display: inline-block;
+    font-size: 0.85em;
+    font-weight: 700;
+    line-height: 1;
+    padding: 2px 4px;
+    white-space: nowrap;
+}
+
+.check-button.disabled {
+    background-color: grey !important;
+    cursor: not-allowed;
+}
+
+.mpy-editor-output{
+    background-color: #1e1e1e; /* Dunkler Hintergrund */
+    color: #d4d4d4; /* Helle Textfarbe */
+    font-family: "Courier New", Courier, monospace; /* Monospace-Schriftart */
+    padding: 10px; /* Innenabstand */
+    border-radius: 5px; /* Abgerundete Ecken */
+    overflow: auto; /* Scrollen bei Überlauf */
+    white-space: pre-wrap; /* Beibehalten von Leerzeichen und Umbrüchen */
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Leichter Schatten */
+    max-height: 300px; /* Maximalhöhe für den Fall von viel Text */
+    margin-top: 10px;
+}
+
+.disclaimerText{
+    font-size: 8pt;
+}
+
+.user-icon{
+    color:black;
+}
+
+
+.tutor-general  {
+    border-collapse: separate;
+    border-spacing: 1px;
+}
+
+
+tr:first-child td:first-child { 
+    border-top-left-radius: 10px;
+}
+
+/* Login */
+
+ .oben {
+    position: absolute;
+    
+    width: 1275px; 
+    height: auto; 
+    overflow: hidden;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 2;
+ }
+
+ .unten {
+    position: absolute;
+    width: 1290px; 
+    height: auto; 
+    overflow: hidden;
+    pointer-events: none;
+    object-fit: cover;
+    z-index: 3;
+ }
+
+#disclaimer {
+    position: relative;
+    z-index: 3;
+    width: 33vw;
+    height: auto;
+}
+
+.login-container {
+    position: relative;
+    z-index: 1; 
+    width: 33vw;
+    height: auto;
+    bottom: 35px;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #161616;
+  }
+
+  .main-container {
+    width: 1280px;
+    height: 720px;
+    border: 3px solid #afafaf;
+    /* background-color:white; */
+    border-radius: 10px;
+    background: url(src/assets/bg.png);
+    box-shadow: 0 0 15px #ccc;
+    position: relative;
+    overflow:auto;
+   
+  }
+
+  .signup-main-container {
+    width: 1280px;
+    border: 3px solid #afafaf;
+    /* background-color:white; */
+    border-radius: 10px;
+    background: url(src/assets/bg.png) no-repeat center center;
+    background-size: cover;
+    box-shadow: 0 0 15px #ccc;
+    position: relative;
+    overflow:hidden;
+   
+  }
+
+
+  .main-container-welcome{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /*.main-container-signup{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }*/
+
+  .oben {
+    position: absolute;
+    
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 2;
+ }
+
+ .unten {
+    position: absolute;
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden;
+    pointer-events: none;
+    object-fit: cover;
+    z-index: 3;
+ }
+ router-outlet {
+    display: none;
+}
+
+/* *{border: 1px solid red;} */

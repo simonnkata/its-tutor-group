@@ -1,0 +1,8 @@
+flask
+pymongo
+pyjwt
+bcript
+flask_bcrypt
+datetime
+flask_jwt_extended
+flask_cors

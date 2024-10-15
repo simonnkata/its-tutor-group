@@ -1,0 +1,927 @@
+
+.code-style{
+    font-family: "Courier New", Courier, monospace;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    color: #333;
+    white-space: pre-wrap; /* für Zeilenumbruch innerhalb des Code-Blocks */
+    word-wrap: break-word; /* für Zeilenumbruch bei langen Wörtern */
+}
+
+.correct-answer input {
+    border: 2px solid green; /* Grüne Umrandung für korrekte Antwort */
+}
+
+.incorrect-answer input {
+    border: 2px solid red; /* Rote Umrandung für falsche Antwort */
+}
+
+.correct-answer-gap {
+    outline: none; /* Kein Fokusumriss */
+    border-color: green; /* Randfarbe hervorgehoben heller */
+    box-shadow: 0 0 5px green; /* Leichte Schatten für den Fokuszustand */
+}
+
+.incorrect-answer-gap {
+    outline: none; /* Kein Fokusumriss */
+    border-color: red; /* Randfarbe hervorgehoben heller */
+    box-shadow: 0 0 5px red; /* Leichte Schatten für den Fokuszustand */
+}
+
+
+img.python-tutor {
+    height: 100%; /* Höhe des Bildes */
+    float: right; /* Rechtsausrichtung */
+    margin-left: 10px; /* Optional: Abstand zwischen Bild und Text */
+}
+
+
+
+
+
+/*.container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.list-container, .zone-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list li {
+    background: #f9f9f9;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: move;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }*/
+
+  .hint-navigation {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    font-size: 12pt;
+    padding: 10px;
+    padding-bottom: 40px;
+    width: 200px;
+    top: -120px; /* Verschiebung nach oben */
+    right: -85%;
+    border-radius: 5px;
+}
+
+
+
+.hint-navigation::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -18px; /* Positionierung auf der rechten Seite */
+    transform: translateY(-50%) rotate(180deg); /* Dreht das Dreieck um 45 Grad */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent lightgray transparent transparent; /* Änderung der Farbreihenfolge */
+}
+.hint-navigation .buttons {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    padding-bottom: 5px;
+}
+
+/**.hint-navigation::before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    right: 10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent lightgray transparent;
+}**/
+
+/**.hint-navigation::after {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    right: 11px;
+    width: 0;
+    height: 0;
+    border-width: 9px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}*/
+
+.hint-navigation button {
+    margin: 0 5px;
+}
+.hint-text {
+    margin: 0 10px;
+}
+
+
+.code-highlighting {
+    background-color: yellow;
+}
+
+
+.arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.arrow.down {
+    transform: rotate(180deg);
+}
+
+
+
+.submenu div:hover {
+    background-color: #e9ecef;
+    color: #001029;
+}
+
+.active {
+    font-weight: bold;
+    background-color: white;
+    color: #001029 !important;
+    font-size: 20px;
+}
+
+.status-icon-active {
+    color: #001029 !important;
+}
+
+.python-tutor {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+/*.task-container {
+    margin-top: 20px;
+}
+
+.task-navigation {
+    margin-top: 10px;
+}*/
+
+.status-icon {
+    margin-left: 10px;
+    font-size: 20px;
+    color: white;
+    padding-right: 10px;
+}
+
+
+/* Flowchart */
+
+.flowchart {
+    height: 100%;
+    width: fit-content;
+    display: grid; 
+    grid-template-columns: 40% 60%; 
+    grid-template-rows: 40% 60%; 
+    gap: 5px 5px; 
+    margin-bottom: 5px;
+    grid-template-areas: 
+      "codeblock dropzones"
+      "sources dropzones"; 
+}
+
+/*.codeblock {
+    height: auto;
+    border: 1px solid grey;
+}
+.codeblock pre {
+    text-align: left;
+    white-space: pre-line;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.dropzones {
+    display: grid; 
+    border: 2px solid gray;
+    width:fit-content;
+    align-content: center;
+    grid-template-columns: 50px 100px 100px 100px 50px; 
+    grid-template-rows: 40px 50px 40px 50px 40px 50px 40px 50px 40px 50px 40px; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      ". . start . ."
+      ". . . . ."
+      ". . zone1 . ."
+      ". . . . ."
+      ". . zone2 . ."
+      ". . . . ."
+      ". . zone3 . ."
+      ". . . . ."
+      ". zone4 . zone5 ."
+      ". . . . ."
+      ". . . end ."; 
+    grid-area: dropzones; 
+}
+
+.sources {
+    display: grid; 
+    width: inherit;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 5px 5px; 
+    grid-template-areas: 
+      "buttons1 place-button"
+      "buttons2 place-button"
+      "buttons3 place-button"; 
+    grid-area: sources; 
+}
+.buttons1 { 
+    grid-area: buttons1; 
+    align-items: center;
+    justify-items: center;
+}
+.buttons2 { 
+    grid-area: buttons2; 
+}
+
+.diamond-shape {
+    height: 3em;
+    width: 3em;
+    box-sizing: border-box;
+    display: inline-flex;
+    transform:rotate(45deg);
+}
+
+.rectangle-shape {
+    height: 2em;
+    width: 4em;
+}
+
+.buttons3 { 
+    grid-area: buttons3; 
+}
+.place-button { 
+    grid-area: place-button; 
+    align-items: center;
+    justify-items: center;
+}
+
+.buttons1, .buttons3 {
+    display: flexbox;
+    
+    border: 1px solid grey;
+    padding: 10px 0;
+}
+
+.buttons2, .place-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    padding: 10px 0;
+}
+
+.buttons2 {
+    gap: 15px
+}
+.place-button button {
+    width: 10em;
+    height: 10em;
+    
+}
+
+.buttons1 button , .buttons3 button {
+    width: 6em;
+    height: 3em;
+} 
+/*.dropzone {
+    align-content: center;
+    text-align: center;
+    border: 2px dashed darkgrey;
+}
+
+.start { grid-area: start; }
+.zone1 { grid-area: zone1; }
+.zone2 { grid-area: zone2; }
+.zone3 { grid-area: zone3; }
+.zone4 { grid-area: zone4; }
+.zone5 { grid-area: zone5; }
+.end { grid-area: end; }
+.codeblock { grid-area: codeblock; }
+
+#start, #end {
+    border: 2px solid #393939;
+    border-radius: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}*/
+
+
+.selected {
+    background-color: #c0c0c0; 
+    border: 2px solid #808080; 
+}
+
+/*.no-border {
+    border: none;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.top {
+    transform: translate(-50%, -50%);
+}
+
+.dot.right {
+    transform: translate(50%, -50%);
+}
+
+.dot.bottom {
+    transform: translate(-50%, 50%);
+}
+
+.dot.left {
+    transform: translate(-50%, -50%);
+}
+
+.dropzone {
+    position: relative; /* Ensure dots are positioned relative to the zone 
+}*/
+
+.progress-container {
+    width: 100%; /* Breite des Container-Elements */
+    text-align: center; /* Zentriere den Inhalt horizontal */
+}
+
+.progress-bar {
+    width: 50%;
+    height: 20px; 
+    background-color: #4CAF50; 
+    border-radius: 10px;
+    margin-top: 10px; 
+}
+
+#progress-text {
+    margin-top: 5px; /* Abstand nach oben */
+    font-size: 14px; /* Schriftgröße */
+}
+
+
+.tutorTitle{
+    text-align: center;
+}
+
+.userInfos{
+    font-size: 10pt;
+    text-align: right;
+}
+
+.button-with-progress {
+    position: relative;
+    display: inline-block;
+    width: 100px; /* Breite des Buttons */
+    height: 40px; /* Höhe des Buttons */
+}
+
+.progress-bar-hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #4CAF50;
+    animation: progressAnimation 5s linear forwards;
+    width: 100%; /* Breite des Fortschrittsbalkens */
+}
+
+.hint-text {
+    position: relative;
+    z-index: 1; /* Stelle sicher, dass der Text über dem Fortschrittsbalken liegt */
+    text-align: center; /* Zentriere den Text horizontal */
+    width: 100%; /* Fülle die gesamte Breite des Buttons */
+}
+
+@keyframes progressAnimation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/** Angefangen **/
+
+.check-button{
+    width: 100px; /* Breite des Buttons */
+    height: 40px; /* Höhe des Buttons */
+}
+
+/*.task-body{
+    padding-top: 0px;
+    width: 100%;
+}*/
+
+.hint-position{
+    height: 0px;
+}
+
+/*.tutor-general{
+    width: 70%;
+    margin-left: 5%;
+    margin-right: 10%;
+    margin-top: 5%;
+}*/
+
+/*.task-layout{
+    width: 80%;
+    margin-left: 0px;
+}*/
+
+
+.button-check-hint{
+    float: right;
+}
+
+
+.code-style {
+    background-color: #1e1e1e; /* Hintergrundfarbe dunkel */
+    color: #d4d4d4; /* Textfarbe hell */
+    padding: 10px; /* Abstand um den Text herum */
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; /* Monospace Schriftart für den Code */
+    font-size: 14px; /* Schriftgröße des Codes */
+    line-height: 1.5; /* Zeilenhöhe des Codes */
+    text-align: left !important; /* Links ausgerichtet */
+}
+
+.gap_input {
+    background-color: #1e1e1e; /* Hintergrundfarbe dunkel */
+    color: #d4d4d4; /* Textfarbe hell */
+    border: 1px solid #3d3d3d; /* Randfarbe dunkler */
+    padding: 8px; /* Abstand um den Text herum */
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; /* Monospace Schriftart für den Code */
+    font-size: 14px; /* Schriftgröße des Codes */
+    text-align: left; /* Links ausgerichtet */
+}
+
+/* Stil für den Fokuszustand des Eingabefeldes */
+.gap_input:focus {
+    outline: none; /* Kein Fokusumriss */
+    border-color: #4d90fe; /* Randfarbe hervorgehoben heller */
+    box-shadow: 0 0 5px #4d90fe; /* Leichte Schatten für den Fokuszustand */
+
+}
+
+.mpy-editor-run-button{
+    opacity: 100% !important;
+}
+
+.menu-item[ng-disabled="true"] {
+    color: grey;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.submenu div[ng-style*="grey"] {
+    pointer-events: auto; /* Trotzdem anklickbar */
+    opacity: 0.6;
+}
+
+
+.inactiveTaskDifficulty{
+    color: #A9A9A9;
+}
+
+/********************************************* START **************************************************/
+body, tr, td, div, i{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    /* Primäre Textfarbe anwenden */
+    /*color: #001029;*/
+    color:#001029;
+}
+
+.activeTaskDifficulty{
+    color: white;
+    font-size: 16pt;
+}
+
+
+
+.primary-bg {
+    background-color: #001029; /* Dunkles Blaugrün für Hintergründe */
+}
+
+.primary-accent {
+    color: #83E6EB; /* Türkis für Akzentfarben */
+}
+
+.accent-bg {
+    background-color: #83E6EB; /* Türkis für Akzentfarben in Hintergründen */
+}
+
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif; /* Überschriften */
+    color: #001029;
+}
+
+/* Buttons */
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #83E6EB;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #001029;
+}
+
+/* Beispiel für eine Navigation */
+.navbar {
+    background-color: #FFFFFF; /* Weißer Hintergrund */
+    padding: 10px;
+    border-bottom: 1px solid #E0E0E0; /* Leichte Trennlinie */
+}
+
+.navbar a {
+    color: #001029; /* Dunkles Blaugrün für Links */
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #83E6EB; /* Türkis bei Hover */
+}
+
+
+select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #001029; /* Dunkles Blaugrün für Text */
+    background-color: #FFFFFF; /* Hintergrundfarbe */
+    border: 1px solid #CCCCCC; /* Randfarbe */
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%; /* Breite anpassen */
+    box-sizing: border-box; /* Box-Modell */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Stil für Fokus-Zustand */
+select:focus {
+    outline: none;
+    border-color: #83E6EB; /* Türkis für Fokus-Zustand */
+    box-shadow: 0 0 5px rgba(131, 230, 235, 0.5); /* Leichter Schatten */
+}
+
+/* Primäre Textfarbe für Eingabefelder */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #001029; /* Dunkles Blaugrün für Text */
+    background-color: #FFFFFF; /* Hintergrundfarbe */
+    border: 1px solid #CCCCCC; /* Randfarbe */
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%; /* Breite anpassen */
+    box-sizing: border-box; /* Box-Modell */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Stil für Fokus-Zustand */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #83E6EB; /* Türkis für Fokus-Zustand */
+    box-shadow: 0 0 5px rgba(131, 230, 235, 0.5); /* Leichter Schatten */
+}
+
+/* Container für das Login-Formular */
+.login-container {
+    max-width: 400px; /* Maximalbreite des Containers */
+    margin: auto; /* Zentrieren auf der Seite */
+    padding: 20px;
+    background-color: #FFFFFF; /* Hintergrundfarbe */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Schatten */
+}
+
+/* Überschrift des Formulars */
+.login-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: #001029; /* Dunkles Blaugrün */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Stil für Eingabefelder */
+.login-input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #001029; /* Dunkles Blaugrün für Text */
+    background-color: #FFFFFF; /* Hintergrundfarbe */
+    border: 1px solid #CCCCCC; /* Randfarbe */
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%; /* Breite anpassen */
+    box-sizing: border-box; /* Box-Modell */
+    margin-bottom: 10px; /* Abstand unten */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Stil für Fokus-Zustand der Eingabefelder */
+.login-input:focus {
+    outline: none;
+    border-color: #83E6EB; /* Türkis für Fokus-Zustand */
+    box-shadow: 0 0 5px rgba(131, 230, 235, 0.5); /* Leichter Schatten */
+}
+
+/* Stil für den Anmelde-Button */
+.login-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #83E6EB; /* Türkis für Button-Hintergrund */
+    color: #FFFFFF; /* Textfarbe */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover-Effekt für den Anmelde-Button */
+.login-button:hover {
+    background-color: #001029; /* Dunkles Blaugrün bei Hover */
+}
+
+/* Nachrichten für Fehler oder Erfolg */
+.login-message {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Link für das Zurücksetzen des Passworts oder andere Optionen */
+.login-options {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-options a {
+    color: #001029; /* Dunkles Blaugrün für Links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-options a:hover {
+    color: #83E6EB; /* Türkis bei Hover */
+}
+
+
+/* Container für den Benutzerinfo-Bereich */
+.user-info-container {
+    position: fixed; /* Fixierte Positionierung */
+    top: 20px; /* Abstand vom oberen Rand */
+    right: 20px; /* Abstand vom rechten Rand */
+    background-color: #83E6EB; /* Hintergrundfarbe */
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Schatten */
+    z-index: 1000; /* Z-Index für die Stapelreihenfolge */
+}
+
+/* Stil für den Benutzernamen */
+.user-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #001029; /* Dunkles Blaugrün für Text */
+    margin-bottom: 5px; /* Abstand unten */
+}
+
+/* Stil für das Schwierigkeitsgrad-Dropdown */
+.difficulty-dropdown {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #001029; /* Dunkles Blaugrün für Text */
+    background-color: #FFFFFF; /* Hintergrundfarbe */
+    border: 1px solid #CCCCCC; /* Randfarbe */
+    padding: 6px;
+    border-radius: 4px;
+    width: 150px; /* Breite des Dropdowns */
+    box-sizing: border-box; /* Box-Modell */
+    margin-bottom: 5px; /* Abstand unten */
+}
+
+/* Stil für den Logout-Button */
+.logout-button {
+    display: block;
+    padding: 8px;
+    background-color: #FFFFFF; /* Hintergrundfarbe */
+    color: #001029; /* Textfarbe */
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover-Effekt für den Logout-Button */
+.logout-button:hover {
+    background-color: #001029; /* Dunkles Blaugrün bei Hover */
+    color: #FFFFFF; /* Textfarbe bei Hover */
+}
+
+/* Hover-Effekt für das Icon */
+.logout-button:hover i {
+    color: #FFFFFF; /* Textfarbe des Icons bei Hover */
+}
+
+/* Stil für die Seitenleiste insgesamt */
+.sidebar-general {
+    width: 300px; /* Breitere Seitenleiste */
+    background-color: #001029; /* Dunkles Blaugrün */
+    color: #FFFFFF; /* Textfarbe */
+    padding-top: 20px;
+    position: fixed; /* Fixierte Position */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto; /* Scrollen bei Überlauf */
+}
+
+/* Header der Seitenleiste */
+.sidebar-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #FFFFFF; /* Textfarbe */
+}
+
+/* Stil für die Hauptmenüpunkte */
+.menu-item {
+    list-style: none; /* Listenstil entfernen */
+    margin-bottom: 0; /* Abstand unten entfernt */
+    color: #FFFFFF; /* Textfarbe */
+    font-size: 18pt;
+}
+
+
+.menu-item a:hover {
+    background-color: #83E6EB; /* Türkis bei Hover */
+    color: #001029; /* Textfarbe bei Hover */
+}
+
+/* Stil für Untermenüs */
+.submenu {
+    display: none;
+    list-style: none;
+}
+
+.has-submenu > a::after {
+    content: "\f078"; /* Pfeil-Icon (FontAwesome) */
+    font-family: "Font Awesome 5 Free"; /* Font Awesome Icons */
+    float: right;
+    margin-right: 10px;
+}
+
+/* Anzeigen der Untermenüs beim Klick */
+.has-submenu.show .submenu {
+    display: block;
+    padding-left: 0; /* Padding für Submenu entfernt */
+}
+
+
+/* Abstand nach dem letzten Submenu-Element */
+.menu-item.has-submenu:last-child {
+    margin-bottom: 20px; /* Abstand nach dem letzten Submenu */
+}
+
+
+.navigation .menu-item {
+    cursor: pointer;
+}
+
+.navigation .submenu {
+    display: none;
+}
+
+.navigation .submenu.show {
+    display: block;
+}
+
+.navigation .menu-item .arrow {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.navigation .menu-item .arrow.down {
+    transform: rotate(180deg);
+}
+
+
+.submenu {
+    display: none;
+    margin-top: 0;
+    color: #f8f9fa !important;
+    border: 1px solid #ddd;
+    padding: 0;
+}
+
+.submenu.show {
+    display: block;
+}
+
+.submenu div {
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-item:hover {
+    background-color: #83E6EB;
+    color: #001029; 
+}
+
+/* Current Group Style */
+.current-group {
+    background-color: #34495e; /* Dunkles Grau für aktuelle Gruppe */
+}
