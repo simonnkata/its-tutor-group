@@ -44,13 +44,13 @@
             ],
             "scripts": [
               "src/app/angularjs/js/TaskController.js",
-              "src/app/angularjs/js/correctAnswerService.js",
+              "src/app/angularjs/js/CorrectAnswerService.js",
               "src/app/angularjs/js/FreeTextTaskController.js",
               "src/app/angularjs/js/GapTaskController.js",
               "src/app/angularjs/js/DragAndDropController.js",
 
               
-              "src/app/angularjs/js/DragDropController.js",
+              "src/app/angularjs/js/dragDropController.js",
 
 
 
