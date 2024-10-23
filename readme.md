@@ -19,6 +19,7 @@
    ```bash
    ng serve
    ```
+If you are using Windows you might run into an "UnautorizedAccess" issue, one fix for that would be to change the execution policy. Search for the issue shown in your terminal and you should find a guide on how to fix it.
 
 6. Go to [http://localhost:4200](http://localhost:4200)
 
@@ -30,60 +31,26 @@
 
 1. Install **MongoDB** from [MongoDB Community Server](https://www.mongodb.com/try/download/community) (the _community server edition_)
 
-2. Start **MongoDBCompass** and create a basic connection
+2. Start **MongoDBCompass** and create a basic connection inside MongoDBCompass. (If you are using Mac, you have to do it differently)
 
-3. Try it out by opening [http://localhost:27017/](http://localhost:27017/) in your browser
+3. Try it out by opening [http://localhost:27017/](http://localhost:27017/) (or the IP:PORT shown in MongoDBCompass) in your browser
 
-4. Click on **Databases**, you should see 3 databases: **admin**, **config**, **local**. Create a new database with _Database\_name_ and _Collection\_name_ _IPT\_logs_
+4. Click on **Databases** inside **MongoDBCompass**, you should see 3 collections: **admin**, **config**, **local**.
 
-5. Create a virtual environment in Python and activate it (activation is **different** on _Windows_ or _macOS_)
-
-> Skip this step if it's not working and hope your normal python environment has no conflicts.
+5. (Optional) Create a virtual environment in Python and activate it (activation is **different** on _Windows_ or _macOS_)
 > [How to setup virtual environments in Python](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/)
----
+> Skip this step if it's not working and hope your normal python environment has no conflicts.
 
+6. Install the required packages
    ```bash
-   pip install virtualenv
+   pip install -t requirements.txt
    ```
-   
-   ```bash
-   python -m venv flask-mongodb
-   ```
-   
    or
-   
    ```bash
-   python3 -m venv flask-mongodb
+   pip3 install -t requirements.txt
    ```
    
-   ### On macOS:
-   ```bash
-   source /env/bin/activate
-   ```
-   
-   ### On Windows using CMD:
-   ```bash
-   env/Scripts/activate.bat
-   ```
-   
-   ### On Windows using PowerShell:
-   ```bash
-   env/Scripts/Activate.ps1
-   ```
-
-6. Once it's activated, stay in the terminal and type
-   ```bash
-   pip install flask
-   ```
-   ```bash
-   pip install pymongo
-   ```
-
 7. Run the `app.py` either with `python app.py` or `python3 app.py` as required by your installation
 
-8. Access the website shown in your terminal
-
-9. Append `/upload_logged_data` to the end of the link or `/add_random_data_for_example`
-
-   **Example:**
-   [http://127.0.0.1:5000/get_logged_data](http://127.0.0.1:5000/get_logged_data)
+# Final setup
+Ensure you have MongoDB running and a connection open before running the Python app. You should have both the Python app (python app.py) and the development server (ng serve) running at the same time, for the Application to function correctly.
