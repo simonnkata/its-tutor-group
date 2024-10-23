@@ -43,11 +43,11 @@ If you are using Windows you might run into an "UnautorizedAccess" issue, one fi
 
 6. Install the required packages
    ```bash
-   pip install -t requirements.txt
+   pip install -r requirements.txt
    ```
    or
    ```bash
-   pip3 install -t requirements.txt
+   pip3 install -r requirements.txt
    ```
    
 7. Run the `app.py` either with `python app.py` or `python3 app.py` as required by your installation
