@@ -1,4 +1,4 @@
-# Update: AngularJS Setup
+# AngularJS Setup
 
 1. Install **NodeJS LTS (_Long Term Support_)** version:  
    [Download NodeJS](https://nodejs.org/en)
@@ -21,7 +21,7 @@
    ```
 If you are using Windows you might run into an "UnautorizedAccess" issue, one fix for that would be to change the execution policy. Search for the issue shown in your terminal and you should find a guide on how to fix it.
 
-6. Go to [http://localhost:4200](http://localhost:4200)
+6. Go to [http://localhost:4200](http://localhost:4200) to check if it displays anything. The website is not fully functioning yet.
 
 <br />
 
@@ -53,4 +53,4 @@ If you are using Windows you might run into an "UnautorizedAccess" issue, one fi
 7. Run the `app.py` either with `python app.py` or `python3 app.py` as required by your installation
 
 # Final setup
-Ensure you have MongoDB running and a connection open before running the Python app. You should have both the Python app (python app.py) and the development server (ng serve) running at the same time, for the Application to function correctly.
+Ensure you have MongoDB running and a connection open before running the Python app. You should have both the Python app (python app.py) and the development server (ng serve) running at the same time, for the Application to function correctly. Now you should be able to go to [http://localhost:4200](http://localhost:4200) and it should function correctly.
