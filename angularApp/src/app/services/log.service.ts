@@ -15,7 +15,7 @@ export class LoggingService {
       'Content-Type': 'application/json' 
     });
     const options = {headers: headers};
-    return this.http.post<any>('http://localhost:5000/upload_logged_data', data, options)
+    return this.http.post<any>('http://127.0.0.1:5000/upload_logged_data', data, options)
       .pipe(
         catchError(error => {
           console.error('Signup error', error);
@@ -29,7 +29,7 @@ export class LoggingService {
       'Content-Type': 'application/json' 
     });
     const options = {headers: headers};
-    return this.http.post<any>('http://localhost:5000/updateSolvedTasks', data, options)
+    return this.http.post<any>('http://127.0.0.1:5000/updateSolvedTasks', data, options)
       .pipe(
         catchError(error => {
           console.error('Error updating solved tasks', error);

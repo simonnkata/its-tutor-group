@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   signup(username: string, password: string) {
-    return this.http.post<any>('http://localhost:5000/signup', { username, password })
+    return this.http.post<any>('http://127.0.0.1:5000/signup', { username, password })
       .pipe(
         map(response => {
           if (response && response.data.token, response.data.experienceLevel, response.data.username, response.data.solvedTasks) {
@@ -53,7 +53,7 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>('http://localhost:5000/login', { username, password })
+    return this.http.post<any>('http://127.0.0.1:5000/login', { username, password })
       .pipe(
         map(response => {
           if (response && response.data.user_id && response.data.token, response.data.experienceLevel, response.data.username, response.data.solvedTasks) {
@@ -94,7 +94,7 @@ export class AuthService {
       let currentUserObj = JSON.parse(currentUserJSON)
       currentUserObj.experienceLevel=experienceLevel
       localStorage.setItem("currentUser",JSON.stringify(currentUserObj))
-      return this.http.post<any>('http://localhost:5000/changeExpLevel', { username,experienceLevel }, options)
+      return this.http.post<any>('http://127.0.0.1:5000/changeExpLevel', { username,experienceLevel }, options)
       .pipe(
         catchError(error => {
           console.error('Signup error', error);
