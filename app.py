@@ -6,7 +6,7 @@ import jwt
 from flask_bcrypt import Bcrypt
 from datetime import datetime, timedelta
 from flask_jwt_extended import create_access_token, JWTManager, jwt_required, get_jwt_identity
-
+from teacher import register_teacher_routes
 app = Flask(__name__)
 bcrypt= Bcrypt(app)
 secret= "Very_secret_key_thatshouldntbesavedinplaintext"
@@ -16,8 +16,9 @@ CORS(app, origins=["http://localhost:4200","http://localhost:4200/tutor"])
 
 client = MongoClient(host='localhost', port=27017)
 db = client['IPT_db']
+register_teacher_routes(app, db, bcrypt, jwt)
 
-@app.route('/signup', methods=['POST'])
+@app.route('/student_signup', methods=['POST'])
 def save_user():
     code = 500
     res_data = {}
@@ -49,7 +50,7 @@ def save_user():
         code = 500    
     return jsonify({'status': status, "data": res_data, "message":message}), code
 
-@app.route('/login', methods=['POST'])
+@app.route('/student_login', methods=['POST'])
 def login():
     message = ""
     res_data = {}
@@ -152,6 +153,7 @@ def updateSolvedTasks():
         code = 500
         status = "fail"
     return jsonify({'status': status, "data": res_data, "message":message}), code
+
 
 if __name__=='__main__':
     app.run()
