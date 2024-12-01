@@ -103,3 +103,73 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             status = "fail"
             code = 500    
         return jsonify({'status': status, "data": res_data, "message":message}), code
+
+    @app.route('/get_task', methods=['GET'])
+    @jwt_required()
+    def get_task():
+        message = ""
+        res_data = {}
+        code = 500
+        status = "fail"
+        try:
+            data = request.get_json()
+            taskName = data['title']
+            task = db.tasks.find_one({'title':taskName})
+            if task:
+                status = "successful"
+                message = "task found"
+                code = 200
+                res_data=task
+            else:                
+                message = "there is no task with that name"
+                code = 401
+                status = "fail"
+        except Exception as ex:
+            message = f"{ex}"
+            status = "fail"
+            code = 500    
+        return jsonify({'status': status, "data": res_data, "message":message}), code #return-Wert anpassen
+   
+    @app.route('/task/<title>', methods=['POST'])
+    @jwt_required()
+    def edit_task(title):
+        message = ""
+        res_data = {}
+        code = 500
+        status = "fail"
+        try:
+            data = request.get_json()
+            current_user=get_jwt_identity()
+            teacher = db.teachers.find_one({'username':current_user})
+            teacher_id = teacher["_id"]
+            task = db.tasks.find_one({'title':title})
+            if task:
+                if  teacher_id != task["teacher_id"]:
+                    message = "you can only edit your own tasks"
+                    code = 401
+                    status = "fail"
+                else:
+                    newvalues = { "$set": { 'difficultyLevel': data.get('difficultyLevel'), 
+                                            'description': data.get('description'), 
+                                            'feedback': data.get('feedback'), 
+                                            'points': data.get('points'), 
+                                            'hints': data.get('hints'), 
+                                            'solution': data.get('solution'), 
+                                            'keywords': data.get('keywords'), 
+                                            'availableLines': data.get('availableLines')
+                                            } }
+                    res = db.tasks.update_one(task, newvalues)
+                    if res.acknowledged:
+                        status = "successful"
+                        message= "edits saved"
+                        code = 200
+                        res_data={"title":title}
+            else:
+                message = "there is no task with that name"
+                code = 401
+                status = "fail"
+        except Exception as ex:
+            message = f"{ex}"
+            status = "fail"
+            code = 500    
+        return jsonify({'status': status, "data": res_data, "message":message}), code
