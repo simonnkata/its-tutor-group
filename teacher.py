@@ -3,7 +3,6 @@ from flask_jwt_extended import create_access_token
 from datetime import datetime
 from flask_jwt_extended import create_access_token, JWTManager, jwt_required, get_jwt_identity
 
-
 def register_teacher_routes(app, db, bcrypt, jwt):
     @app.route('/teacher_signup', methods=['POST'])
     def save_teacher():
@@ -73,7 +72,8 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             status = "fail"
         return jsonify({'status': status, "data": res_data, "message":message}), code
 
-    @app.route('/create_task', methods=['POST'])
+    # create a task
+    @app.route('/task', methods=['POST'])
     @jwt_required()
     def create_task():
         message = ""
@@ -84,8 +84,8 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             data = request.get_json()
             current_user=get_jwt_identity()
             teacher = db.teachers.find_one({'username':current_user})
-            taskName=data['title']
-            if db.tasks.find_one({'taskName':taskName}):
+            title=data['title']
+            if db.tasks.find_one({'title':title}):
                 message = "task with that name already exists"
                 code = 401
                 status = "fail"
@@ -97,40 +97,66 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                     status = "successful"
                     message = "task created successfully"
                     code = 200
-                    res_data={"taskName":taskName, "taskCreated":data["taskCreated"]}
+                    res_data={"title":title, "taskCreated":data["taskCreated"]}
         except Exception as ex:
             message = f"{ex}"
             status = "fail"
             code = 500    
         return jsonify({'status': status, "data": res_data, "message":message}), code
-
-    @app.route('/get_task', methods=['GET'])
+    
+    # get all tasks
+    @app.route('/task', methods=['GET'])
     @jwt_required()
-    def get_task():
+    def get_tasks():
         message = ""
         res_data = {}
         code = 500
         status = "fail"
         try:
-            data = request.get_json()
-            taskName = data['title']
-            task = db.tasks.find_one({'title':taskName})
+            res = db.tasks.find()
+            status = "successful"
+            message = "task found"
+            code = 200
+            tasks = list(res)
+            for task in tasks:
+                del task["_id"]
+                del task["teacher_id"]
+            res_data={"tasks": tasks}
+            return jsonify({'status': status, "data": res_data, "message":message}), code
+        except Exception as ex:
+            message = f"{ex}"
+            status = "fail"
+            code = 500    
+
+    # get a task by title
+    @app.route('/task/<title>', methods=['GET'])
+    @jwt_required()
+    def get_task(title):
+        message = ""
+        res_data = {}
+        code = 500
+        status = "fail"
+        try:
+            task = db.tasks.find_one({'title':title})
             if task:
                 status = "successful"
                 message = "task found"
                 code = 200
+                del task["_id"]
+                del task["teacher_id"]
                 res_data=task
             else:                
-                message = "there is no task with that name"
+                message = "no task found with that name"
                 code = 401
                 status = "fail"
         except Exception as ex:
             message = f"{ex}"
             status = "fail"
             code = 500    
-        return jsonify({'status': status, "data": res_data, "message":message}), code #return-Wert anpassen
+        return jsonify({'status': status, "data": res_data, "message":message}), code #adjust return value
    
-    @app.route('/task/<title>', methods=['POST'])
+   #edit a task
+    @app.route('/task/<title>', methods=['PUT'])
     @jwt_required()
     def edit_task(title):
         message = ""
