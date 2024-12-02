@@ -1,7 +1,6 @@
 from flask import jsonify, request
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import datetime
-from flask_jwt_extended import create_access_token, JWTManager, jwt_required, get_jwt_identity
 
 def register_teacher_routes(app, db, bcrypt, jwt):
     @app.route('/teacher_signup', methods=['POST'])
@@ -12,21 +11,21 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         status = "fail"
         try:
             data = request.get_json()
-            username=data['username']
-            if db.teachers.find_one({'username':username}):
+            username = data['username']
+            if db.teachers.find_one({'username': username}):
                 message = "teacher with that username already exists"
                 code = 401
                 status = "fail"
             else:
                 data['password'] = bcrypt.generate_password_hash(data['password']).decode('utf-8')
                 data['UserCreated'] = datetime.now()
-                access_token=create_access_token(identity=username)
+                access_token = create_access_token(identity=username)
                 res = db.teachers.insert_one(data)
                 if res.acknowledged:
                     status = "successful"
                     message = "teacher created successfully"
                     code = 200
-                    res_data={"username":username, "token":access_token, "firstName":data["firstName"],"lastName":data["lastName"]}
+                    res_data = {"username": username, "token": access_token, "firstName": data["firstName"], "lastName": data["lastName"]}
         except Exception as ex:
             message = f"{ex}"
             status = "fail"
@@ -46,7 +45,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             print(teacher)
             if teacher:
                 passwordhashed=teacher["password"]
-                password=data["password"]
+                password = data["password"]
                 firstName = teacher["firstName"]
                 lastName = teacher["lastName"]
                 if teacher and bcrypt.check_password_hash(passwordhashed, password):
@@ -82,22 +81,22 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         status = "fail"
         try:
             data = request.get_json()
-            current_user=get_jwt_identity()
+            current_user = get_jwt_identity()
             teacher = db.teachers.find_one({'username':current_user})
-            title=data['title']
+            title = data['title']
             if db.tasks.find_one({'title':title}):
                 message = "task with that name already exists"
                 code = 401
                 status = "fail"
             else:
-                data['teacher_id']  = teacher["_id"]
+                data['teacher_id'] = teacher["_id"]
                 data['taskCreated'] = datetime.now()
                 res = db.tasks.insert_one(data)
                 if res.acknowledged:
                     status = "successful"
                     message = "task created successfully"
                     code = 200
-                    res_data={"title":title, "taskCreated":data["taskCreated"]}
+                    res_data = {"title": title, "taskCreated": data["taskCreated"]}
         except Exception as ex:
             message = f"{ex}"
             status = "fail"
@@ -121,12 +120,12 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             for task in tasks:
                 del task["_id"]
                 del task["teacher_id"]
-            res_data={"tasks": tasks}
-            return jsonify({'status': status, "data": res_data, "message":message}), code
+            res_data = {"tasks": tasks}
         except Exception as ex:
             message = f"{ex}"
             status = "fail"
             code = 500    
+        return jsonify({'status': status, "data": res_data, "message":message}), code
 
     # get a task by title
     @app.route('/task/<title>', methods=['GET'])
@@ -144,7 +143,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                 code = 200
                 del task["_id"]
                 del task["teacher_id"]
-                res_data=task
+                res_data = task
             else:                
                 message = "no task found with that name"
                 code = 401
@@ -165,7 +164,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         status = "fail"
         try:
             data = request.get_json()
-            current_user=get_jwt_identity()
+            current_user = get_jwt_identity()
             teacher = db.teachers.find_one({'username':current_user})
             teacher_id = teacher["_id"]
             task = db.tasks.find_one({'title':title})
@@ -189,10 +188,45 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                         status = "successful"
                         message= "edits saved"
                         code = 200
-                        res_data={"title":title}
+                        res_data = {"title": title}
             else:
                 message = "there is no task with that name"
                 code = 401
+                status = "fail"
+        except Exception as ex:
+            message = f"{ex}"
+            status = "fail"
+            code = 500    
+        return jsonify({'status': status, "data": res_data, "message":message}), code
+    
+    #delete a task
+    @app.route('/task/<title>', methods=['DELETE'])
+    @jwt_required()
+    def delete_task(title):
+        message = ""
+        res_data = {}
+        code = 500
+        status = "fail"
+        try:
+            #verify that the currently logged in teacher is the one who created the task
+            current_user = get_jwt_identity()
+            teacher = db.teachers.find_one({'username':current_user})
+            task = db.tasks.find_one({'title':title})
+            if task:
+                if task['teacher_id'] != teacher["_id"]:
+                    message = "You do not have the authority to delete this task"
+                    code = 403
+                    status = "fail"
+                else:
+                    res = db.tasks.delete_one({"title": title})
+                    if res.acknowledged:
+                        status = "successful"
+                        message = "task deleted successfully"
+                        code = 200
+                        res_data = {"title": title}
+            else:
+                message = "task not found"
+                code = 404
                 status = "fail"
         except Exception as ex:
             message = f"{ex}"
