@@ -83,7 +83,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             data = request.get_json()
             current_user = get_jwt_identity()
             teacher = db.teachers.find_one({'username':current_user})
-            title = data['title']
+            title = make_task_title(data['topic'], data['type'])
             if db.tasks.find_one({'title':title}):
                 message = "task with that name already exists"
                 code = 401
@@ -233,3 +233,10 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             status = "fail"
             code = 500    
         return jsonify({'status': status, "data": res_data, "message":message}), code
+    
+    def make_task_title(topic, type): 
+        topicCount = db.tasks.count_documents({"topic": topic })
+        typeCount = db.tasks.count_documents({"type": type })
+        title = f"{topic[0]}{topicCount+1}{type[0].upper()}{typeCount + 1}"
+        return title
+    
