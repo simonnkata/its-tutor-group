@@ -1,4 +1,4 @@
-.code-style {
+.student .code-style {
     border-radius: 4px;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -13,7 +13,7 @@
 }
 
 
-.code-style-feedback {
+.student .code-style-feedback {
     border-radius: 4px;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -29,58 +29,58 @@
     padding-right: 10px;
 }
 
-.correct-answer input {
+.student .correct-answer input {
     border: 2px solid #5CAE63 ;
     border-radius: 10px;
     /* Grüne Umrandung für korrekte Antwort */
 }
 
-.incorrect-answer input {
+.student .incorrect-answer input {
     border: 2px solid #C26A77;
     border-radius: 10px;
     /* Rote Umrandung für falsche Antwort */
 }
 
-.incorrect-answer {
+.student .incorrect-answer {
     border: 6px solid #C26A77;
     border-radius: 10px;
     /* Rote Umrandung für falsche Antwort */
 }
 
-.correct-answer-gap {
+.student .correct-answer-gap {
     border: 6px solid #5CAE63  !important;
     border-radius: 10px;
 }
 
-.incorrect-answer-gap {
+.student .incorrect-answer-gap {
     border: 6px solid #C26A77 !important;
     border-radius: 10px;
 }
 
-.correct-answer {
+.student .correct-answer {
     border: 6px solid #5CAE63  !important;
     border-radius: 10px;
 }
 
-.correct-answer-compiler {
+.student .correct-answer-compiler {
     border: 6px solid #5CAE63  !important;
     border-radius: 10px;
 }
 
-.incorrect-answer-compiler {
+.student .incorrect-answer-compiler {
     border: 6px solid #C26A77 !important;
     border-radius: 10px;
 }
 
 
-img.python-tutor {
+.student img.python-tutor {
     height: 150px;
     width: 150px;
     /* Höhe des Bildes */
     /* Optional: Abstand zwischen Bild und Text */
 }
 
-.hint-navigation {
+.student .hint-navigation {
     position: absolute;
     right: -95%;
     background-color: white;
@@ -92,7 +92,7 @@ img.python-tutor {
 }
 
 
-.hint-navigation-relative {
+.student .hint-navigation-relative {
     position: relative;
     right: -95%;
     background-color: white;
@@ -104,7 +104,7 @@ img.python-tutor {
 }
 
 
-.hint-navigation::after {
+.student .hint-navigation::after {
     content: "";
     position: absolute;
     top: 110%;
@@ -120,7 +120,7 @@ img.python-tutor {
    
 }
 
-.hint-navigation .buttons {
+.student .hint-navigation .buttons {
     position: relative;
     bottom: 0;
     right: 0;
@@ -129,29 +129,29 @@ img.python-tutor {
     justify-content: right;
 }
 
-.hint-navigation button {}
+.student .hint-navigation button {}
 
-.hint-text {
+.student .hint-text {
     line-height: 1;
     text-align: left;
     font-size: 10pt;
 }
 
-.hint-text-freeCode-L2C2{
+.student .hint-text-freeCode-L2C2{
     background-color: green;
     width: 300px;
     left: 60%;
     bottom: 27%;
 }
 
-.hint-text-freeCode-V2C2{
+.student .hint-text-freeCode-V2C2{
     width: 300px;
     left: 91%;
     bottom: 280px;
     position: relative;
 }
 
-.hint-text-freeCode-F2C3{
+.student .hint-text-freeCode-F2C3{
     position: relative;
     width: 300px;
     left: 91%;
@@ -159,13 +159,13 @@ img.python-tutor {
 }
 
 
-.hint-text-freeText{
+.student .hint-text-freeText{
     width: 300px;
     left: 60%;
     bottom: 58%;
 }
 
-.hint-text-freeText-L5C1{
+.student .hint-text-freeText-L5C1{
     width: 300px;
     left: 60%;
     bottom: 27%;
@@ -173,40 +173,40 @@ img.python-tutor {
 
 
 
-.hint-text-flowChart{
+.student .hint-text-flowChart{
     width: 300px;
     left: 61%;
     bottom: -7%;
 }
 
-.hint-text-gap{
+.student .hint-text-gap{
     width: 300px;
     left: 60%;
     bottom: 53%;
 }
 
-.hint-text-freeCode{
+.student .hint-text-freeCode{
     position:relative;
     width: 300px;
     left: 88%;
     bottom: 225px;
 }
 
-.hint-text-freeCode-V1C3{
+.student .hint-text-freeCode-V1C3{
     position:relative;
     width: 300px;
     left: 88%;
     bottom: 278px;
 }
 
-.hint-text-freeCode-L4C2{
+.student .hint-text-freeCode-L4C2{
     position:relative;
     width: 300px;
     left: 88%;
     bottom: 260px;
 }
 
-.hint-text-freeCode-F5C2{
+.student .hint-text-freeCode-F5C2{
     position:relative;
     width: 325px;
     left: 89%;
@@ -222,28 +222,28 @@ img.python-tutor {
 
 
 
-.hint-text-freeCode-F1C3{
+.student .hint-text-freeCode-F1C3{
     position:relative;
     width: 300px;
     left: 93%;
     bottom: 240px;
 }
 
-.hint-text-freeCode-F1C2{
+.student .hint-text-freeCode-F1C2{
     position:relative;
     width: 300px;
     left: 91%;
     bottom: 283px;
 }
 
-.hint-text-freeCode-F1C3-code{
+.student .hint-text-freeCode-F1C3-code{
     position:relative;
     width: 460px;
     left: 95%;
     bottom: 285px;
 }
 
-.hint-text-freeCode-L2C3{
+.student .hint-text-freeCode-L2C3{
     position:relative;
     width: 300px;
     left: 88%;
@@ -251,49 +251,49 @@ img.python-tutor {
 }
 
 
-.hint-text-gap-F1C1{
+.student .hint-text-gap-F1C1{
     width: 300px;
     left: 60%;
     bottom: 47%;
 }
 
-.hint-text-V2C2{
+.student .hint-text-V2C2{
     position: relative;
     width: 300px;
     left: 90%;
     bottom: 220px;
 }
 
-.code-highlighting {
+.student .code-highlighting {
     background-color: yellow;
     color: black;
 }
 
 
-.arrow {
+.student .arrow {
     font-size: 12px;
     transition: transform 0.3s ease;
 }
 
-.arrow.down {
+.student .arrow.down {
     transform: rotate(180deg);
 }
 
 
 
-.submenu div:hover {
+.student .submenu div:hover {
     background-color: #34495E;
     color: white !important;
 }
 
-.active {
+.student .active {
     font-weight: bold;
     background-color: white;
     color: #001029 !important;
     font-size: 20px;
 }
 
-.status-icon-active {
+.student .status-icon-active {
     color: #001029 !important;
 }
 
@@ -301,14 +301,14 @@ img.python-tutor {
     width: 100px;
 }*/
 
-.status-icon {
+.student .status-icon {
     margin-left: 10px;
     font-size: 16px;
     color: white;
     padding-right: 10px;
 }
 
-.status-icon:hover {
+.student .status-icon:hover {
     color: black !important;
 }
 
@@ -328,12 +328,12 @@ img.python-tutor {
         "sources dropzones";
 } */
 
-.selected {
+.student .selected {
     background-color: #c0c0c0;
     border: 2px solid #808080;
 }
 
-.progress-container {
+.student .progress-container {
     width: 90%;
     /* Breite des Container-Elements */
     text-align: center;
@@ -342,7 +342,7 @@ img.python-tutor {
 }
 
 
-.progress-bar {
+.student .progress-bar {
     width: 0%;
     height: 20px;
     background-color: #8497b5;
@@ -351,7 +351,7 @@ img.python-tutor {
     /*margin: 0 20px;*/
 }
 
-.borderProgressBar {
+.student .borderProgressBar {
     border: 2px solid white;
     height: 20px;
     border-radius: 10px;
@@ -362,14 +362,14 @@ img.python-tutor {
 
 
 
-#progress-text {
+.student #progress-text {
     margin-top: 5px;
     /* Abstand nach oben */
     font-size: 14px;
     /* Schriftgröße */
 }
 
-.progress-text {
+.student .progress-text {
     /*position: absolute;
     top: 0;
     left: 0;*/
@@ -382,7 +382,7 @@ img.python-tutor {
     /* Textfarbe für den Fortschrittstext */
 }
 
-.tutorTitle {
+.student .tutorTitle {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     /* Größe der Überschrift */
@@ -396,12 +396,12 @@ img.python-tutor {
     width: 100%;
 }
 
-.userInfos {
+.student .userInfos {
     font-size: 10pt;
     text-align: right;
 }
 
-.button-with-progress {
+.student .button-with-progress {
     position: relative;
     display: inline-block;
     width: 115px;
@@ -410,7 +410,7 @@ img.python-tutor {
     /* Höhe des Buttons */
 }
 
-.progress-bar-hint {
+.student .progress-bar-hint {
     position: absolute;
     top: 0;
     left: 0;
@@ -435,20 +435,20 @@ img.python-tutor {
 
 /** Angefangen **/
 
-.check-button {
+.student .check-button {
     width: 115px;
     /* Breite des Buttons */
     height: 40px;
     /* Höhe des Buttons */
 }
 
-.task-body{
+.student .task-body{
     width: 87%;
     height: 100%;
     overflow: auto;
 }
 
-.hint-position {
+.student .hint-position {
     height: 0px;
 }
 
@@ -459,21 +459,21 @@ img.python-tutor {
     margin-top: 5%;
 }*/
 
-.task-layout {
+.student .task-layout {
     width: 100%;
     margin-left: 10px;
     margin-bottom: 10px;
 }
 
 
-.button-check-hint {
+.student .button-check-hint {
     float: right;
 }
 
 
 
 
-.gap_input {
+.student .gap_input {
     background-color: #1e1e1e;
     /* Hintergrundfarbe dunkel */
     color: #d4d4d4;
@@ -492,7 +492,7 @@ img.python-tutor {
 }
 
 /* Stil für den Fokuszustand des Eingabefeldes */
-.gap_input:focus {
+.student .gap_input:focus {
     outline: none;
     /* Kein Fokusumriss */
     border-color: #4d90fe;
@@ -502,44 +502,44 @@ img.python-tutor {
 
 }
 
-.hint-navi-editor-run-button:hover {
+.student .hint-navi-editor-run-button:hover {
     opacity: 100% !important;
     background-color: #34495e;
 }
 
-.hint-navi-editor-run-button {
+.student .hint-navi-editor-run-button {
     opacity: 100% !important;
     background-color: #83e6eb;
 }
 
-.mpy-editor-run-button svg {
+.student .mpy-editor-run-button svg {
     color: white !important;
 }
 
 
-.menu-item[ng-disabled="true"] {
+.student .menu-item[ng-disabled="true"] {
     color: grey;
     pointer-events: none;
     opacity: 0.6;
 }
 
-.submenu div[ng-style*="grey"] {
+.student .submenu div[ng-style*="grey"] {
     pointer-events: auto;
     /* Trotzdem anklickbar */
     opacity: 0.6;
 }
 
 
-.inactiveTaskDifficulty {
+.student .inactiveTaskDifficulty {
     color: #A9A9A9;
 }
 
 /********************************************* START **************************************************/
-body,
-tr,
-td,
-div,
-i {
+.student body,
+.student tr,
+.student td,
+.student div,
+.student i {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 1.6;
@@ -550,39 +550,39 @@ i {
 
 
 
-.activeTaskDifficulty {
+.student .activeTaskDifficulty {
     color: white;
     font-size: 12pt;
 }
 
 
 
-.primary-bg {
+.student .primary-bg {
     background-color: #34495e;
     /* Dunkles Blaugrün für Hintergründe */
 }
 
-.primary-accent {
+.student .primary-accent {
     color: #83E6EB;
     /* Türkis für Akzentfarben */
 }
 
-.accent-bg {
+.student .accent-bg {
     background-color: #83E6EB;
     /* Türkis für Akzentfarben in Hintergründen */
 }
 
 
-h1,
-h2,
-h3 {
+.student h1,
+.student h2,
+.student h3 {
     font-family: 'Montserrat', sans-serif;
     /* Überschriften */
     color: #001029;
 }
 
 /* Buttons */
-button {
+.student button {
     display: inline-block;
     padding: 10px 20px;
     background-color: #7082A9;
@@ -593,13 +593,13 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.student button:hover {
     background-color: #34495e;
     color: white;
 }
 
 /* Beispiel für eine Navigation */
-.navbar {
+.student .navbar {
     background-color: #FFFFFF;
     /* Weißer Hintergrund */
     padding: 10px;
@@ -607,7 +607,7 @@ button:hover {
     /* Leichte Trennlinie */
 }
 
-.navbar a {
+.student .navbar a {
     color: #001029;
     /* Dunkles Blaugrün für Links */
     text-decoration: none;
@@ -616,13 +616,13 @@ button:hover {
     transition: color 0.3s ease;
 }
 
-.navbar a:hover {
+.student .navbar a:hover {
     color: #83E6EB;
     /* Türkis bei Hover */
 }
 
 
-select {
+.student select {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: #001029;
@@ -641,7 +641,7 @@ select {
 }
 
 /* Stil für Fokus-Zustand */
-select:focus {
+.student select:focus {
     outline: none;
     border-color: #83E6EB;
     /* Türkis für Fokus-Zustand */
@@ -650,10 +650,10 @@ select:focus {
 }
 
 /* Primäre Textfarbe für Eingabefelder */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
+.student input[type="text"],
+.student input[type="email"],
+.student input[type="password"],
+.student textarea {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: #001029;
@@ -672,10 +672,10 @@ textarea {
 }
 
 /* Stil für Fokus-Zustand */
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-textarea:focus {
+.student input[type="text"]:focus,
+.student input[type="email"]:focus,
+.student input[type="password"]:focus,
+.student textarea:focus {
     outline: none;
     border-color: #83E6EB;
     /* Türkis für Fokus-Zustand */
@@ -684,7 +684,7 @@ textarea:focus {
 }
 
 /* Container für das Login-Formular */
-.login-container {
+.student .login-container {
     max-width: 450px;
     /* Maximalbreite des Containers */
     margin: auto;
@@ -700,7 +700,7 @@ textarea:focus {
 }
 
 /* Überschrift des Formulars */
-.login-heading {
+.student .login-heading {
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     color: #001029;
@@ -710,7 +710,7 @@ textarea:focus {
 }
 
 /* Stil für Eingabefelder */
-.login-input {
+.student .login-input {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: #001029;
@@ -731,7 +731,7 @@ textarea:focus {
 }
 
 /* Stil für Fokus-Zustand der Eingabefelder */
-.login-input:focus {
+.student .login-input:focus {
     outline: none;
     border-color: #83E6EB;
     /* Türkis für Fokus-Zustand */
@@ -740,7 +740,7 @@ textarea:focus {
 }
 
 /* Stil für den Anmelde-Button */
-.login-button {
+.student .login-button {
     display: block;
     width: 100%;
     padding: 12px;
@@ -757,13 +757,13 @@ textarea:focus {
 }
 
 /* Hover-Effekt für den Anmelde-Button */
-.login-button:hover {
+.student .login-button:hover {
     background-color: #34495e;
     /* Dunkles Blaugrün bei Hover */
 }
 
 /* Nachrichten für Fehler oder Erfolg */
-.login-message {
+.student .login-message {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     margin-top: 10px;
@@ -771,28 +771,28 @@ textarea:focus {
 }
 
 /* Link für das Zurücksetzen des Passworts oder andere Optionen */
-.login-options {
+.student .login-options {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     text-align: center;
     margin-top: 20px;
 }
 
-.login-options a {
+.student .login-options a {
     color: #001029;
     /* Dunkles Blaugrün für Links */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.login-options a:hover {
+.student .login-options a:hover {
     color: #83E6EB;
     /* Türkis bei Hover */
 }
 
 
 /* Container für den Benutzerinfo-Bereich */
-.user-info-container {
+.student .user-info-container {
     background-color: #B9CDDA;
     /* Hintergrundfarbe */
     padding-left: 10px;
@@ -807,7 +807,7 @@ textarea:focus {
 }
 
 /* Stil für den Benutzernamen */
-.user-name {
+.student .user-name {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: black;
@@ -818,7 +818,7 @@ textarea:focus {
 }
 
 /* Stil für das Schwierigkeitsgrad-Dropdown */
-.difficulty-dropdown {
+.student .difficulty-dropdown {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     color: #001029;
@@ -838,7 +838,7 @@ textarea:focus {
 }
 
 /* Stil für den Logout-Button */
-.logout-button {
+.student .logout-button {
     display: block;
     padding: 8px;
     background-color: #FFFFFF;
@@ -855,25 +855,25 @@ textarea:focus {
 }
 
 /* Hover-Effekt für den Logout-Button */
-.logout-button:hover {
+.student .logout-button:hover {
     background-color: #34495e;
     /* Dunkles Blaugrün bei Hover */
     color: #FFFFFF;
     /* Textfarbe bei Hover */
 }
 
-.logout-button i {
+.student .logout-button i {
     margin-left: 20px;
 }
 
 /* Hover-Effekt für das Icon */
-.logout-button:hover i {
+.student .logout-button:hover i {
     color: #FFFFFF;
     /* Textfarbe des Icons bei Hover */
 }
 
 /* Stil für die Seitenleiste insgesamt */
-.sidebar-general {
+.student .sidebar-general {
     background-color: #34495e;
     /* Dunkles Blaugrün */
     color: #FFFFFF;
@@ -886,7 +886,7 @@ textarea:focus {
 }
 
 /* Header der Seitenleiste */
-.sidebar-header {
+.student .sidebar-header {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
@@ -895,7 +895,7 @@ textarea:focus {
 }
 
 /* Stil für die Hauptmenüpunkte */
-.menu-item {
+.student .menu-item {
     list-style: none;
     /* Listenstil entfernen */
     margin-bottom: 0;
@@ -907,7 +907,7 @@ textarea:focus {
 }
 
 
-.menu-item a:hover {
+.student .menu-item a:hover {
     background-color: #83E6EB;
     /* Türkis bei Hover */
     color: #001029;
@@ -915,14 +915,14 @@ textarea:focus {
 }
 
 /* Stil für Untermenüs */
-.submenu {
+.student .submenu {
     display: none;
     list-style: none;
 }
 
 
 
-.has-submenu>a::after {
+.student .has-submenu>a::after {
     content: "\f078";
     /* Pfeil-Icon (FontAwesome) */
     font-family: "Font Awesome 5 Free";
@@ -932,7 +932,7 @@ textarea:focus {
 }
 
 /* Anzeigen der Untermenüs beim Klick */
-.has-submenu.show .submenu {
+.student .has-submenu.show .submenu {
     display: block;
     padding-left: 0;
     /* Padding für Submenu entfernt */
@@ -940,57 +940,57 @@ textarea:focus {
 
 
 /* Abstand nach dem letzten Submenu-Element */
-.menu-item.has-submenu:last-child {
+.student .menu-item.has-submenu:last-child {
     margin-bottom: 20px;
     /* Abstand nach dem letzten Submenu */
 }
 
 
-.navigation .menu-item {
+.student .navigation .menu-item {
     cursor: pointer;
 }
 
-.navigation .submenu {
+.student .navigation .submenu {
     display: none;
 }
 
-.navigation .submenu.show {
+.student .navigation .submenu.show {
     display: block;
 }
 
-.navigation .menu-item .arrow {
+.student .navigation .menu-item .arrow {
     display: inline-block;
     margin-left: 5px;
 }
 
-.navigation .menu-item .arrow.down {
+.student .navigation .menu-item .arrow.down {
     transform: rotate(180deg);
 }
 
 
-.submenu {
+.student .submenu {
     display: none;
     margin-top: 0;
     color: #f8f9fa !important;
     padding: 0;
 }
 
-.submenu.show {
+.student .submenu.show {
     display: block;
     
 }
 
-.submenu.show div:hover {
+.student .submenu.show div:hover {
     background-color: #98acba;
 }
 
-.non-selected-group .submenu div:hover {
+.student .non-selected-group .submenu div:hover {
     background-color: #778b9c;
 }
-.current-group .submenu div:hover {
+.student .current-group .submenu div:hover {
     background-color: #34495e;
 }
-.submenu div {
+.student .submenu div {
     padding: 5px;
     cursor: pointer;
     display: flex;
@@ -999,7 +999,7 @@ textarea:focus {
     padding-left: 20px;
 }
 
-.menu-item {
+.student .menu-item {
     cursor: pointer;
     padding: 10px;
     border-radius: 4px;
@@ -1009,26 +1009,26 @@ textarea:focus {
     align-items: center;
 }
 
-.menu-item:hover {
+.student .menu-item:hover {
     background-color: white;
     color: #001029;
 }
 
 /* Current Group Style */
-.current-group {
+.student .current-group {
     background-color: #B9CDDA80;
     /* Dunkles Grau für aktuelle Gruppe */
 }
 
 
 
-.widthTD1 {
+.student .widthTD1 {
     width: 300px;
     
 }
 
 
-.task-container {
+.student .task-container {
     height: 100%;
     /*border-right: 4px solid #34495e;
     border-bottom: 4px solid #34495e;*/
@@ -1038,13 +1038,13 @@ textarea:focus {
 
 }
 
-.task-container-nav {
+.student .task-container-nav {
     display: flex;
     border-bottom-right-radius: 10px;
     background-color: #fff;
 }
 
-.navigationTitle {
+.student .navigationTitle {
     color: #FFFFFF;
     /* Textfarbe */
     font-size: 14pt;
@@ -1055,81 +1055,81 @@ textarea:focus {
 
 
 
-.previousTask,
-.nextTask {
+.student .previousTask,
+.student .nextTask {
     background-color: #7082a9;
     margin: 5px;
 }
 
-.previousTask i,
-.nextTask i {
+.student .previousTask i,
+.student .nextTask i {
     margin: 0 5px;
     color: #fff;
 }
 
-.hint-text i{
+.student .hint-text i{
     color: #fff;
     margin-right: 10px;
 }
 
-.check-button i{
+.student .check-button i{
     color: #fff;
     margin-right: 5px;
 }
 
-.previousTask:hover,
-.nextTask:hover {
+.student .previousTask:hover,
+.student .nextTask:hover {
     background-color: #34495e;
     /* Dunkles Blaugrün */
     color: #fff;
     /* Weiße Sch; /* Türkisfarbene Hover-Farbe */
 }
 
-.previousTask:disabled,
-.nextTask:disabled {
+.student .previousTask:disabled,
+.student .nextTask:disabled {
     background-color: #ccc;
     /* Grau, wenn deaktiviert */
     color: #666;
 }
 
-.previousTask:disabled i,
-.nextTask:disabled i {
+.student .previousTask:disabled i,
+.student .nextTask:disabled i {
     color: #666;
     /* Grau, wenn deaktiviert */
 }
 
-.test1 {
+.student .test1 {
     display: flex;
     justify-content: start;
     align-items: start;
 }
 
-.python-tutor-container {
+.student .python-tutor-container {
     height: 100px;
 
 }
 
-.python-tutor-div {
+.student .python-tutor-div {
     margin-top: 0px;
     margin-left: auto;
 }
 
-.task-area {
+.student .task-area {
     width: 70%;
     height: 100%;
 }
 
-.tutor-area {
+.student .tutor-area {
     width: 30%;
     height: 100%;
 }
 
-.backgroundDarkBlue {
+.student .backgroundDarkBlue {
     background-color: #34495e;
     
 }
 
-.hint-button-prev {
+.student .hint-button-prev {
     padding-right: 3px;
     padding-left: 3px;
     padding-top: 0px;
@@ -1138,7 +1138,7 @@ textarea:focus {
     color: #001029;
 }
 
-.hint-button-next {
+.student .hint-button-next {
     padding-right: 3px;
     padding-left: 3px;
     padding-top: 0px;
@@ -1148,28 +1148,28 @@ textarea:focus {
     color: #001029;
 }
 
-.freeCodeInput {
+.student .freeCodeInput {
     background-color: white;
 }
 
-.taskGroup-container {
+.student .taskGroup-container {
     margin-bottom: 10px;
     border-bottom: 2px solid white;
 }
 
-button:disabled {
+.student button:disabled {
     background-color: #ccc;
     color: #666;
 }
 
 
 
-.disclaimer{
+.student .disclaimer{
     font-size: 8pt;
 }
 
 
-.bottom-left-align {
+.student .bottom-left-align {
     display: flex;
     flex-direction: column-reverse;
     /*justify-content: flex-end; /* Vertikale Ausrichtung nach unten */
@@ -1179,19 +1179,19 @@ button:disabled {
     /*border: none; /* Entfernen von Grenzen für saubere Darstellung */
 }
 
-.bottom-left-element {
+.student .bottom-left-element {
     margin: 0; /* Entfernt eventuelle äußere Abstände des Bildes */
     align-self: flex-start; /* Optional, falls mehrere Elemente unterschiedlich ausgerichtet werden sollen */
     width: 20%;
   height: auto; /* Beibehaltung des Seitenverhältnisses */
 }
 
-.mpy-editor-run-button{
+.student .mpy-editor-run-button{
     opacity: 1;
 }
 
 
-.welcome-container {
+.student .welcome-container {
     display: flex;
     
     left:0;
@@ -1221,7 +1221,7 @@ bottom: 0;
 
  
 
-.welcome-btn-container {
+.student .welcome-btn-container {
     margin-top: calc((100vh — Y)/2);
 margin-left: calc((100vw — X)/2);
 
@@ -1235,7 +1235,7 @@ margin-left: calc((100vw — X)/2);
     .welcome-btn { grid-area: 3 / 3 / 4 / 4; } 
     
 /* https://codepen.io/jpbarth/pen/VyyegV as reference */
-.welcome-btn {
+.student .welcome-btn {
     
 
     width: 200px;
@@ -1263,13 +1263,13 @@ margin-left: calc((100vw — X)/2);
     position: relative;
     overflow: hidden;
 }
-.welcome-btn:hover {
+.student .welcome-btn:hover {
     cursor: pointer;
     animation:pulse 4s linear infinite;
 }
 
 
-.welcome-btn .btn-text {
+.student .welcome-btn .btn-text {
     position: relative;
     z-index: 1;
     color: #fff !important;
@@ -1319,11 +1319,11 @@ margin-left: calc((100vw — X)/2);
   
 
 
-.welcome-text {
+  .student .welcome-text {
     
     
 }
-.welcome-bubble {
+.student .welcome-bubble {
     text-align: center;
     padding: 19% 36.5%;
     align-items: center;
@@ -1333,37 +1333,37 @@ margin-left: calc((100vw — X)/2);
    
 }
 
-textarea{
+.student textarea{
     height: 200px;
     resize: none;
 }
 /* Flowchart Task */
 
-.flowchart-options {
+.student .flowchart-options {
     
     margin:  5px 0;
     
 }
 
-#flow-code-style {
+.student #flow-code-style {
     padding: 0 ;
     margin:  0 ;
 }
-.correct-answer-flow {
+.student .correct-answer-flow {
     border: 6px solid #5CAE63  !important;
     border-radius: 10px;
 }
 
-.incorrect-answer-flow {
+.student .incorrect-answer-flow {
     border: 6px solid #C26A77 !important;
     border-radius: 10px;
 }
-.incomplete-answer-flow {
+.student .incomplete-answer-flow {
     border: 6px solid #c2ab6a !important;
     border-radius: 10px;
 }
 /* https://codepen.io/mayank26/pen/dyvweme */
-:root {
+.student :root {
     --bg-color: #1E1E1E; /* Default background color */
     --text-color: #d4d4d4; /* Default text color */
     --hover-bg-color: #d4d4d4; /* Hover background color */
@@ -1372,13 +1372,13 @@ textarea{
 
 
 
-.accordion-flow {
+.student .accordion-flow {
     width: 280px;
 }
 
 
 
-details {
+.student details {
     background-color: var(--bg-color);
     width: 100%;
     transition: background-color 0.3s ease;
@@ -1389,14 +1389,14 @@ details {
     
 }
 
-details:hover {
+.student details:hover {
     background-color: var(--hover-bg-color);
     box-sizing: border-box;
     border: 5px solid #1E1E1E
     
 }
 
-details > summary {
+.student details > summary {
     color: var(--text-color);
     padding: 5px;
     font-size: 1.3em;
@@ -1405,36 +1405,36 @@ details > summary {
     max-height: 100%;
     
 }
-details > summary::marker {
+.student details > summary::marker {
     text-align: left;
 }
 
-details > summary > i{
+.student details > summary > i{
     position: relative;
     left: 103px
 }
 
 
-details [open] {
+.student details [open] {
     width: 100px;
 }
-details:hover summary {
+.student details:hover summary {
     color: var(--hover-text-color);
 }
 
-.canvas-nav {
+.student .canvas-nav {
     color: var(--text-color);
     transition: color 0.3s ease;
 }
 
-details:hover .canvas-nav {
+.student details:hover .canvas-nav {
     color: var(--hover-text-color);
 }
 
 
 
 
-details > p {
+.student details > p {
     padding: 10px;
     color: #1e1e1e;
     font-size: 1.1em;
@@ -1448,7 +1448,7 @@ details > p {
 }
   
   
-  .flip-text {
+.student .flip-text {
     /* margin: 10px; */
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -1457,7 +1457,7 @@ details > p {
     font-size: 16px;
     line-height: 1;
   }
-  .flowchart-options {
+  .student .flowchart-options {
     background-color: #1E1E1E;
     padding: 0 10px;
     height: 100%;
@@ -1466,19 +1466,19 @@ details > p {
     border: 2px solid #1E1E1E;
     
   }
-  .flowchart-options > select {
+  .student .flowchart-options > select {
    margin: 0;
 }
-.flowchart-buttons{
+.student .flowchart-buttons{
     padding: 0 10px ;
 }
-.td-flow-options:first-child {
+.student .td-flow-options:first-child {
     border-left-style: solid;
     /* border-top-left-radius: 10px;  */
     border-bottom-left-radius: 10px;
 }
 
-.td-flow-options:last-child {
+.student .td-flow-options:last-child {
     border-right-style: solid;
     border-bottom-right-radius: 10px; 
     /* border-top-right-radius: 10px;  */
@@ -1486,20 +1486,20 @@ details > p {
 }
 
 
-.td-task-description:first-child {
+.student .td-task-description:first-child {
     border-right-style: solid;
     border-bottom-right-radius: 10px; 
     border-top-right-radius: 10px; 
 
 }
 
-.td-task-description:last-child {
+.student .td-task-description:last-child {
     border-left-style: solid;
     border-top-left-radius: 10px; 
     border-bottom-left-radius: 10px;
 
 }
-.td-task-description{
+.student .td-task-description{
     border: solid 3px #000000;
     background-color: #ffffff; 
     padding: 10px;
@@ -1509,7 +1509,7 @@ details > p {
 
 
 
-kbd {
+.student kbd {
     background-color: #eee;
     border-radius: 3px;
     border: 1px solid #b4b4b4;
@@ -1525,12 +1525,12 @@ kbd {
     white-space: nowrap;
 }
 
-.check-button.disabled {
+.student .check-button.disabled {
     background-color: grey !important;
     cursor: not-allowed;
 }
 
-.mpy-editor-output{
+.student .mpy-editor-output{
     background-color: #1e1e1e; /* Dunkler Hintergrund */
     color: #d4d4d4; /* Helle Textfarbe */
     font-family: "Courier New", Courier, monospace; /* Monospace-Schriftart */
@@ -1543,28 +1543,28 @@ kbd {
     margin-top: 10px;
 }
 
-.disclaimerText{
+.student .disclaimerText{
     font-size: 8pt;
 }
 
-.user-icon{
+.student .user-icon{
     color:black;
 }
 
 
-.tutor-general  {
+.student .tutor-general  {
     border-collapse: separate;
     border-spacing: 1px;
 }
 
 
-tr:first-child td:first-child { 
+.student tr:first-child td:first-child { 
     border-top-left-radius: 10px;
 }
 
 /* Login */
 
- .oben {
+.student .oben {
     position: absolute;
     
     width: 1275px; 
@@ -1575,7 +1575,7 @@ tr:first-child td:first-child {
     z-index: 2;
  }
 
- .unten {
+ .student .unten {
     position: absolute;
     width: 1290px; 
     height: auto; 
@@ -1585,14 +1585,14 @@ tr:first-child td:first-child {
     z-index: 3;
  }
 
-#disclaimer {
+ .student #disclaimer {
     position: relative;
     z-index: 3;
     width: 33vw;
     height: auto;
 }
 
-.login-container {
+.student .login-container {
     position: relative;
     z-index: 1; 
     width: 33vw;
@@ -1600,7 +1600,7 @@ tr:first-child td:first-child {
     bottom: 35px;
 }
 
-body, html {
+.student body, .student html {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -1611,7 +1611,7 @@ body, html {
     background-color: #161616;
   }
 
-  .main-container {
+  .student .main-container {
     width: 1280px;
     height: 720px;
     border: 3px solid #afafaf;
@@ -1624,7 +1624,7 @@ body, html {
    
   }
 
-  .signup-main-container {
+  .student .signup-main-container {
     width: 1280px;
     border: 3px solid #afafaf;
     /* background-color:white; */
@@ -1638,7 +1638,7 @@ body, html {
   }
 
 
-  .main-container-welcome{
+  .student .main-container-welcome{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1654,7 +1654,7 @@ body, html {
     overflow: hidden;
   }*/
 
-  .oben {
+  .student .oben {
     position: absolute;
     
     width: 100%; 
@@ -1665,7 +1665,7 @@ body, html {
     z-index: 2;
  }
 
- .unten {
+ .student .unten {
     position: absolute;
     width: 100%; 
     height: 100%; 
@@ -1674,7 +1674,7 @@ body, html {
     object-fit: cover;
     z-index: 3;
  }
- router-outlet {
+ .student router-outlet {
     display: none;
 }
 

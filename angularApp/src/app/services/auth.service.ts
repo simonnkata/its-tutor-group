@@ -52,6 +52,27 @@ export class AuthService {
       );
   }
 
+  teacherSignup(username: string, email: string, firstName: string, lastName: string, password: string) {
+    return this.http.post<any>('http://127.0.0.1:5000/teacher_signup', { username, password, email, firstName, lastName })
+      .pipe(
+        map(response => {
+          if (response && response.data.token, response.data.username) {
+            const username = response.data.username
+            const token  = response.data.token;
+            localStorage.setItem('currentUser', JSON.stringify({ username, token }));
+            this.currentUserSubject.next({ username, token});
+            return {  token };
+          } else {
+            throw new Error('No token received');
+          }
+        }),
+        catchError(error => {
+          console.error('Signup error', error);
+          return throwError(()=> new Error(error));
+        })
+      );
+  }
+
   login(username: string, password: string) {
     return this.http.post<any>('http://127.0.0.1:5000/student_login', { username, password })
       .pipe(
@@ -63,6 +84,27 @@ export class AuthService {
             const solvedTasks = response.data.solvedTasks;
             localStorage.setItem('currentUser', JSON.stringify({  username, token, experienceLevel,solvedTasks }));
             this.currentUserSubject.next({  username, token, experienceLevel,solvedTasks});
+            return { token };
+          } else {
+            throw new Error('No token received');
+          }
+        }),
+        catchError(error => {
+          console.error('Login failed', error);
+          return throwError(()=> new Error(error));
+        })
+      );
+  }
+
+  teacherLogin(username: string, password: string) {
+    return this.http.post<any>('http://127.0.0.1:5000/teacher_login', { username, password })
+      .pipe(
+        map(response => {
+          if (response && response.data.user_id && response.data.token, response.data.username, response.data.firstName, response.data.lastName){
+            const username = response.data.username
+            const token  = response.data.token;
+            localStorage.setItem('currentUser', JSON.stringify({  username, token }));
+            this.currentUserSubject.next({  username, token});
             return { token };
           } else {
             throw new Error('No token received');

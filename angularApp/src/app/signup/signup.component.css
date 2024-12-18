@@ -1,0 +1,289 @@
+/* Allgemeines Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #4b6f44, #2c2c2c); /* Moosgrün bis Anthrazit-Verlauf */
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Kein Scrollen */
+    position: relative;
+}
+
+/* Hauptcontainer */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Bäume */
+.tree {
+    width: 200px;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+}
+
+.left-tree {
+    background-image: url('./../../assets/tree.png'); /* Linker Baum */
+    left: 0;
+}
+
+.right-tree {
+    background-image: url('./../../assets/tree.png'); /* Rechter Baum */
+    right: 0;
+    transform: scaleX(-1); /* Spiegeln */
+}
+
+/* Zentraler Bereich */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 1; /* Vor den Bäumen */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Hauptüberschrift */
+.main-heading {
+    font-size: 36px;
+    font-weight: bold;
+    color: #f0db4f; /* Python-Gelb */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px; /* Abstand zum Python-Bild */
+}
+
+/* Python-Bild */
+.python-image {
+    background-image: url('./../../assets/pythonTutor.png'); /* Python-Bild */
+    background-size: contain; /* Bildgröße proportional anpassen */
+    background-repeat: no-repeat; /* Nicht wiederholen */
+    background-position: center;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px; /* Abstand zum welcome-container */
+}
+
+/* Willkommensbereich */
+.welcome-container {
+    background-color: rgba(0, 0, 0, 0.8); /* Halbtransparenter schwarzer Hintergrund */
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+}
+
+.welcome-heading {
+    font-size: 28px;
+    color: #f0db4f; /* Python-Gelb */
+    margin-bottom: 10px;
+}
+
+.welcome-text {
+    font-size: 16px;
+    color: #d4d4d4;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.role-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Teacher-Button */
+.teacher-btn {
+    background-color: #28a745;
+}
+
+.teacher-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Student-Button */
+.student-btn {
+    background-color: #17a2b8;
+}
+
+.student-btn:hover {
+    background-color: #138496;
+    transform: scale(1.05);
+}
+
+/* Popup */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dunkler, transparenter Hintergrund */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.popup-container {
+    background-color: #3c5c3c; /* Dunkles Moosgrün für Kontrast */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.8); /* Stärkerer Schlagschatten */
+    text-align: center;
+    width: 300px;
+    max-width: 90%;
+}
+
+.popup-heading {
+    font-size: 24px;
+    color: #f0db4f; /* Python-Gelb */
+    margin-bottom: 20px;
+}
+
+/* Formular */
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form label {
+    display: block;
+    font-size: 14px;
+    color: #d4d4d4;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+    color: white;
+}
+
+.login-form input::placeholder {
+    color: #a1a1a1;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-btn {
+    padding: 12px 25px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.login-btn {
+    background-color: #28a745;
+}
+
+.login-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.close-btn {
+    background-color: #dc3545; /* Roter Close-Button */
+}
+
+.close-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Registrierung Link */
+.register-info {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #d4d4d4;
+}
+
+.register-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link:hover {
+    color: #28a745;
+}
+
+/* Rückkehr-Button */
+.return-btn {
+    background-color: #f0db4f; /* Gelb */
+}
+
+.return-btn:hover {
+    background-color: #d0b343;
+    transform: scale(1.05);
+}
+
+/* Register Button im gleichen Stil wie Login Button */
+.register-btn {
+    background-color: #28a745;
+}
+
+.register-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Vorname und Nachname nebeneinander */
+.name-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.name-row .form-group {
+    flex: 1;
+}
