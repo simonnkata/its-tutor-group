@@ -1,0 +1,24 @@
+<div class="tasks-overview">
+    <h1>Task Overview</h1>
+    
+    <div class="task-grid">
+      <div
+        *ngFor="let task of tasks"
+        class="task-card"
+      >
+        <h3>{{ task.name }}</h3>
+        <p>Type: {{ task.type }}</p>
+        <p>Category: {{ task.category }}</p>
+        <p>Skill Level: {{ task.skillLevel }}</p>
+        <div class="actions">
+          <button (click)="editTask(task)">Edit</button>
+          <button (click)="deleteTask(task)">Delete</button>
+        </div>
+      </div>
+      <div class="add-task-card" (click)="createTask()">
+        <h1>+</h1>
+        <p>Neue Task erstellen</p>
+      </div>
+    </div>
+  </div>
+  

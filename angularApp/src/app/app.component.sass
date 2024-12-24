@@ -1,0 +1,113 @@
+.navbar
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 10px 20px
+  background-color: #cce7e8
+  height: 40px
+  width: 100%
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 10
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+
+  .nav-left
+    display: flex
+    align-items: center
+    gap: 20px // Abstand zwischen Benutzername und Buttons
+
+    .user-name
+      h1
+        margin: 0
+        font-size: 1.5rem
+        font-weight: bold
+        color: #000
+
+    .nav-links
+      display: flex
+      gap: 40px
+
+      button
+        background-color: transparent // Standard transparent für andere Seiten
+        color: #000 // Schwarz
+        border: none
+        font-size: 1rem
+        cursor: pointer
+        padding: 10px 20px // 0.5 Mal höher
+        border-radius: 5px
+        transition: background-color 0.3s, color 0.3s
+
+        &:hover
+          background-color: rgba(92, 183, 180, 0.2) // Leichte Highlight-Farbe beim Hover
+
+        &.active
+          background-color: rgb(92, 183, 180) // Aktive Seite mit Icon-Farbe
+          color: #fff // Weißer Text für aktive Seite
+          font-weight: bold
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
+
+  .nav-right
+    display: flex
+    align-items: center
+    margin-right: 40px // Abstand von der rechten Seite
+
+    .logout-button
+      display: flex
+      align-items: center
+      gap: 10px // Abstand zwischen Text und Icon
+      background-color: transparent // Standard transparent für Logout
+      color: #000 // Schwarz
+      border: none
+      font-size: 1rem
+      cursor: pointer
+      padding: 10px 20px 
+      border-radius: 5px
+      transition: background-color 0.3s, color 0.3s
+
+      &:hover
+        background-color: rgba(92, 183, 180, 0.2) // Hover-Highlight
+        color: #000
+
+      &.active
+        background-color: rgb(92, 183, 180) // Aktiv mit Hintergrundfarbe
+        color: #fff
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
+
+      i
+        font-size: 1.2rem // Icon-Größe
+
+.sidebar
+  position: fixed // Fixiere die Sidebar am linken Rand
+  top: 70px // Unterhalb der Navbar (Navbar-Höhe: 60px)
+  left: 0
+  width: 220px
+  background-color: #cce7e8
+  padding: 20px
+  border-radius: 5px
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+  height: calc(100vh - 60px) // Passt sich der verfügbaren Höhe an
+
+  h2
+    font-size: 1.2rem
+    font-weight: bold
+    margin-bottom: 8px
+    color: #333
+
+  select
+    width: 100%
+    padding: 8px
+    margin-bottom: 20px // Abstand zwischen Dropdowns
+    border: 1px solid #ccc
+    border-radius: 5px
+    font-size: 0.9rem
+    background-color: white
+    cursor: pointer
+
+    &:hover
+      border-color: #87cefa
+
+    &:focus
+      outline: none
+      border-color: #6495ed
+
