@@ -14,7 +14,7 @@ export const routes: Routes = [
     { path: '', redirectTo: '/tasks-overview', pathMatch: 'full' },
     {
       path: '', 
-      component: AppComponent,
+      //component: AppComponent,
       children: [
         { path: 'tasks-overview', component: TasksOverviewComponent },
         { path: 'tasks-form/compiler-task', component: CompilerTaskComponent },

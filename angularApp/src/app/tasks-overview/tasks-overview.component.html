@@ -1,24 +1,54 @@
 <div class="tasks-overview">
-    <h1>Task Overview</h1>
-    
-    <div class="task-grid">
-      <div
-        *ngFor="let task of tasks"
-        class="task-card"
-      >
+  <div class="task-grid">
+    <!-- Beginner Column -->
+    <div class="task-column">
+      <h2>Beginner</h2>
+      <div *ngFor="let task of beginnerTasks" class="task-card">
         <h3>{{ task.name }}</h3>
         <p>Type: {{ task.type }}</p>
         <p>Category: {{ task.category }}</p>
-        <p>Skill Level: {{ task.skillLevel }}</p>
+        <p>Skill Level: {{ task.skill }}</p>
         <div class="actions">
           <button (click)="editTask(task)">Edit</button>
           <button (click)="deleteTask(task)">Delete</button>
         </div>
       </div>
-      <div class="add-task-card" (click)="createTask()">
-        <h1>+</h1>
-        <p>Neue Task erstellen</p>
+    </div>
+
+    <!-- Advance Column -->
+    <div class="task-column">
+      <h2>Advance</h2>
+      <div *ngFor="let task of advanceTasks" class="task-card">
+        <h3>{{ task.name }}</h3>
+        <p>Type: {{ task.type }}</p>
+        <p>Category: {{ task.category }}</p>
+        <p>Skill Level: {{ task.skill }}</p>
+        <div class="actions">
+          <button (click)="editTask(task)">Edit</button>
+          <button (click)="deleteTask(task)">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expert Column -->
+    <div class="task-column">
+      <h2>Expert</h2>
+      <div *ngFor="let task of expertTasks" class="task-card">
+        <h3>{{ task.name }}</h3>
+        <p>Type: {{ task.type }}</p>
+        <p>Category: {{ task.category }}</p>
+        <p>Skill Level: {{ task.skill }}</p>
+        <div class="actions">
+          <button (click)="editTask(task)">Edit</button>
+          <button (click)="deleteTask(task)">Delete</button>
+        </div>
       </div>
     </div>
   </div>
-  
+
+  <!-- Neue Task erstellen -->
+  <div class="add-task-card" (click)="createTask()">
+    <h1>+</h1>
+    <p>Neue Task erstellen</p>
+  </div>
+</div>

@@ -1,1 +1,24 @@
-<p>compiler-task works!</p>
+<div class="compiler-task">
+    <section class="content">
+        <div class="task">
+        <h2>Task Description</h2>
+        <div id="task-description-editor" class="editor"></div>
+
+        <h2>Code</h2>
+        <textarea id="code-editor" class="code-area" placeholder="Write your code here..."></textarea>
+        <pre class="code-display"><code class="language-python" id="highlighted-code"></code></pre>
+        <button class="run-btn">Run</button>
+
+        <h2>Output</h2>
+        <textarea class="flexible-textarea" placeholder="View output here..."></textarea>
+        </div>
+
+        <div class="hint">
+        <button class="hint-button" onclick="addHint()">+ Hint</button>
+        <div id="hints-container"></div>
+        <div class="hint-section">
+            <button class="hint-button">Add Feedback</button>
+        </div>
+        </div>
+    </section>
+</div>

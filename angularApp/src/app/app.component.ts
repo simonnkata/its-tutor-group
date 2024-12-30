@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output} from '@angular/core';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { filter } from 'rxjs';
 
 interface Experience {
   name: string;
@@ -14,7 +15,7 @@ interface Experience {
   standalone: true,
   imports: [
     CommonModule,
-    DropdownModule, 
+    DropdownModule,
     FormsModule,
     RouterModule],
     templateUrl: './app.component.html',
@@ -34,7 +35,18 @@ export class AppComponent {
 
   currentPage: string = 'tasks-overview'; // Standardseite: Tasks Overview
 
-  constructor(private router: Router) {}
+  filters: any
+
+  constructor(private router: Router) {
+    this.filters = {
+      category: "Variables",
+      skill: "beginner",
+      type: "compiler-task"
+    }
+
+    localStorage.setItem('filters', JSON.stringify(this.filters))
+
+  }
 
   // Methode, um die Seite zu ändern
   navigateTo(page: string): void {
@@ -62,15 +74,9 @@ export class AppComponent {
       category: this.selectedCategory,
       skill: this.selectedSkill
     };
+    this.filters = filters
     console.log('Filters changed:', filters);
+    localStorage.setItem('filters', JSON.stringify(this.filters))
     this.filterChanged.emit(filters);
   }
 }
-
-
-
-
-
-
-
-
