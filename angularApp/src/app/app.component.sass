@@ -1,3 +1,7 @@
+.content
+  width: 90%
+  //margin: auto
+
 .row
   display: flex
 
@@ -18,7 +22,7 @@
   .nav-left
     display: flex
     align-items: center
-    gap: 180px // Abstand zwischen Benutzername und Buttons
+    gap: 160px // Abstand zwischen Benutzername und Buttons
 
     .user-name
       h1
@@ -32,53 +36,15 @@
       gap: 40px
 
       button
-        background-color: transparent // Standard transparent für andere Seiten
-        color: #000 // Schwarz
-        border: none
-        font-size: 1rem
-        cursor: pointer
-        padding: 10px 20px // 0.5 Mal höher
-        border-radius: 5px
-        transition: background-color 0.3s, color 0.3s
+        @extend .common-button
 
-        &:hover
-          background-color: rgba(92, 183, 180, 0.2) // Leichte Highlight-Farbe beim Hover
+.nav-right
+  display: flex
+  align-items: center
+  margin-right: 40px // Abstand von der rechten Seite
 
-        &.active
-          background-color: rgb(92, 183, 180) // Aktive Seite mit Icon-Farbe
-          color: #fff // Weißer Text für aktive Seite
-          font-weight: bold
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
-
-  .nav-right
-    display: flex
-    align-items: center
-    margin-right: 40px // Abstand von der rechten Seite
-
-    .logout-button
-      display: flex
-      align-items: center
-      gap: 10px // Abstand zwischen Text und Icon
-      background-color: transparent // Standard transparent für Logout
-      color: #000 // Schwarz
-      border: none
-      font-size: 1rem
-      cursor: pointer
-      padding: 10px 20px
-      border-radius: 5px
-      transition: background-color 0.3s, color 0.3s
-
-      &:hover
-        background-color: rgba(92, 183, 180, 0.2) // Hover-Highlight
-        color: #000
-
-      &.active
-        background-color: rgb(92, 183, 180) // Aktiv mit Hintergrundfarbe
-        color: #fff
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
-
-      i
-        font-size: 1.2rem // Icon-Größe
+  .logout-button
+    @extend .common-button
 
 .sidebar
   // position: fixed // Fixiere die Sidebar am linken Rand
@@ -114,4 +80,26 @@
     &:focus
       outline: none
       border-color: #6495ed
+
+  button
+    @extend .common-button
+
+.common-button
+  background-color: transparent
+  color: #000
+  border: none
+  font-size: 1rem
+  cursor: pointer
+  padding: 10px 20px
+  border-radius: 5px
+  transition: background-color 0.3s, color 0.3s
+
+  &:hover
+    background-color: rgba(92, 183, 180, 0.2)
+
+  &.active
+    background-color: rgb(92, 183, 180)
+    color: #fff
+    font-weight: bold
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
 

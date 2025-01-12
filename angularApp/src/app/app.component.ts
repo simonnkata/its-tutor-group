@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output} from '@angular/core';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
-import { filter } from 'rxjs';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { TaskService } from './services/task.service';
+
 
 interface Experience {
   name: string;
@@ -37,20 +38,50 @@ export class AppComponent {
 
   filters: any
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private taskService: TaskService
+  ) {
     this.filters = {
       category: "Variables",
       skill: "beginner",
       type: "compiler-task"
     }
 
+
     localStorage.setItem('filters', JSON.stringify(this.filters))
+    //localStorage.setItem('token', 'dein-jwt-token');
+
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentPage = event.urlAfterRedirects;
+      }
+    });
 
   }
 
   // Methode, um die Seite zu ändern
-  navigateTo(page: string): void {
-    this.currentPage = page;
+  navigate(): void {
+
+    
+    
+    if (this.selectedType == "compiler-task") {
+      this.router.navigate(['tasks-form/compiler-task'], {
+        queryParams: this.filters
+      })
+    }
+    else if (this.selectedType == "flowchart-task") {
+      this.router.navigate(['tasks-form/flowchart-task'])
+    }
+    else if (this.selectedType == "free-text-task") {
+      this.router.navigate(['tasks-form/free-text-task'])
+    }
+    else {
+      this.router.navigate(['tasks-form/gap-task'])
+    }
+
+    this.taskService.send(this.filters);
   }
 
   // Logout-Methode
@@ -78,5 +109,9 @@ export class AppComponent {
     console.log('Filters changed:', filters);
     localStorage.setItem('filters', JSON.stringify(this.filters))
     this.filterChanged.emit(filters);
+  }
+
+  isSignupPage(): boolean {
+    return this.router.url.includes('/signup');
   }
 }

@@ -1,62 +1,73 @@
-<nav class="navbar">
-
-  <div class="nav-left">
-    <div class="user-name">
-      <h1>{{ currentUsername }}</h1>
+<div *ngIf="!isSignupPage(); else signupPage">
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="user-name">
+        <h1>{{ currentUsername }}</h1>
+      </div>
+      <div class="nav-links">
+        <!-- <button
+          class="common-button"
+          [routerLink]="'/tasks-overview'"
+          [class.active]="currentPage === 'tasks-overview'">
+          Tasks Overview
+        </button> -->
+      </div>
     </div>
-    <div class="nav-links">
+
+    <div class="nav-right">
       <button
-      [routerLink]="'/tasks-overview'"
-      [class.active]="currentPage === 'tasks-overview'"
-      (click)="navigateTo('tasks-overview')">
-      Tasks Overview
+          class="common-button"
+          [routerLink]="'/tasks-overview'"
+          [class.active]="currentPage === 'tasks-overview'">
+          Tasks Overview
       </button>
-
-      <button [routerLink]="'/tasks-form/compiler-task'"
-      [class.active]="currentPage === 'tasks-form/compiler-task'"
-      (click)="navigateTo('tasks-form/compiler-task')">
-        Task Creation
+      
+      <button class="logout-button common-button" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
       </button>
     </div>
+  </nav>
+
+  <div class="row">
+    <div class="sidebar">
+      <h2>Type</h2>
+      <select [(ngModel)]="selectedType" (change)="onFilterChange()">
+        <option value="compiler-task">Compiler Task</option>
+        <option value="flowchart-task">Flowchart Task</option>
+        <option value="free-text-task">Free Text Task</option>
+        <option value="gap-task">Gap Task</option>
+      </select>
+
+      <h2>Category</h2>
+      <select [(ngModel)]="selectedCategory" (change)="onFilterChange()">
+        <option value="Variables">Python Variables</option>
+        <option value="Loops">Python Loops</option>
+        <option value="Functions">Python Functions</option>
+      </select>
+
+      <h2>Skill Level</h2>
+      <select [(ngModel)]="selectedSkill" (change)="onFilterChange()">
+        <option value="beginner">Beginner</option>
+        <option value="advance">Advance</option>
+        <option value="expert">Expert</option>
+      </select>
+
+      <button 
+        class="common-button"
+        (click)="navigate()"
+        [class.active]="currentPage === 'tasks-form/compiler-task'">
+        Task Creation
+      </button> 
+    </div>
+
+    <!-- Hauptinhalt: Platz für Komponenten wie tasks-overview -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+</div>
 
-
-  <div class="nav-right">
-    <button class="logout-button" (click)="logout()">
-      <i class="fas fa-sign-out-alt"></i> Logout
-    </button>
-  </div>
-</nav>
-
-
-
-<div class="row">
-<div class="sidebar">
-    <h2>Type</h2>
-    <select [(ngModel)]="selectedType" (change)="onFilterChange()">
-      <option value="compiler-task">Compiler Task</option>
-      <option value="flowchart-task">Flowchart Task</option>
-      <option value="free-text-task">Free Text Task</option>
-      <option value="gap-task">Gap Task</option>
-    </select>
-
-    <h2>Category</h2>
-    <select [(ngModel)]="selectedCategory" (change)="onFilterChange()">
-      <option value="Variables">Python Variables</option>
-      <option value="Loops">Python Lists</option>
-      <option value="Functions">Python For Loops</option>
-    </select>
-
-    <h2>Skill Level</h2>
-    <select [(ngModel)]="selectedSkill" (change)="onFilterChange()">
-      <option value="beginner">Beginner</option>
-      <option value="advance">Advance</option>
-      <option value="expert">Expert</option>
-    </select>
-  </div>
-
-<!-- Hauptinhalt: Platz für Komponenten wie tasks-overview -->
-<div class="content">
+<ng-template #signupPage>
+  <!-- Hier rendern wir die Signup-Komponente -->
   <router-outlet></router-outlet>
-</div>
-</div>
+</ng-template>
