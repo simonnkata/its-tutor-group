@@ -64,7 +64,7 @@ def feedback_routes(app, db, bcrypt, jwt):
         correctSolution = task["solution"]  
         keywords = task["keywords"]
         if studentAnswer == correctSolution:
-            return (True, "Good job! You entered the correct solution.")
+            return (True, task["feedback"])
         for keyword in keywords:
             if not (keyword in studentAnswer):
                 return (False, f"Your answer is missing at least the word {keyword}. Try again.")
@@ -76,34 +76,50 @@ def feedback_routes(app, db, bcrypt, jwt):
         correctSolution = task["solution"]  
         keywords = task["keywords"]
 
+
     # check solution for compiler tasks
     def feedback_compiler(task, data):
-        userAnswerWithWhitespace = data["solution"]
-        userAnswer = re.sub(r"\s+|#[^\n]*", "", userAnswerWithWhitespace) # student code without whitespace and without comments
-        userResult = data["result"]
-        correctSolution = task["solution"]
-        correctResult = task["result"]  
+        userCodeWithWhitespace = data["code"]
+        userCode = re.sub(r"\s+|#[^\n]*", "", userCodeWithWhitespace) # student code without whitespace and without comments
+        userOutput = data["output"]
+        correctCode = task["solution"]
+        correctOutput = task["output"]  
         keywords = task["keywords"]    
-        #add check: does it compile? if not: explain the compilers feedback
-        if userAnswer == correctSolution:
-            return (True, "Good job! You entered the correct solution.")
-        if userResult == correctResult: # code is not exactly like given solution, but gives the correct result
-            feedback = check_keywords(keywords, userAnswer)
+        if userCode == correctCode:
+            return (True, task["feedback"])
+        if userOutput == correctOutput: # code is not exactly like given solution, but gives the correct output
+            feedback = check_keywords(keywords, userCode)
             if feedback:
                 return (False, feedback)
             else:
-                return (True, "Good job! You entered the correct solution.")
+                return (True, task["feedback"])
         else:
-            feedback = check_keywords(keywords, userAnswer)
+            errorMsg = check_error(userOutput)
+            if errorMsg:
+                return (False, errorMsg)
+            feedback = check_keywords(keywords, userCode)
             if feedback:
                 return (False, feedback)
             else:
                 return (False, "Your answer is almost correct. Check it for mistakes and try again.")           
 
-def check_keywords(keywords, userAnswer):
+# explanation for compiler output when it states an error
+def check_error(userOutput):
+    for errorMsg in errorMessages:
+        if errorMsg in userOutput:
+            return errorMessages.get(errorMsg)
+        
+errorMessages = {
+    "SyntaxError:invalidsyntax" : "Check the syntax of your function definition and ensure all parentheses and colons are correctly placed.",
+    "NameError:nameisnotdefined" : "Make sure all variables are defined before you use them in your function.",
+    "IndentationError:expectedanindentedblock": "Check that all code inside the loop is properly indented.",
+}
+
+# check code for the keywords required for a correct solution
+def check_keywords(keywords, userCode): 
     for keyword in keywords:
-        if not (keyword in userAnswer):
-            return feedbackKeywordsCompilerTask.get("keyword")
+        if not (keyword in userCode):
+            return feedbackKeywordsCompilerTask.get(keyword)
    
 feedbackKeywordsCompilerTask = {
     "def" : "You are missing the function definition (def). Include it in your code and try again.",    

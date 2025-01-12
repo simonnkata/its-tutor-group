@@ -182,7 +182,8 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                                             'feedback': data.get('feedback'), 
                                             'points': points, 
                                             'hints': data.get('hints'), 
-                                            'solution': data.get('solution'), 
+                                            'solution': data.get('solution'),
+                                            'output' : data.get('output'), 
                                             'keywords': data.get('keywords'), 
                                             'availableLines': data.get('availableLines')
                                             } }
