@@ -5,13 +5,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 declare var Prism: any; // To use Prism globally
 
+
 @Component({
   selector: 'app-gap-task',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './gap-task.component.html',
   styleUrl: './gap-task.component.sass'
 })
+
 
 export class GapTaskComponent implements OnInit, AfterViewInit{
   taskName: string = ''; // Dynamischer Task-Name
@@ -21,7 +23,14 @@ export class GapTaskComponent implements OnInit, AfterViewInit{
   category: string = ''
   skillLevel: string = ''
 
-  constructor(private taskService: TaskService,
+  codeTaskContent: string = ''; // Code-Inhalt
+
+
+ 
+
+
+  constructor(
+    private taskService: TaskService,
     private router: ActivatedRoute,
     private httpClient: HttpClient
   ) {
@@ -61,6 +70,23 @@ export class GapTaskComponent implements OnInit, AfterViewInit{
       },
     });
   }
+
+  insertGap(): void {
+    const textarea: HTMLTextAreaElement | null = document.getElementById('code-task-editor') as HTMLTextAreaElement;
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+
+      const textBefore = this.codeTaskContent.slice(0, start);
+      const textAfter = this.codeTaskContent.slice(end);
+
+      this.codeTaskContent = `${textBefore}<<>>${textAfter}`;
+      setTimeout(() => {
+        textarea.setSelectionRange(start + 2, start + 2);
+        textarea.focus();
+      }, 0);
+    }
+  }
   
   save(){
     alert('saving')
@@ -87,4 +113,13 @@ export class GapTaskComponent implements OnInit, AfterViewInit{
   }
 
 }
+
+
+
+
+
+
+
+
+  
 

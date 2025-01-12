@@ -30,11 +30,14 @@
             <div class="code-section">
                 <h3>Code Task</h3>
                 <textarea 
-                    id="code-task-editor" 
-                    class="code-editor" 
-                    placeholder="Write the code task description here..."
+                  id="code-task-editor" 
+                  class="code-editor" 
+                  placeholder="Write the code task description here..."
+                  [(ngModel)]="codeTaskContent" 
                 ></textarea>
-            </div>
+                <button class="insert-gap-btn" (click)="insertGap()">Insert Gap (<<>>)</button>
+              </div>
+              
         </div>
 
         <!-- Task Solution Section -->
