@@ -1,129 +1,79 @@
 <div class="gap-task">
-    <section class="content">
-        <!-- Task Name Section -->
-        <div class="task-name">
-            <h2>Task Name</h2>
-            <p>{{ taskName || "Generating task name..." }}</p>
-            <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-        </div>
-        <!-- Task Details Section -->
-        <div class="task">
-            <h2>Task Details</h2>
-            <ul>
-                <li>Type: {{ type }}</li>
-                <li>Category: {{ category }}</li>
-                <li>Skill Level: {{ skillLevel }}</li>
-            </ul>
-            <button class="create-task-btn" (click)="create()">Create Task</button>
-        </div>
+  <section class="content">
+    <!-- Task Name Section -->
+    <div class="task-name">
+      <h2 *ngIf="!loading">Task Name: {{ taskName }}</h2>
+    </div>
+    <!-- Task Details Section -->
+    <div class="task">
+      <h2>Task Details</h2>
+      <ul>
+        <li>Type: {{ type }}</li>
+        <li>Category: {{ category }}</li>
+        <li>Skill Level: {{ skillLevel }}</li>
+      </ul>
+      <button class="create-task-btn" (click)="create()">Create Task</button>
+    </div>
 
-        <!-- Task Description Section -->
-        <div class="task-description">
-            <h2>Task Description</h2>
-            <textarea 
-                id="task-description" 
-                class="flexible-textarea" 
-                placeholder="Write the description of task here..."
-            ></textarea>
-            
-            <!-- Part 2: Code als Aufgabe -->
-            <div class="code-section">
-                <h3>Code Task</h3>
-                <textarea 
-                  id="code-task-editor" 
-                  class="code-editor" 
-                  placeholder="Write the code task description here..."
-                  [(ngModel)]="codeTaskContent" 
-                ></textarea>
-                <button class="insert-gap-btn" (click)="insertGap()">Insert Gap (<<>>)</button>
-              </div>
-              
-        </div>
+    <!-- Task Description Section -->
+    <div class="task-description">
+      <h2>Task Description</h2>
+      <textarea
+        id="task-description"
+        class="flexible-textarea"
+        placeholder="Write the description of task here..."
+      ></textarea>
 
-        <!-- Task Solution Section -->
-        <div class="solution-section">
-            <h2>Task Solution</h2>
-            <textarea 
-                id="solution-editor" 
-                class="solution-editor" 
-                placeholder="Write the solution here..."
-            ></textarea>
-        </div>
+      <!-- Part 2: Code als Aufgabe -->
+      <div class="code-section">
+        <h3>Code Task</h3>
+        <textarea
+          id="code-task-editor"
+          class="code-editor"
+          placeholder="Write the code task description here..."
+          [(ngModel)]="codeTaskContent"
+        ></textarea>
+        <button class="insert-gap-btn" (click)="insertGap()">
+          Insert Gap (<<>>)
+        </button>
+      </div>
+    </div>
 
-        <!-- Hints Section -->
-        <div class="hints-section">
-            <h2>Hints</h2>
-            <div id="hints-container">
-                <textarea 
-                    class="hint" 
-                    placeholder="Hint 1"
-                ></textarea>
-                <textarea 
-                    class="hint" 
-                    placeholder="Hint 2"
-                ></textarea>
-                <textarea 
-                    class="hint" 
-                    placeholder="Hint 3"
-                ></textarea>
-                <textarea 
-                    class="hint" 
-                    placeholder="Hint 4"
-                ></textarea>
-                <textarea 
-                    class="hint" 
-                    placeholder="Hint 5"
-                ></textarea>
-            </div>
-        </div>
+    <!-- Task Solution Section -->
+    <div class="solution-section">
+      <h2>Task Solution</h2>
+      <textarea
+        id="solution-editor"
+        class="solution-editor"
+        placeholder="Write the solution here..."
+      ></textarea>
+    </div>
 
-        <!-- Feedback Section -->
-        <div class="feedback-section">
-            <h2>Feedback</h2>
-            <textarea 
-                id="feedback-editor" 
-                class="feedback-editor" 
-                placeholder="Write feedback here..."
-            ></textarea>
-        </div>
+    <!-- Hints Section -->
+    <div class="hints-section">
+      <h2>Hints</h2>
+      <div id="hints-container">
+        <textarea class="hint" placeholder="Hint 1"></textarea>
+        <textarea class="hint" placeholder="Hint 2"></textarea>
+        <textarea class="hint" placeholder="Hint 3"></textarea>
+        <textarea class="hint" placeholder="Hint 4"></textarea>
+        <textarea class="hint" placeholder="Hint 5"></textarea>
+      </div>
+    </div>
 
-        <!-- Save Task -->
-        <div class="save-task">
-            <button class="run-btn" (click)="save()">Save Task</button>
-        </div>
-    </section>
+    <!-- Feedback Section -->
+    <div class="feedback-section">
+      <h2>Feedback</h2>
+      <textarea
+        id="feedback-editor"
+        class="feedback-editor"
+        placeholder="Write feedback here..."
+      ></textarea>
+    </div>
 
+    <!-- Save Task -->
+    <div class="save-task">
+      <button class="run-btn" (click)="save()">Save Task</button>
+    </div>
+  </section>
 </div>
-
-
-
-
-
-
-
-       
-
-        
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-
-
-

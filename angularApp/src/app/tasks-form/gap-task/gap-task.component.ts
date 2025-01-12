@@ -3,31 +3,26 @@ import { TaskService } from '../../services/task.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NgIf } from '@angular/common';
 declare var Prism: any; // To use Prism globally
-
 
 @Component({
   selector: 'app-gap-task',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './gap-task.component.html',
-  styleUrl: './gap-task.component.sass'
+  styleUrl: './gap-task.component.sass',
 })
-
-
-export class GapTaskComponent implements OnInit, AfterViewInit{
+export class GapTaskComponent implements AfterViewInit {
   taskName: string = ''; // Dynamischer Task-Name
   errorMessage: string = '';
 
-  type: string = ''
-  category: string = ''
-  skillLevel: string = ''
+  type: string = '';
+  category: string = '';
+  skillLevel: string = '';
+  loading: boolean = false;
 
   codeTaskContent: string = ''; // Code-Inhalt
-
-
- 
-
 
   constructor(
     private taskService: TaskService,
@@ -35,44 +30,46 @@ export class GapTaskComponent implements OnInit, AfterViewInit{
     private httpClient: HttpClient
   ) {
     taskService.data$.subscribe((data) => {
-      this.type = data.type
-      this.category = data.category
-      this.skillLevel = data.skill
-    })
+      this.type = data.type;
+      this.category = data.category;
+      this.skillLevel = data.skill;
+    });
 
     this.router.queryParams.subscribe((params) => {
-      this.type = params['type']
-      this.category = params['category']
-      this.skillLevel = params['skill']
-    })
+      this.type = params['type'];
+      this.category = params['category'];
+      this.skillLevel = params['skill'];
+      this.generateTaskTitle();
+    });
   }
   ngAfterViewInit(): void {
     // Apply syntax highlighting after the view is initialized
     Prism.highlightAll();
   }
 
-  ngOnInit(): void {
-    this.generateTaskTitle();
-  }
-
   generateTaskTitle(): void {
+    this.loading = true;
     this.taskService.generateTaskTitle(this.category, this.type).subscribe({
       next: (response: { status: string; title: string; message?: string }) => {
-        if (response.status === 'success') {
+        if (response.status === 'successful') {
           this.taskName = response.title;
         } else {
           this.errorMessage = response.message || 'Error generating task name.';
         }
+        this.loading = false;
       },
       error: (err: any) => {
         this.errorMessage = 'Error fetching task name.';
         console.error(err);
+        this.loading = false;
       },
     });
   }
 
   insertGap(): void {
-    const textarea: HTMLTextAreaElement | null = document.getElementById('code-task-editor') as HTMLTextAreaElement;
+    const textarea: HTMLTextAreaElement | null = document.getElementById(
+      'code-task-editor'
+    ) as HTMLTextAreaElement;
     if (textarea) {
       const start = textarea.selectionStart;
       const end = textarea.selectionEnd;
@@ -87,39 +84,30 @@ export class GapTaskComponent implements OnInit, AfterViewInit{
       }, 0);
     }
   }
-  
-  save(){
-    alert('saving')
+
+  save() {
+    alert('saving');
   }
 
-  create()
-  {
-    let baseUrl = "http://127.0.0.1:5000/";
+  create() {
+    let baseUrl = 'http://127.0.0.1:5000/';
 
     let headers = new HttpHeaders({
-      Authorization: 'Bearer ' + localStorage.getItem('token')
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
 
-    this.httpClient.post(baseUrl + 'task', {
-      'difficultyLevel': this.skillLevel,
-      'topic' : this.category,
-      'type': this.type
-    }, 
-    {'headers': headers}
-  ).subscribe((response) => {
-      console.log(response)
-    })
-
+    this.httpClient
+      .post(
+        baseUrl + 'task',
+        {
+          difficultyLevel: this.skillLevel,
+          topic: this.category,
+          type: this.type,
+        },
+        { headers: headers }
+      )
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
-
 }
-
-
-
-
-
-
-
-
-  
-
