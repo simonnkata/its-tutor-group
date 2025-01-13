@@ -1,18 +1,19 @@
 <div class="gap-task">
   <section class="content">
-    <!-- Task Name Section -->
-    <div class="task-name">
-      <h2 *ngIf="!loading">Task Name: {{ taskName }}</h2>
-    </div>
-    <!-- Task Details Section -->
-    <div class="task">
-      <h2>Task Details</h2>
-      <ul>
-        <li>Type: {{ type }}</li>
-        <li>Category: {{ category }}</li>
-        <li>Skill Level: {{ skillLevel }}</li>
-      </ul>
-      <button class="create-task-btn" (click)="create()">Create Task</button>
+    <div style="display: flex; width: 100%; gap: 20px">
+      <!-- Task Name Section -->
+      <div class="task-name" style="flex: 1; margin-right: 10px">
+        <h2 *ngIf="!loading">Task Name: {{ taskName }}</h2>
+      </div>
+      <!-- Task Details Section -->
+      <div class="task" style="flex: 1">
+        <h2>Task Details</h2>
+        <ul>
+          <li>Type: {{ type }}</li>
+          <li>Category: {{ category }}</li>
+          <li>Skill Level: {{ skillLevel }}</li>
+        </ul>
+      </div>
     </div>
 
     <!-- Task Description Section -->
@@ -22,6 +23,7 @@
         id="task-description"
         class="flexible-textarea"
         placeholder="Write the description of task here..."
+        [(ngModel)]="description"
       ></textarea>
 
       <!-- Part 2: Code als Aufgabe -->
@@ -46,19 +48,44 @@
         id="solution-editor"
         class="solution-editor"
         placeholder="Write the solution here..."
+        [(ngModel)]="solution"
       ></textarea>
     </div>
 
     <!-- Hints Section -->
     <div class="hints-section">
       <h2>Hints</h2>
-      <div id="hints-container">
-        <textarea class="hint" placeholder="Hint 1"></textarea>
-        <textarea class="hint" placeholder="Hint 2"></textarea>
-        <textarea class="hint" placeholder="Hint 3"></textarea>
-        <textarea class="hint" placeholder="Hint 4"></textarea>
-        <textarea class="hint" placeholder="Hint 5"></textarea>
+      <div
+        *ngFor="let hint of hints; let i = index; trackBy: trackByIndex"
+        id="hints-container"
+        style="display: flex"
+      >
+        <textarea
+          [(ngModel)]="hints[i]"
+          [placeholder]="'Hint ' + (i + 1)"
+          style="
+            resize: vertical;
+            height: auto;
+            width: 100%;
+            margin-bottom: 10px;
+            overflow: hidden;
+          "
+        >
+        </textarea>
+        <button
+          (click)="removeHint(i)"
+          style="
+            width: 60px;
+            height: 40px;
+            color: white;
+            background-color: red;
+            border-radius: 20%;
+          "
+        >
+          X
+        </button>
       </div>
+      <button (click)="addHint()">Add New Hint</button>
     </div>
 
     <!-- Feedback Section -->
@@ -68,6 +95,7 @@
         id="feedback-editor"
         class="feedback-editor"
         placeholder="Write feedback here..."
+        [(ngModel)]="feedback"
       ></textarea>
     </div>
 

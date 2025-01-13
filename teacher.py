@@ -73,7 +73,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
 
     # create a task
     @app.route('/task', methods=['POST'])
-    @jwt_required()
+    #@jwt_required()
     def create_task():
         message = ""
         res_data = {}
@@ -81,8 +81,9 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         status = "fail"
         try:
             data = request.get_json()
-            current_user = get_jwt_identity()
-            teacher = db.teachers.find_one({'username':current_user})
+            #current_user = get_jwt_identity()
+            #teacher = db.teachers.find_one({'username':current_user})
+            teacher = db.teachers.find_one()
             title = make_task_title(data['topic'], data['type'])
             if db.tasks.find_one({'title':title}):
                 message = "task with that name already exists"
@@ -107,7 +108,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
     
     # get all tasks
     @app.route('/task', methods=['GET'])
-    @jwt_required()
+    #@jwt_required()
     def get_tasks():
         message = ""
         res_data = {}

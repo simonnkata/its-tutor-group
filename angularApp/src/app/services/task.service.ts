@@ -30,4 +30,20 @@ export class TaskService {
       { headers }
     );
   }
+
+  createTask(task: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.post(`${this.baseUrl}/task`, task, { headers });
+  }
+
+  getTasks(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get(`${this.baseUrl}/task`, { headers });
+  }
 }

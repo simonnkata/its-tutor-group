@@ -3,13 +3,13 @@ import { TaskService } from '../../services/task.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { NgIf } from '@angular/common';
+import { NgIf, NgForOf } from '@angular/common';
 declare var Prism: any; // To use Prism globally
 
 @Component({
   selector: 'app-flowchart-task',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NgForOf, FormsModule],
   templateUrl: './flowchart-task.component.html',
   styleUrl: './flowchart-task.component.sass',
 })
@@ -21,6 +21,7 @@ export class FlowchartTaskComponent implements AfterViewInit {
   category: string = '';
   skillLevel: string = '';
   loading: boolean = false;
+  hints: string[] = [''];
 
   constructor(
     private taskService: TaskService,
@@ -88,5 +89,15 @@ export class FlowchartTaskComponent implements AfterViewInit {
       .subscribe((response) => {
         console.log(response);
       });
+  }
+  addHint(): void {
+    this.hints.push('');
+  }
+  removeHint(index: number): void {
+    this.hints.splice(index, 1);
+  }
+
+  trackByIndex(index: number): number {
+    return index;
   }
 }

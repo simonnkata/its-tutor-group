@@ -16,12 +16,13 @@
 
     <div class="nav-right">
       <button
-          class="common-button"
-          [routerLink]="'/tasks-overview'"
-          [class.active]="currentPage === 'tasks-overview'">
-          Tasks Overview
+        class="common-button"
+        [routerLink]="'/tasks-overview'"
+        [class.active]="currentPage === 'tasks-overview'"
+      >
+        Tasks Overview
       </button>
-      
+
       <button class="logout-button common-button" (click)="logout()">
         <i class="fas fa-sign-out-alt"></i> Logout
       </button>
@@ -52,12 +53,57 @@
         <option value="expert">Expert</option>
       </select>
 
-      <button 
+      <button
         class="common-button"
         (click)="navigate()"
-        [class.active]="currentPage === 'tasks-form/compiler-task'">
+        [class.active]="currentPage === 'tasks-form/compiler-task'"
+        style="border: 1px solid black"
+      >
         Task Creation
-      </button> 
+      </button>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          align-items: flex-start;
+          margin-top: 20px;
+        "
+      >
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div
+            style="
+              width: 30px;
+              height: 30px;
+              background-color: #a3e635;
+              border-radius: 5px;
+            "
+          ></div>
+          <span>Beginner</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div
+            style="
+              width: 30px;
+              height: 30px;
+              background-color: #fb923c;
+              border-radius: 5px;
+            "
+          ></div>
+          <span>Intermediate</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div
+            style="
+              width: 30px;
+              height: 30px;
+              background-color: #2563eb;
+              border-radius: 5px;
+            "
+          ></div>
+          <span>Expert</span>
+        </div>
+      </div>
     </div>
 
     <!-- Hauptinhalt: Platz für Komponenten wie tasks-overview -->

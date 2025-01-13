@@ -3,13 +3,15 @@ import { TaskService } from '../../services/task.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { NgIf } from '@angular/common';
+import { NgIf, NgForOf } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 declare var Prism: any; // To use Prism globally
 
 @Component({
   selector: 'app-compiler-task',
   standalone: true,
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, NgForOf, MatSnackBarModule],
   templateUrl: './compiler-task.component.html',
   styleUrl: './compiler-task.component.sass',
 })
@@ -20,11 +22,15 @@ export class CompilerTaskComponent implements AfterViewInit {
   type: string = '';
   category: string = '';
   skillLevel: string = '';
-
+  hints: string[] = [''];
+  description: string[] = ['', '', ''];
+  solution: string = '';
+  feedback: string = '';
   constructor(
     private taskService: TaskService,
     private router: ActivatedRoute,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private snackBar: MatSnackBar
   ) {
     taskService.data$.subscribe((data) => {
       this.type = data.type;
@@ -65,7 +71,37 @@ export class CompilerTaskComponent implements AfterViewInit {
   }
 
   save() {
-    alert('saving');
+    var taskDescription = [];
+    taskDescription[0] = { text: this.description[0] };
+    taskDescription[1] = { code: this.description[1] };
+    taskDescription[2] = { text: this.description[2] };
+    var task = {
+      title: this.taskName,
+      difficultyLevel: this.skillLevel,
+      topic: this.category,
+      type: this.type,
+      description: taskDescription,
+      hints: this.hints,
+      points: 2,
+      solution: this.solution,
+      keywords: [],
+      availableLines: [],
+    };
+    console.log(task);
+    this.taskService.createTask(task).subscribe({
+      next: (response: { status: string; data: string; message?: string }) => {
+        if (response.status === 'successful') {
+          this.showSuccessMessage();
+          this.resetForm();
+        } else {
+          alert('Error creating task.');
+        }
+      },
+      error: (err: any) => {
+        alert('Error creating task.');
+        console.error(err);
+      },
+    });
   }
 
   create() {
@@ -88,5 +124,30 @@ export class CompilerTaskComponent implements AfterViewInit {
       .subscribe((response) => {
         console.log(response);
       });
+  }
+
+  addHint(): void {
+    this.hints.push('');
+  }
+  removeHint(index: number): void {
+    this.hints.splice(index, 1);
+  }
+
+  trackByIndex(index: number): number {
+    return index;
+  }
+  showSuccessMessage(): void {
+    this.snackBar.open('Task saved successfully!', 'Close', {
+      duration: 3000,
+      panelClass: ['success-snackbar'],
+    });
+  }
+
+  resetForm(): void {
+    this.generateTaskTitle();
+    this.description = ['', '', ''];
+    this.solution = '';
+    this.hints = [''];
+    this.feedback = '';
   }
 }
