@@ -103,7 +103,7 @@ export class SignupComponent {
                 console.log('Signup successful');
                 // Redirect the user
                 //window.location.reload();
-                this.router.navigateByUrl('/teacher/task-overview');
+                this.router.navigateByUrl('/teacher/tasks-overview');
               } else {
                 console.error('Signup successful, but no token received');
               }
@@ -156,7 +156,7 @@ export class SignupComponent {
             console.log(user);
             if (user && user.token) {
               console.log('Login successful.');
-              this.router.navigateByUrl('teacher/task-overview');
+              this.router.navigateByUrl('teacher/tasks-overview');
             } else {
               console.error('Login successful, but no token received');
             }

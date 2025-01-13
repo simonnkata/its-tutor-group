@@ -11,7 +11,7 @@ import { FreeTextTaskComponent } from './tasks-form/free-text-task/free-text-tas
 import { GapTaskComponent } from './tasks-form/gap-task/gap-task.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: '', redirectTo: '/signup', pathMatch: 'full' },
   {
     path: 'tutor',
     component: TutorComponentComponent,
@@ -24,9 +24,9 @@ export const routes: Routes = [
   },
   { path: 'welcome', component: WelcomeComponent },
 
-  { path: 'tasks-overview', component: TasksOverviewComponent },
-  { path: 'compiler-task', component: CompilerTaskComponent },
-  { path: 'flowchart-task', component: FlowchartTaskComponent },
-  { path: 'free-text-task', component: FreeTextTaskComponent },
-  { path: 'gap-task', component: GapTaskComponent },
+  { path: 'teacher/tasks-overview', component: TasksOverviewComponent },
+  { path: 'teacher/compiler-task', component: CompilerTaskComponent },
+  { path: 'teacher/flowchart-task', component: FlowchartTaskComponent },
+  { path: 'teacher/free-text-task', component: FreeTextTaskComponent },
+  { path: 'teacher/gap-task', component: GapTaskComponent },
 ];

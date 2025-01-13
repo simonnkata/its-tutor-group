@@ -1,5 +1,5 @@
-<div *ngIf="!isSignupPage(); else signupPage">
-  <nav class="navbar">
+<div>
+  <nav class="navbar" *ngIf="isTeacherPage()">
     <div class="nav-left">
       <div class="user-name">
         <h1>{{ currentUsername }}</h1>
@@ -17,8 +17,8 @@
     <div class="nav-right">
       <button
         class="common-button"
-        [routerLink]="'/tasks-overview'"
-        [class.active]="currentPage === 'tasks-overview'"
+        [routerLink]="'/teacher/tasks-overview'"
+        [class.active]="currentPage === 'teacher/tasks-overview'"
       >
         Tasks Overview
       </button>
@@ -30,7 +30,7 @@
   </nav>
 
   <div class="row">
-    <div class="sidebar">
+    <div class="sidebar" *ngIf="isTeacherPage()">
       <h2>Type</h2>
       <select [(ngModel)]="selectedType" (change)="onFilterChange()">
         <option value="compiler-task">Compiler Task</option>
@@ -56,7 +56,7 @@
       <button
         class="common-button"
         (click)="navigate()"
-        [class.active]="currentPage === 'compiler-task'"
+        [class.active]="currentPage === '/teacher/compiler-task'"
         style="border: 1px solid black"
       >
         Task Creation

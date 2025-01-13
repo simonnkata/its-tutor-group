@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgIf, NgForOf } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
-declare var Prism: any; // To use Prism globally
 
 @Component({
   selector: 'app-free-text-task',
@@ -46,10 +45,6 @@ export class FreeTextTaskComponent {
       this.skillLevel = params['skill'];
       this.generateTaskTitle();
     });
-  }
-  ngAfterViewInit(): void {
-    // Apply syntax highlighting after the view is initialized
-    Prism.highlightAll();
   }
 
   generateTaskTitle(): void {

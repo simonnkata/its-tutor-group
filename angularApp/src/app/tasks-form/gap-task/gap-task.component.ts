@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgIf, NgForOf } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
-declare var Prism: any; // To use Prism globally
 
 @Component({
   selector: 'app-gap-task',
@@ -15,7 +14,7 @@ declare var Prism: any; // To use Prism globally
   templateUrl: './gap-task.component.html',
   styleUrl: './gap-task.component.sass',
 })
-export class GapTaskComponent implements AfterViewInit {
+export class GapTaskComponent {
   taskName: string = ''; // Dynamischer Task-Name
   errorMessage: string = '';
 
@@ -48,10 +47,6 @@ export class GapTaskComponent implements AfterViewInit {
       this.skillLevel = params['skill'];
       this.generateTaskTitle();
     });
-  }
-  ngAfterViewInit(): void {
-    // Apply syntax highlighting after the view is initialized
-    Prism.highlightAll();
   }
 
   generateTaskTitle(): void {

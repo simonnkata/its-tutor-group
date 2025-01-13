@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgIf, NgForOf } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
-declare var Prism: any; // To use Prism globally
 
 @Component({
   selector: 'app-compiler-task',
@@ -15,7 +14,7 @@ declare var Prism: any; // To use Prism globally
   templateUrl: './compiler-task.component.html',
   styleUrl: './compiler-task.component.sass',
 })
-export class CompilerTaskComponent implements AfterViewInit {
+export class CompilerTaskComponent {
   taskName: string = ''; // Dynamischer Task-Name
   errorMessage: string = '';
   loading: boolean = false;
@@ -44,11 +43,6 @@ export class CompilerTaskComponent implements AfterViewInit {
       this.skillLevel = params['skill'];
       this.generateTaskTitle();
     });
-  }
-
-  ngAfterViewInit(): void {
-    // Apply syntax highlighting after the view is initialized
-    Prism.highlightAll();
   }
 
   generateTaskTitle(): void {

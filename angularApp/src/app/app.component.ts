@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NavigationEnd, Router } from '@angular/router';
 import { Output, EventEmitter } from '@angular/core';
@@ -31,7 +31,7 @@ export class AppComponent {
   currentUserInfo = this.currentUser ? JSON.parse(this.currentUser) : null;
   currentUsername: String = this.currentUserInfo?.username || 'Guest';
 
-  currentPage: string = 'tasks-overview'; // Standardseite: Tasks Overview
+  currentPage: string = 'teacher/tasks-overview'; // Standardseite: Tasks Overview
 
   filters: any;
 
@@ -55,19 +55,19 @@ export class AppComponent {
   // Methode, um die Seite zu ändern
   navigate(): void {
     if (this.selectedType == 'compiler-task') {
-      this.router.navigate(['compiler-task'], {
+      this.router.navigate(['teacher/compiler-task'], {
         queryParams: this.filters,
       });
     } else if (this.selectedType == 'flowchart-task') {
-      this.router.navigate(['flowchart-task'], {
+      this.router.navigate(['teacher/flowchart-task'], {
         queryParams: this.filters,
       });
     } else if (this.selectedType == 'free-text-task') {
-      this.router.navigate(['free-text-task'], {
+      this.router.navigate(['teacher/free-text-task'], {
         queryParams: this.filters,
       });
     } else {
-      this.router.navigate(['gap-task'], {
+      this.router.navigate(['teacher/gap-task'], {
         queryParams: this.filters,
       });
     }
@@ -81,7 +81,7 @@ export class AppComponent {
     this.currentUser = null;
     this.currentUserInfo = null;
     this.currentUsername = 'Guest';
-    this.router.navigateByUrl('/login'); // Beispiel-Redirect zur Login-Seite
+    this.router.navigateByUrl('/signup'); // Beispiel-Redirect zur Login-Seite
   }
 
   selectedType: string = 'compiler-task';
@@ -103,6 +103,12 @@ export class AppComponent {
   }
 
   isSignupPage(): boolean {
+    console.log(this.router.url);
     return this.router.url.includes('/signup');
+  }
+
+  isTeacherPage(): boolean {
+    const result = this.router.url.includes('/teacher');
+    return result;
   }
 }

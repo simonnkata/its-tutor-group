@@ -4,7 +4,6 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgIf, NgForOf } from '@angular/common';
-declare var Prism: any; // To use Prism globally
 
 @Component({
   selector: 'app-flowchart-task',
@@ -13,7 +12,7 @@ declare var Prism: any; // To use Prism globally
   templateUrl: './flowchart-task.component.html',
   styleUrl: './flowchart-task.component.sass',
 })
-export class FlowchartTaskComponent implements AfterViewInit {
+export class FlowchartTaskComponent {
   taskName: string = ''; // Dynamischer Task-Name
   errorMessage: string = '';
 
@@ -40,10 +39,6 @@ export class FlowchartTaskComponent implements AfterViewInit {
       this.skillLevel = params['skill'];
       this.generateTaskTitle();
     });
-  }
-  ngAfterViewInit(): void {
-    // Apply syntax highlighting after the view is initialized
-    Prism.highlightAll();
   }
 
   generateTaskTitle(): void {

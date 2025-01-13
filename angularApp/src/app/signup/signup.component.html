@@ -3,141 +3,270 @@
     <div class="tree left-tree"></div>
 
     <div class="content-container">
-        <h1 class="main-heading">YOUR AWESOME PYTHON TUTOR</h1>
-        <div class="python-image"></div>
+      <h1 class="main-heading">YOUR AWESOME PYTHON TUTOR</h1>
+      <div class="python-image"></div>
 
-        <div class="welcome-container">
-            <div class="welcome-heading">Welcome to the Coding Jungle!</div>
-            <div class="welcome-text">Choose your role to proceed:</div>
-            <div class="btn-container">
-                <button class="role-btn teacher-btn" (click)="openPopup('teacherPopup')">Teacher</button>
-                <button class="role-btn student-btn" (click)="openPopup('studentPopup')">Student</button>
-            </div>
+      <div class="welcome-container">
+        <div class="welcome-heading">Welcome to the Coding Jungle!</div>
+        <div class="welcome-text">Choose your role to proceed:</div>
+        <div class="btn-container">
+          <button
+            class="role-btn teacher-btn"
+            (click)="openPopup('teacherPopup')"
+          >
+            Teacher
+          </button>
+          <button
+            class="role-btn student-btn"
+            (click)="openPopup('studentPopup')"
+          >
+            Student
+          </button>
         </div>
+      </div>
     </div>
 
     <div class="tree right-tree"></div>
-</div>
+  </div>
 
-<!-- Teacher Login Popup -->
-<form *ngIf="(authService.isLoggedIn | async) === false" [formGroup]="loginForm" (ngSubmit)="onSubmitLoginTeacher()">
-<div class="popup-overlay" id="teacherPopup">
-    <div class="popup-container">
+  <!-- Teacher Login Popup -->
+  <form
+    *ngIf="(authService.isLoggedIn | async) === false"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmitLoginTeacher()"
+  >
+    <div class="popup-overlay" id="teacherPopup">
+      <div class="popup-container">
         <div class="popup-heading">Teacher Login</div>
         <div class="login-form">
-            <div class="form-group">
-                <label for="teacher-username">Username</label>
-                <input type="text" id="teacher-username" placeholder="Enter your username" formControlName="username">
-            </div>
-            <div class="form-group">
-                <label for="teacher-password">Password</label>
-                <input type="password" id="teacher-password" placeholder="Enter your password" formControlName="password">
-            </div>
-            <div class="form-actions">
-                <button class="form-btn login-btn"  type="submit">Login</button>
-                <button class="form-btn close-btn" (click)="closePopup('teacherPopup')">Close</button>
-            </div>
+          <div class="form-group">
+            <label for="teacher-username">Username</label>
+            <input
+              type="text"
+              id="teacher-username"
+              placeholder="Enter your username"
+              formControlName="username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="teacher-password">Password</label>
+            <input
+              type="password"
+              id="teacher-password"
+              placeholder="Enter your password"
+              formControlName="password"
+            />
+          </div>
+          <div class="form-actions">
+            <button class="form-btn login-btn" type="submit">Login</button>
+            <button
+              class="form-btn close-btn"
+              (click)="closePopup('teacherPopup')"
+            >
+              Close
+            </button>
+          </div>
         </div>
         <div class="register-info">
-            <p>If you don't have an account, <a (click)="openTeacherRegister()" class="register-link">Register here</a>.</p>
+          <p>
+            If you don't have an account,
+            <a (click)="openTeacherRegister()" class="register-link"
+              >Register here</a
+            >.
+          </p>
         </div>
-    </div>
-</div>
-</form>
-
-<!-- Student Login Popup -->
-<form *ngIf="(authService.isLoggedIn | async) === false" [formGroup]="loginForm" (ngSubmit)="onSubmitLoginStudent()">
-    <div class="popup-overlay" id="studentPopup">
-      <div class="popup-container">
-          <div class="popup-heading">Student Login</div>
-          <div class="login-form">
-              <div class="form-group">
-                  <label for="student-username">Username</label>
-                  <input type="text" id="student-username" formControlName="username" placeholder="Enter your username">
-              </div>
-              <div class="form-group">
-                  <label for="student-password">Password</label>
-                  <input type="password" id="student-password" formControlName="password" placeholder="Enter your password">
-              </div>
-              <div class="form-actions">
-                  <button class="form-btn login-btn"  type="submit">Login</button>
-                  <button class="form-btn close-btn" (click)="closePopup('studentPopup')">Close</button>
-              </div>
-          </div>
-          <div class="register-info">
-              <p>If you don't have an account, <a (click)="openStudentRegister()" class="register-link">Register here</a>.</p>
-          </div>
       </div>
     </div>
-</form>
+  </form>
 
-<!-- Teacher Register Popup -->
-<form *ngIf="(authService.isLoggedIn | async) === false" [formGroup]="teacherSignupForm" (ngSubmit)="onSubmitRegisterTeacher()">
-<div class="popup-overlay" id="teacherRegisterPopup">
-    <div class="popup-container">
+  <!-- Student Login Popup -->
+  <form
+    *ngIf="(authService.isLoggedIn | async) === false"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmitLoginStudent()"
+  >
+    <div class="popup-overlay" id="studentPopup">
+      <div class="popup-container">
+        <div class="popup-heading">Student Login</div>
+        <div class="login-form">
+          <div class="form-group">
+            <label for="student-username">Username</label>
+            <input
+              type="text"
+              id="student-username"
+              formControlName="username"
+              placeholder="Enter your username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="student-password">Password</label>
+            <input
+              type="password"
+              id="student-password"
+              formControlName="password"
+              placeholder="Enter your password"
+            />
+          </div>
+          <div class="form-actions">
+            <button class="form-btn login-btn" type="submit">Login</button>
+            <button
+              class="form-btn close-btn"
+              (click)="closePopup('studentPopup')"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+        <div class="register-info">
+          <p>
+            If you don't have an account,
+            <a (click)="openStudentRegister()" class="register-link"
+              >Register here</a
+            >.
+          </p>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Teacher Register Popup -->
+  <form
+    *ngIf="(authService.isLoggedIn | async) === false"
+    [formGroup]="teacherSignupForm"
+    (ngSubmit)="onSubmitRegisterTeacher()"
+  >
+    <div class="popup-overlay" id="teacherRegisterPopup">
+      <div class="popup-container">
         <div class="popup-heading">Teacher Registration</div>
-        <div class="login-form"> <!-- Gleicher Stil wie Login -->
-            <!-- Vorname und Nachname nach oben verschoben -->
-            <div class="name-row">
-                <div class="form-group">
-                    <label for="register-firstname">First Name</label>
-                    <input type="text" id="register-firstname" placeholder="Enter your first name" formControlName="firstname">
-                </div>
-                <div class="form-group">
-                    <label for="register-lastname">Last Name</label>
-                    <input type="text" id="register-lastname" placeholder="Enter your last name" formControlName="lastname">
-                </div>
+        <div class="login-form">
+          <!-- Gleicher Stil wie Login -->
+          <!-- Vorname und Nachname nach oben verschoben -->
+          <div class="name-row">
+            <div class="form-group">
+              <label for="register-firstname">First Name</label>
+              <input
+                type="text"
+                id="register-firstname"
+                placeholder="Enter your first name"
+                formControlName="firstname"
+              />
             </div>
             <div class="form-group">
-                <label for="register-username">Username</label>
-                <input type="text" id="register-username" placeholder="Enter your username" formControlName="username">
+              <label for="register-lastname">Last Name</label>
+              <input
+                type="text"
+                id="register-lastname"
+                placeholder="Enter your last name"
+                formControlName="lastname"
+              />
             </div>
-            <div class="form-group">
-                <label for="register-email">Email</label>
-                <input type="email" id="register-email" placeholder="Enter your email" formControlName="email">
-            </div>
-            <div class="form-group">
-                <label for="register-password">Password</label>
-                <input type="password" id="register-password" placeholder="Enter your password" formControlName="password">
-            </div>
-            <div class="form-group">
-                <label for="give-consent">I give my consent for all this stuff</label>
-                <input type="checkbox" id="give-consent" formControlName="disclaimerAccepted">
-            </div>
-            <div class="form-actions">
-                <button class="form-btn register-btn" type="submit">Register</button>
-                <button class="form-btn return-btn" (click)="returnToTeacherLogin()">Return</button>
-            </div>
+          </div>
+          <div class="form-group">
+            <label for="tregister-username">Username</label>
+            <input
+              type="text"
+              id="tregister-username"
+              placeholder="Enter your username"
+              formControlName="username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="register-email">Email</label>
+            <input
+              type="email"
+              id="register-email"
+              placeholder="Enter your email"
+              formControlName="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="tregister-password">Password</label>
+            <input
+              type="password"
+              id="tregister-password"
+              placeholder="Enter your password"
+              formControlName="password"
+            />
+          </div>
+          <div class="form-group">
+            <label for="tgive-consent"
+              >I give my consent for all this stuff</label
+            >
+            <input
+              type="checkbox"
+              id="tgive-consent"
+              formControlName="disclaimerAccepted"
+            />
+          </div>
+          <div class="form-actions">
+            <button class="form-btn register-btn" type="submit">
+              Register
+            </button>
+            <button
+              class="form-btn return-btn"
+              (click)="returnToTeacherLogin()"
+            >
+              Return
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</form>
+  </form>
 
-<!-- Student Register Popup -->
-<form *ngIf="(authService.isLoggedIn | async) === false" [formGroup]="studentSignupForm" (ngSubmit)="onSubmitRegisterStudent()">
-<div class="popup-overlay" id="studentRegisterPopup">
-    <div class="popup-container">
+  <!-- Student Register Popup -->
+  <form
+    *ngIf="(authService.isLoggedIn | async) === false"
+    [formGroup]="studentSignupForm"
+    (ngSubmit)="onSubmitRegisterStudent()"
+  >
+    <div class="popup-overlay" id="studentRegisterPopup">
+      <div class="popup-container">
         <div class="popup-heading">Student Registration</div>
-        <div class="login-form"> <!-- Gleicher Stil wie Login -->
-            <!-- Vorname und Nachname nach oben verschoben -->
-            <div class="form-group">
-                <label for="register-username">Username</label>
-                <input type="text" id="register-username" placeholder="Enter your username" formControlName="username">
-            </div>
-            <div class="form-group">
-                <label for="register-password">Password</label>
-                <input type="password" id="register-password" placeholder="Enter your password" formControlName="password">
-            </div>
-            <div class="form-group">
-                <label for="give-consent">I give my consent for all this stuff</label>
-                <input type="checkbox" id="give-consent" formControlName="disclaimerAccepted">
-            </div>
-            <div class="form-actions">
-                <button class="form-btn register-btn" type="submit">Register</button>
-                <button class="form-btn return-btn" (click)="returnToStudentLogin()">Return</button>
-            </div>
+        <div class="login-form">
+          <!-- Gleicher Stil wie Login -->
+          <!-- Vorname und Nachname nach oben verschoben -->
+          <div class="form-group">
+            <label for="register-username">Username</label>
+            <input
+              type="text"
+              id="register-username"
+              placeholder="Enter your username"
+              formControlName="username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Password</label>
+            <input
+              type="password"
+              id="register-password"
+              placeholder="Enter your password"
+              formControlName="password"
+            />
+          </div>
+          <div class="form-group">
+            <label for="give-consent"
+              >I give my consent for all this stuff</label
+            >
+            <input
+              type="checkbox"
+              id="give-consent"
+              formControlName="disclaimerAccepted"
+            />
+          </div>
+          <div class="form-actions">
+            <button class="form-btn register-btn" type="submit">
+              Register
+            </button>
+            <button
+              class="form-btn return-btn"
+              (click)="returnToStudentLogin()"
+            >
+              Return
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</form>
+  </form>
 </div>

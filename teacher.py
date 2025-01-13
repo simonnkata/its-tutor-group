@@ -233,3 +233,30 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             status = "fail"
             code = 500    
         return jsonify({'status': status, "data": res_data, "message":message}), code
+    
+    @app.route('/generateTaskTitle', methods=['POST'])
+    @jwt_required()
+    def createTitle():
+        message = ""
+        res_data = {}
+        code = 500
+        status = "fail"
+        try:
+            data = request.get_json()
+            topic = data['topic']
+            type = data['type']
+            title = make_task_title(topic, type)
+            status = "successful"
+            message = "title generated successfully"
+            code = 200
+        except Exception as ex:
+            message = f"{ex}, {data}"
+            status = "fail"
+            code = 500    
+        return jsonify({'status': status, "title": title, "message":message}), code
+    
+    def make_task_title(topic, type): 
+        topicCount = db.tasks.count_documents({"topic": topic })
+        typeCount = db.tasks.count_documents({"type": type })
+        title = f"{topic[0]}{topicCount+1}{type[0].upper()}{typeCount + 1}"
+        return title
