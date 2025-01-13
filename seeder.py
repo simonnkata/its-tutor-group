@@ -297,6 +297,61 @@ def seed_tasks(teacher_ids):
         "availableLines": [],
         "teacher_id": teacher_ids[0],
         "taskCreated": datetime.now()
+    },
+    {
+        "title": "L3C1",
+        "difficultyLevel": "beginner",
+        "topic": "Loops",
+        "type": "flowchart",
+        "description": [
+            {
+                "text": "Visualize the code below by creating a flowchart."
+            },
+            {
+                "code": """
+1   i = 1 
+2   while i < 6:
+3      if i == 3:
+4         break
+5      i += 1"""
+            }
+
+        ],
+        "feedback": "Wow you seem to be in the 'flow' right now! Way to go!",
+        "points": 5,
+        "hints": [ 
+            "Remember, conditions usually have a diamond shape and represent decisions, while processes are rectangles that show actions.",
+            "Remember to follow the logical flow of your code. Each step should naturally lead to the next. If you find a step that doesn't seem to fit, it might be in the wrong place.",
+            "Take a closer look at your connections. Each node should logically connect to the next step in the process. If a connection seems out of place, consider where it should logically flow to maintain the correct sequence.",
+            "Check out the correct solution!",
+            ],
+        "solution": [
+                {
+                    "nodes": [
+                        { "key": "i = 1", "shape": "Rectangle" },
+                        { "key": "while i < 6:", "shape": "Diamond" },
+                        { "key": "if i == 3:", "shape": "Diamond" },
+                        { "key": "break", "shape": "Rectangle" },
+                        { "key": "i += 1", "shape": "Rectangle" },
+                        { "key": "Start", "shape": "Ellipse" },
+                        { "key": "End", "shape": "Ellipse" }
+                    ],
+                    "links": [
+                        { "from": "Start", "to": "i = 1"},
+                        { "from": "i = 1", "to": "while i < 6:"},
+                        { "from": "while i < 6:", "to": "if i == 3:", "text": "True" },
+                        { "from": "if i == 3:", "to": "break", "text": "True" },
+                        { "from": "if i == 3:", "to": "i += 1", "text": "False" },
+                        { "from": "i += 1", "to": "while i < 6:"},
+                        { "from": "break", "to": "End"},
+                        { "from": "while i < 6:", "to": "End", "text": "False"}
+                    ]
+                }
+            ],
+        "keywords": [],
+        "availableLines": ["Start", "End", "i = 1", "while i < 6:", "if i == 3:", "break", "i += 1"],
+        "teacher_id": teacher_ids[0],
+        "taskCreated": datetime.now()
     }
     ]
 
