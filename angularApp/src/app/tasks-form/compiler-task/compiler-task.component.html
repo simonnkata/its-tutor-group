@@ -1,0 +1,113 @@
+<div class="compiler-task">
+  <section class="content">
+    <div style="display: flex; width: 100%; gap: 20px">
+      <!-- Task Name Section -->
+      <div class="task-name" style="flex: 1; margin-right: 10px">
+        <h2 *ngIf="!loading">Task Name: {{ taskName }}</h2>
+        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+      </div>
+      <!-- Task Details Section -->
+      <div class="task" style="flex: 1">
+        <h2>Task Details</h2>
+        <ul>
+          <li>Type: {{ type }}</li>
+          <li>Category: {{ category }}</li>
+          <li>Skill Level: {{ skillLevel }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Task Description Section -->
+    <div class="task-description">
+      <h2>Task Description</h2>
+      <textarea
+        id="task-rest"
+        class="flexible-textarea"
+        placeholder="Write the main part of the task here..."
+        [(ngModel)]="description[0]"
+      ></textarea>
+
+      <!-- Part 2: Code als Aufgabe -->
+      <div class="code-section">
+        <h3>Code Task</h3>
+        <textarea
+          id="code-task-editor"
+          class="code-editor"
+          placeholder="Write the code task description here..."
+          [(ngModel)]="description[1]"
+        ></textarea>
+      </div>
+
+      <!-- Part 3: Rest von Task -->
+      <textarea
+        id="task-rest"
+        class="flexible-textarea"
+        placeholder="Write the remaining part of the task here..."
+        [(ngModel)]="description[2]"
+      ></textarea>
+    </div>
+
+    <!-- Task Solution Section -->
+    <div class="solution-section">
+      <h2>Task Solution</h2>
+      <textarea
+        id="solution-editor"
+        class="solution-editor"
+        placeholder="Write the solution here..."
+        [(ngModel)]="solution"
+      ></textarea>
+    </div>
+
+    <!-- Hints Section -->
+    <div class="hints-section">
+      <h2>Hints</h2>
+      <div
+        *ngFor="let hint of hints; let i = index; trackBy: trackByIndex"
+        id="hints-container"
+        style="display: flex"
+      >
+        <textarea
+          [(ngModel)]="hints[i]"
+          [placeholder]="'Hint ' + (i + 1)"
+          style="
+            resize: vertical;
+            height: auto;
+            width: 100%;
+            margin-bottom: 10px;
+            overflow: hidden;
+          "
+        >
+        </textarea>
+        <button
+          (click)="removeHint(i)"
+          style="
+            width: 60px;
+            height: 40px;
+            color: white;
+            background-color: red;
+            border-radius: 20%;
+          "
+        >
+          X
+        </button>
+      </div>
+      <button (click)="addHint()">Add New Hint</button>
+    </div>
+
+    <!-- Feedback Section -->
+    <div class="feedback-section">
+      <h2>Feedback</h2>
+      <textarea
+        id="feedback-editor"
+        class="feedback-editor"
+        placeholder="Write feedback here..."
+        [(ngModel)]="feedback"
+      ></textarea>
+    </div>
+
+    <!-- Save Task -->
+    <div class="save-task">
+      <button class="run-btn" (click)="save()" type="submit">Save Task</button>
+    </div>
+  </section>
+</div>

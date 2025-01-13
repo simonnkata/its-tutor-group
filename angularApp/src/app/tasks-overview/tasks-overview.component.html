@@ -1,0 +1,23 @@
+<div class="tasks-overview">
+  <div class="tasks-grid">
+    <div
+      *ngFor="let task of tasks"
+      class="task-card"
+      [ngStyle]="{ border: '5px solid ' + task.color, 'border-radius': '10px' }"
+    >
+      <div class="task-card-header">
+        <h1 style="font-size: 2rem; font-weight: bold; text-align: center">
+          {{ task.title }}
+        </h1>
+      </div>
+      <div>
+        <p class="task-card-description">{{ task.description }}</p>
+      </div>
+    </div>
+    <!-- Neue Task erstellen -->
+    <!-- <div class="add-task-card" (click)="createTask()">
+      <h1>+</h1>
+      <p>Neue Task erstellen</p>
+    </div> -->
+  </div>
+</div>
