@@ -52,7 +52,7 @@ def feedback_routes(app, db, bcrypt, jwt):
             else: 
                 wrongAnswerList += str(i+1)
         if (len(wrongAnswerList) == 0 and len(correctAnswerList) == len(correctSolutions)):
-            return (True, "Good job! You have filled all gaps correctly.")
+            return (True, task["feedback"])
         elif len(correctAnswerList) == 0:
             return (False, "Unfortunately, your answer is wrong. Try again.")
         else:
@@ -70,38 +70,51 @@ def feedback_routes(app, db, bcrypt, jwt):
                 return (False, f"Your answer is missing at least the word {keyword}. Try again.")
         return (False, "Unfortunately, your answer is wrong. Try again.")
                 
-    # check solution for flow chart tasks
-    def feedback_flowchart(task, data):
-        studentAnswer = data["solution"]
-        correctSolution = task["solution"]  
-        keywords = task["keywords"]
+# check solution for flow chart tasks
+def feedback_flowchart(task, data):
+    studentAnswer = data["solution"]
+    userNodes = studentAnswer.get("nodes")
+    userLinks = studentAnswer.get("links")
+    correctSolution = task["solution"]  
+    correctNodes = correctSolution.get("nodes")
+    correctLinks = correctSolution.get("links")
+
+# check if any of the entered nodes are wrong/not part of the correct solution
+def compareNodes(userNodes, correctNodes): 
+    for userNode in userNodes:
+        if not (userNode in correctNodes):
+            return False
+    return True
+
+        
 
 
-    # check solution for compiler tasks
-    def feedback_compiler(task, data):
-        userCodeWithWhitespace = data["code"]
-        userCode = re.sub(r"\s+|#[^\n]*", "", userCodeWithWhitespace) # student code without whitespace and without comments
-        userOutput = data["output"]
-        correctCode = task["solution"]
-        correctOutput = task["output"]  
-        keywords = task["keywords"]    
-        if userCode == correctCode:
-            return (True, task["feedback"])
-        if userOutput == correctOutput: # code is not exactly like given solution, but gives the correct output
-            feedback = check_keywords(keywords, userCode)
-            if feedback:
-                return (False, feedback)
-            else:
-                return (True, task["feedback"])
+
+# check solution for compiler tasks
+def feedback_compiler(task, data):
+    userCodeWithWhitespace = data["code"]
+    userCode = re.sub(r"\s+|#[^\n]*", "", userCodeWithWhitespace) # student code without whitespace and without comments
+    userOutput = re.sub(r"\s+|#[^\n]*", "", data["output"])
+    correctCode = re.sub(r"\s+|#[^\n]*", "", task["solution"])
+    correctOutput = re.sub(r"\s+|#[^\n]*", "", task["output"])
+    keywords = task["keywords"]    
+    if userCode == correctCode:
+        return (True, task["feedback"])
+    if userOutput == correctOutput: # if code is not exactly like given solution, but gives the correct output
+        feedback = check_keywords(keywords, userCode)
+        if feedback:
+            return (False, feedback)
         else:
-            errorMsg = check_error(userOutput)
-            if errorMsg:
-                return (False, errorMsg)
-            feedback = check_keywords(keywords, userCode)
-            if feedback:
-                return (False, feedback)
-            else:
-                return (False, "Your answer is almost correct. Check it for mistakes and try again.")           
+            return (True, task["feedback"])
+    else:
+        errorMsg = check_error(userOutput)
+        if errorMsg:
+            return (False, errorMsg)
+        feedback = check_keywords(keywords, userCode)
+        if feedback:
+            return (False, feedback)
+        else:
+            return (False, "Your answer is almost correct. Check it for mistakes and try again.")           
 
 # explanation for compiler output when it states an error
 def check_error(userOutput):
@@ -112,7 +125,7 @@ def check_error(userOutput):
 errorMessages = {
     "SyntaxError:invalidsyntax" : "Check the syntax of your function definition and ensure all parentheses and colons are correctly placed.",
     "NameError:nameisnotdefined" : "Make sure all variables are defined before you use them in your function.",
-    "IndentationError:expectedanindentedblock": "Check that all code inside the loop is properly indented.",
+    "IndentationError:expectedanindentedblock": "Check that all code inside the loop or condition is properly indented.",
 }
 
 # check code for the keywords required for a correct solution
@@ -128,7 +141,7 @@ feedbackKeywordsCompilerTask = {
     "if" : "You are missing the if condition. Include it in your code and try again.",
     "else" : "Your if condition is missing an else branch. Include it in your code and try again.",
     "elif" : "Your if condition is missing an elif branch. Include it in your code and try again.",
-    "print" : "Use the print() funtion to print your output.",
-    "return" : "Your funtion is missing a return value. You can indicate it by using the keyword 'return'."   
+    "print" : "Use the print() function to print your output.",
+    "return" : "Your function is missing a return value. You can indicate it by using the keyword 'return'."   
 }
 
