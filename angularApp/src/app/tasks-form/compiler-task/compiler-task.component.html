@@ -81,17 +81,21 @@
         <button
           (click)="removeHint(i)"
           style="
-            width: 60px;
-            height: 40px;
-            color: white;
-            background-color: red;
-            border-radius: 20%;
+            width: auto;
+            color: #fff;
+            background-color: #5cb3b3;
+            border: none;
+            border-radius: 5px;
+            padding: 4px 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
           "
         >
           X
         </button>
       </div>
-      <button (click)="addHint()">Add New Hint</button>
+      <button class="add-hint-btn" (click)="addHint()">Add New Hint</button>
     </div>
 
     <!-- Feedback Section -->

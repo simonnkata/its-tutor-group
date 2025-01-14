@@ -8,6 +8,7 @@ import { TaskService } from './services/task.service';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { RouterModule } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,11 @@ export class AppComponent {
 
   filters: any;
 
-  constructor(private router: Router, private taskService: TaskService) {
+  constructor(
+    private router: Router, 
+    private taskService: TaskService,
+    private authService: AuthService
+  ) {
     this.filters = {
       category: 'Variables',
       skill: 'beginner',
@@ -50,6 +55,12 @@ export class AppComponent {
         this.currentPage = event.urlAfterRedirects;
       }
     });
+
+    this.authService.currentUser.subscribe((currentUser) => {
+      this.currentUsername = currentUser.username
+    })
+
+
   }
 
   // Methode, um die Seite zu ändern

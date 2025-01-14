@@ -27,7 +27,8 @@ export class CompilerTaskComponent {
   feedback: string = '';
   constructor(
     private taskService: TaskService,
-    private router: ActivatedRoute,
+    private activateRoute: ActivatedRoute,
+    private router: Router,
     private httpClient: HttpClient,
     private snackBar: MatSnackBar
   ) {
@@ -37,7 +38,7 @@ export class CompilerTaskComponent {
       this.skillLevel = data.skill;
     });
 
-    this.router.queryParams.subscribe((params) => {
+    this.activateRoute.queryParams.subscribe((params) => {
       this.type = params['type'];
       this.category = params['category'];
       this.skillLevel = params['skill'];
@@ -84,9 +85,11 @@ export class CompilerTaskComponent {
     console.log(task);
     this.taskService.createTask(task).subscribe({
       next: (response: { status: string; data: string; message?: string }) => {
+        this.router.navigate(['/teacher/tasks-overview'])
         if (response.status === 'successful') {
           this.showSuccessMessage();
           this.resetForm();
+          
         } else {
           alert('Error creating task.');
         }
@@ -117,6 +120,7 @@ export class CompilerTaskComponent {
       )
       .subscribe((response) => {
         console.log(response);
+        console.log('created')
       });
   }
 

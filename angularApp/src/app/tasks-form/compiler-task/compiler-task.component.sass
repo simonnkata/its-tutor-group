@@ -17,7 +17,6 @@ $error-color: #e74c3c
     flex-direction: column
     gap: 30px
 
-
     .task-name,
     .task,
     .task-description,
@@ -29,12 +28,12 @@ $error-color: #e74c3c
       border-radius: 8px
       padding: 16px
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
-    
+
       h2
-        font-size: 1.5rem
+        font-size: 1.2rem
         font-weight: bold
         margin-bottom: 10px
-        color: #333
+        color: $text-color
 
       ul
         list-style-type: none
@@ -49,11 +48,11 @@ $error-color: #e74c3c
           gap: 5px
 
           strong
-            color: #333
+            color: $text-color
             font-weight: bold
 
       .create-task-btn
-        background-color: #5cb3b3
+        background-color: $primary-color
         color: #fff
         border: none
         border-radius: 5px
@@ -62,11 +61,11 @@ $error-color: #e74c3c
         cursor: pointer
         margin-top: 10px
         &:hover
-          background-color: #489a9a
+          background-color: $primary-hover
 
     .task-description
-      background-color: #f9f9f9
-      border: 1px solid #ddd
+      background-color: $secondary-color
+      border: 1px solid $border-color
       border-radius: 8px
       padding: 16px
       display: flex
@@ -74,7 +73,7 @@ $error-color: #e74c3c
       gap: 10px
 
       #task-description-editor
-        border: 1px solid #ccc
+        border: 1px solid $border-color
         border-radius: 5px
         min-height: 100px
         padding: 10px
@@ -85,13 +84,13 @@ $error-color: #e74c3c
       .code-section
         h3
           font-size: 1.2rem
-          color: #333
+          color: $text-color
           margin-bottom: 8px
 
         .code-editor
           width: 100%
           height: 150px
-          border: 1px solid #ccc
+          border: 1px solid $border-color
           border-radius: 5px
           font-family: "Courier New", Courier, monospace
           font-size: 1rem
@@ -101,7 +100,7 @@ $error-color: #e74c3c
       .flexible-textarea
         width: 100%
         min-height: 100px
-        border: 1px solid #ccc
+        border: 1px solid $border-color
         border-radius: 5px
         padding: 10px
         font-size: 1rem
@@ -109,14 +108,14 @@ $error-color: #e74c3c
 
     .solution-section
       background-color: #fff
-      border: 1px solid #ddd
+      border: 1px solid $border-color
       border-radius: 8px
       padding: 16px
 
       textarea
         width: 100%
         height: 150px
-        border: 1px solid #ccc
+        border: 1px solid $border-color
         border-radius: 5px
         font-family: "Courier New", Courier, monospace
         font-size: 1rem
@@ -126,7 +125,7 @@ $error-color: #e74c3c
     .hints-section
       h2
         font-size: 1.5rem
-        color: #333
+        color: $text-color
         margin-bottom: 10px
 
       #hints-container
@@ -137,22 +136,38 @@ $error-color: #e74c3c
         .hint
           width: 100%
           height: 100px
-          border: 1px dashed #ccc
+          border: 1px dashed $border-color
           border-radius: 5px
           padding: 10px
           font-size: 1rem
           resize: vertical
 
+      .run-btn,
+      .add-hint-btn
+        background-color: $primary-color
+        color: #fff
+        border: none
+        border-radius: 5px
+        padding: 10px 20px
+        font-size: 1rem
+        cursor: pointer
+        text-align: center
+        transition: background-color 0.3s ease
+
+      .run-btn:hover,
+      .add-hint-btn:hover
+        background-color: $primary-hover
+
     .feedback-section
-      background-color: #f9f9f9
-      border: 1px solid #ddd
+      background-color: $secondary-color
+      border: 1px solid $border-color
       border-radius: 8px
       padding: 16px
 
       textarea
         width: 100%
         height: 150px
-        border: 1px solid #ccc
+        border: 1px solid $border-color
         border-radius: 5px
         font-family: "Courier New", Courier, monospace
         font-size: 1rem
@@ -165,7 +180,7 @@ $error-color: #e74c3c
       margin-top: 20px
 
       .run-btn
-        background-color: #5cb3b3
+        background-color: $primary-color
         color: #fff
         border: none
         border-radius: 5px
@@ -173,16 +188,15 @@ $error-color: #e74c3c
         font-size: 1rem
         cursor: pointer
         &:hover
-          background-color: #489a9a
+          background-color: $primary-hover
 
     .success-banner
-      background-color: #4CAF50 
-      color: white 
-      padding: 15px 
-      text-align: center 
-      font-size: 16px 
+      background-color: #4CAF50
+      color: white
+      padding: 15px
+      text-align: center
+      font-size: 16px
       border-radius: 5px
-      margin: 10px 0 
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) 
-      transition: opacity 0.5s ease 
-
+      margin: 10px 0
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+      transition: opacity 0.5s ease
