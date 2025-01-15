@@ -11,6 +11,10 @@ import { FreeTextTaskComponent } from './teacher/tasks-form/free-text-task/free-
 import { GapTaskComponent } from './teacher/tasks-form/gap-task/gap-task.component';
 import { EditCompilerTaskComponent } from './teacher/tasks-form/compiler-task/edit-compiler-task/edit-compiler-task.component';
 import { TeacherComponent } from './teacher/teacher.component';
+import { CompilerComponent } from './tutor-component/compiler/compiler.component';
+import { FlowchartComponent } from './tutor-component/flowchart/flowchart.component';
+import { FreetextComponent } from './tutor-component/freetext/freetext.component';
+import { GapComponent } from './tutor-component/gap/gap.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/signup', pathMatch: 'full' },
@@ -18,6 +22,13 @@ export const routes: Routes = [
     path: 'tutor',
     component: TutorComponentComponent,
     canActivate: [tutorGuard],
+    children: [
+      { path: 'compiler', component: CompilerComponent },
+      { path: 'compiler/:title/edit', component: CompilerComponent },
+      { path: 'flowchart', component: FlowchartComponent },
+      { path: 'freetext', component: FreetextComponent },
+      { path: 'gap', component: GapComponent },
+    ],
   },
   {
     path: 'signup',
