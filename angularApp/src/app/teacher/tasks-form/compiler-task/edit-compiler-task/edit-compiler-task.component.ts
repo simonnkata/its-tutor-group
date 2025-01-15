@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TaskService } from '../../../services/task.service';
+import { TaskService } from '../../../../services/task.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -16,39 +16,28 @@ interface Task {
 @Component({
   selector: 'app-edit-compiler-task',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule
-  ],
+  imports: [FormsModule, CommonModule],
   templateUrl: './edit-compiler-task.component.html',
-  styleUrl: './edit-compiler-task.component.sass'
+  styleUrl: './edit-compiler-task.component.sass',
 })
-
-
-
 export class EditCompilerTaskComponent {
-
-  title!: any
-  type: any
-
+  title!: any;
+  type: any;
 
   task!: Task;
 
-  constructor(private activatedRotue: ActivatedRoute, private taskService: TaskService){
+  constructor(
+    private activatedRotue: ActivatedRoute,
+    private taskService: TaskService
+  ) {
     this.activatedRotue.params.subscribe((params) => {
-      this.title = params['title']
-      
-
+      this.title = params['title'];
 
       this.taskService.getTask(this.title).subscribe((info: any) => {
-        this.task = info.data
-        this.type = info.data.type
-        console.log(this.task)
-      })
-
-
-
-    })
-
+        this.task = info.data;
+        this.type = info.data.type;
+        console.log(this.task);
+      });
+    });
   }
 }

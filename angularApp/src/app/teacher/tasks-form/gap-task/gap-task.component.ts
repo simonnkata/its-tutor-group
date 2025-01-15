@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { TaskService } from '../../services/task.service';
+import { TaskService } from '../../../services/task.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,13 +8,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-free-text-task',
+  selector: 'app-gap-task',
   standalone: true,
-  imports: [NgIf, NgForOf, FormsModule, MatSnackBarModule],
-  templateUrl: './free-text-task.component.html',
-  styleUrl: './free-text-task.component.sass',
+  imports: [FormsModule, NgIf, NgForOf, MatSnackBarModule],
+  templateUrl: './gap-task.component.html',
+  styleUrl: './gap-task.component.sass',
 })
-export class FreeTextTaskComponent {
+export class GapTaskComponent {
   taskName: string = ''; // Dynamischer Task-Name
   errorMessage: string = '';
 
@@ -23,9 +23,11 @@ export class FreeTextTaskComponent {
   skillLevel: string = '';
   loading: boolean = false;
   hints: string[] = [''];
-  description: string[] = ['', ''];
+  description: string = '';
   solution: string = '';
   feedback: string = '';
+
+  codeTaskContent: string = ''; // Code-Inhalt
 
   constructor(
     private taskService: TaskService,
@@ -51,7 +53,6 @@ export class FreeTextTaskComponent {
     this.loading = true;
     this.taskService.generateTaskTitle(this.category, this.type).subscribe({
       next: (response: { status: string; title: string; message?: string }) => {
-        console.log(this.category, this.type);
         if (response.status === 'successful') {
           this.taskName = response.title;
         } else {
@@ -60,7 +61,6 @@ export class FreeTextTaskComponent {
         this.loading = false;
       },
       error: (err: any) => {
-        console.log(this.category, this.type);
         this.errorMessage = 'Error fetching task name.';
         console.error(err);
         this.loading = false;
@@ -68,10 +68,29 @@ export class FreeTextTaskComponent {
     });
   }
 
+  insertGap(): void {
+    const textarea: HTMLTextAreaElement | null = document.getElementById(
+      'code-task-editor'
+    ) as HTMLTextAreaElement;
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+
+      const textBefore = this.codeTaskContent.slice(0, start);
+      const textAfter = this.codeTaskContent.slice(end);
+
+      this.codeTaskContent = `${textBefore}<<>>${textAfter}`;
+      setTimeout(() => {
+        textarea.setSelectionRange(start + 2, start + 2);
+        textarea.focus();
+      }, 0);
+    }
+  }
+
   save() {
     var taskDescription = [];
-    taskDescription[0] = { text: this.description[0] };
-    taskDescription[1] = { code: this.description[1] };
+    taskDescription[0] = { text: this.description };
+    taskDescription[1] = { code: this.codeTaskContent };
     var task = {
       title: this.taskName,
       difficultyLevel: this.skillLevel,
@@ -143,9 +162,10 @@ export class FreeTextTaskComponent {
 
   resetForm(): void {
     this.generateTaskTitle();
-    this.description = ['', '', ''];
+    this.description = '';
     this.solution = '';
     this.hints = [''];
     this.feedback = '';
+    this.codeTaskContent = '';
   }
 }

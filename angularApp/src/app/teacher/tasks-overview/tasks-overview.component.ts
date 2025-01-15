@@ -2,7 +2,7 @@ import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { TaskService } from '../services/task.service';
+import { TaskService } from '../../services/task.service';
 import { OnInit } from '@angular/core';
 
 interface Task {
@@ -82,7 +82,7 @@ export class TasksOverviewComponent implements OnInit {
   }
 
   processTasks(tasks: any): void {
-    this.tasks = []
+    this.tasks = [];
     tasks.forEach((task: any) => {
       var description = task.description[0].text;
       var title = task.title;
@@ -109,18 +109,20 @@ export class TasksOverviewComponent implements OnInit {
     });
   }
 
-
   delete(taskTitle: string) {
-    this.taskService.deleteTask(taskTitle).subscribe(() => {
-      alert("Are you sure you want to delete this task?")
-      this.getTasks()
-    }, (error) => {
-      alert('You did not create this task.')
-      console.log(error)
-    })
+    this.taskService.deleteTask(taskTitle).subscribe(
+      () => {
+        alert('Are you sure you want to delete this task?');
+        this.getTasks();
+      },
+      (error) => {
+        alert('You did not create this task.');
+        console.log(error);
+      }
+    );
   }
 
   edit(taskTitle: string, type: string) {
-    this.router.navigate([`teacher/${type}/${taskTitle}/edit`])
+    this.router.navigate([`${type}/${taskTitle}/edit`]);
   }
 }

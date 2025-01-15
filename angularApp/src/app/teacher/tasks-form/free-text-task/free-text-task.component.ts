@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { TaskService } from '../../services/task.service';
+import { TaskService } from '../../../services/task.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,27 +8,28 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-compiler-task',
+  selector: 'app-free-text-task',
   standalone: true,
-  imports: [FormsModule, NgIf, NgForOf, MatSnackBarModule],
-  templateUrl: './compiler-task.component.html',
-  styleUrl: './compiler-task.component.sass',
+  imports: [NgIf, NgForOf, FormsModule, MatSnackBarModule],
+  templateUrl: './free-text-task.component.html',
+  styleUrl: './free-text-task.component.sass',
 })
-export class CompilerTaskComponent {
+export class FreeTextTaskComponent {
   taskName: string = ''; // Dynamischer Task-Name
   errorMessage: string = '';
-  loading: boolean = false;
+
   type: string = '';
   category: string = '';
   skillLevel: string = '';
+  loading: boolean = false;
   hints: string[] = [''];
-  description: string[] = ['', '', ''];
+  description: string[] = ['', ''];
   solution: string = '';
   feedback: string = '';
+
   constructor(
     private taskService: TaskService,
-    private activateRoute: ActivatedRoute,
-    private router: Router,
+    private router: ActivatedRoute,
     private httpClient: HttpClient,
     private snackBar: MatSnackBar
   ) {
@@ -38,7 +39,7 @@ export class CompilerTaskComponent {
       this.skillLevel = data.skill;
     });
 
-    this.activateRoute.queryParams.subscribe((params) => {
+    this.router.queryParams.subscribe((params) => {
       this.type = params['type'];
       this.category = params['category'];
       this.skillLevel = params['skill'];
@@ -50,6 +51,7 @@ export class CompilerTaskComponent {
     this.loading = true;
     this.taskService.generateTaskTitle(this.category, this.type).subscribe({
       next: (response: { status: string; title: string; message?: string }) => {
+        console.log(this.category, this.type);
         if (response.status === 'successful') {
           this.taskName = response.title;
         } else {
@@ -58,6 +60,7 @@ export class CompilerTaskComponent {
         this.loading = false;
       },
       error: (err: any) => {
+        console.log(this.category, this.type);
         this.errorMessage = 'Error fetching task name.';
         console.error(err);
         this.loading = false;
@@ -69,7 +72,6 @@ export class CompilerTaskComponent {
     var taskDescription = [];
     taskDescription[0] = { text: this.description[0] };
     taskDescription[1] = { code: this.description[1] };
-    taskDescription[2] = { text: this.description[2] };
     var task = {
       title: this.taskName,
       difficultyLevel: this.skillLevel,
@@ -85,11 +87,9 @@ export class CompilerTaskComponent {
     console.log(task);
     this.taskService.createTask(task).subscribe({
       next: (response: { status: string; data: string; message?: string }) => {
-        this.router.navigate(['/teacher/tasks-overview'])
         if (response.status === 'successful') {
           this.showSuccessMessage();
           this.resetForm();
-          
         } else {
           alert('Error creating task.');
         }
@@ -120,7 +120,6 @@ export class CompilerTaskComponent {
       )
       .subscribe((response) => {
         console.log(response);
-        console.log('created')
       });
   }
 
@@ -134,6 +133,7 @@ export class CompilerTaskComponent {
   trackByIndex(index: number): number {
     return index;
   }
+
   showSuccessMessage(): void {
     this.snackBar.open('Task saved successfully!', 'Close', {
       duration: 3000,

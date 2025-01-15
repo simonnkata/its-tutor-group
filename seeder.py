@@ -51,7 +51,8 @@ def seed_tasks(teacher_ids):
         'keywords': ['for', 'if', 'else'],
         'availableLines': [],
         'teacher_id': teacher_ids[0],
-        'taskCreated': datetime.now()
+        'taskCreated': datetime.now(),
+        'is_deleted': False
     },
     {
         "title": "P2C4",
@@ -73,7 +74,8 @@ def seed_tasks(teacher_ids):
         "keywords": ["if", "for", "return"],
         "availableLines": [],
         "teacher_id": teacher_ids[1],
-        'taskCreated': datetime.now()
+        'taskCreated': datetime.now(),
+        'is_deleted': False
     }
     ]
     db.tasks.delete_many({}) 

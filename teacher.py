@@ -91,6 +91,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             else:
                 data['teacher_id'] = teacher["_id"]
                 data['taskCreated'] = datetime.now()
+                data['is_deleted'] = False
                 res = db.tasks.insert_one(data)
                 if res.acknowledged:
                     status = "successful"
@@ -112,7 +113,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         code = 500
         status = "fail"
         try:
-            res = db.tasks.find()
+            res = db.tasks.find({"is_deleted": {"$ne": True}})
             status = "successful"
             message = "task found"
             code = 200
@@ -136,7 +137,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         code = 500
         status = "fail"
         try:
-            task = db.tasks.find_one({'title':title})
+            task = db.tasks.find_one({'title':title},{"is_deleted": {"$ne": True}})
             if task:
                 status = "successful"
                 message = "task found"
@@ -167,7 +168,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             current_user = get_jwt_identity()
             teacher = db.teachers.find_one({'username':current_user})
             teacher_id = teacher["_id"]
-            task = db.tasks.find_one({'title':title})
+            task = db.tasks.find_one({'title':title},{"is_deleted": {"$ne": True}})
             if task:
                 if  teacher_id != task["teacher_id"]:
                     message = "you can only edit your own tasks"
@@ -218,7 +219,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                     code = 403
                     status = "fail"
                 else:
-                    res = db.tasks.delete_one({"title": title})
+                    res = db.tasks.update_one({"title": title}, {"$set": {"is_deleted": True}})
                     if res.acknowledged:
                         status = "successful"
                         message = "task deleted successfully"

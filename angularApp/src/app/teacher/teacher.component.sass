@@ -1,0 +1,107 @@
+.content
+  width: 90%
+  //margin: auto
+
+.row
+  display: flex
+
+.navbar
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 10px 20px
+  background-color: #cce7e8
+  height: 40px
+  width: 100%
+  //position: fixed
+  top: 0
+  left: 0
+  z-index: 10
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+
+  .nav-left
+    display: flex
+    align-items: center
+    gap: 160px // Abstand zwischen Benutzername und Buttons
+
+    .user-name
+      h1
+        margin: 0
+        font-size: 1.5rem
+        font-weight: bold
+        color: #000
+        font-family: Arial, sans-serif
+
+    .nav-links
+      display: flex
+      gap: 40px
+
+      button
+        @extend .common-button
+
+.nav-right
+  display: flex
+  align-items: center
+  margin-right: 40px // Abstand von der rechten Seite
+
+  .logout-button
+    @extend .common-button
+
+.sidebar
+  // position: fixed // Fixiere die Sidebar am linken Rand
+  top: 70px // Unterhalb der Navbar (Navbar-Höhe: 60px)
+  margin-top: 10px // Abstand von der Navbar
+  left: 0
+  width: 220px
+  background-color: #cce7e8
+  padding: 20px
+  border-radius: 5px
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+  height: calc(100vh - 60px) // Passt sich der verfügbaren Höhe an
+
+  h2
+    font-size: 1.2rem
+    font-weight: bold
+    margin-bottom: 5px
+    color: #333
+    font-family: Arial, sans-serif
+
+  select
+    width: 100%
+    padding: 8px
+    margin-bottom: 50px // Abstand zwischen Dropdowns
+    border: 1px solid #ccc
+    border-radius: 5px
+    font-size: 0.9rem
+    background-color: white
+    cursor: pointer
+
+    &:hover
+      border-color: #87cefa
+
+    &:focus
+      outline: none
+      border-color: #6495ed
+
+  button
+    @extend .common-button
+
+.common-button
+  background-color: transparent
+  color: #000
+  border: none
+  font-size: 1rem
+  cursor: pointer
+  padding: 10px 20px
+  border-radius: 5px
+  transition: background-color 0.3s, color 0.3s
+
+  &:hover
+    background-color: rgba(92, 183, 180, 0.2)
+
+  &.active
+    background-color: rgb(92, 183, 180)
+    color: #fff
+    font-weight: bold
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
+

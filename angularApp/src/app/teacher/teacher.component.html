@@ -1,0 +1,117 @@
+<div>
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="user-name">
+        <h1>{{ currentUsername }}</h1>
+      </div>
+      <div class="nav-links">
+        <!-- <button
+              class="common-button"
+              [routerLink]="'/tasks-overview'"
+              [class.active]="currentPage === 'tasks-overview'">
+              Tasks Overview
+            </button> -->
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button
+        class="common-button"
+        [routerLink]="'/teacher/tasks-overview'"
+        [class.active]="currentPage === 'teacher/tasks-overview'"
+      >
+        Tasks Overview
+      </button>
+
+      <button class="logout-button common-button" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </nav>
+
+  <div class="row">
+    <div class="sidebar">
+      <h2>Type</h2>
+      <select [(ngModel)]="selectedType" (change)="onFilterChange()">
+        <option value="compiler-task">Compiler Task</option>
+        <option value="flowchart-task">Flowchart Task</option>
+        <option value="free-text-task">Free Text Task</option>
+        <option value="gap-task">Gap Task</option>
+      </select>
+
+      <h2>Category</h2>
+      <select [(ngModel)]="selectedCategory" (change)="onFilterChange()">
+        <option value="Variables">Python Variables</option>
+        <option value="Loops">Python Loops</option>
+        <option value="Functions">Python Functions</option>
+      </select>
+
+      <h2>Skill Level</h2>
+      <select [(ngModel)]="selectedSkill" (change)="onFilterChange()">
+        <option value="beginner">Beginner</option>
+        <option value="advance">Advance</option>
+        <option value="expert">Expert</option>
+      </select>
+
+      <button
+        class="common-button"
+        (click)="navigate()"
+        [class.active]="currentPage === '/teacher/compiler-task'"
+        style="border: 1px solid black"
+      >
+        Task Creation
+      </button>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          align-items: flex-start;
+          margin-top: 20px;
+          font-family: Arial, sans-serif;
+          font-size: 1rem;
+          text-align: center;
+        "
+      >
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div
+            style="
+              width: 30px;
+              height: 30px;
+              background-color: #a3e635;
+              border-radius: 5px;
+            "
+          ></div>
+          <span>Beginner</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div
+            style="
+              width: 30px;
+              height: 30px;
+              background-color: #fb923c;
+              border-radius: 5px;
+            "
+          ></div>
+          <span>Advance</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div
+            style="
+              width: 30px;
+              height: 30px;
+              background-color: #2563eb;
+              border-radius: 5px;
+            "
+          ></div>
+          <span>Expert</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hauptinhalt: Platz für Komponenten wie tasks-overview -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
