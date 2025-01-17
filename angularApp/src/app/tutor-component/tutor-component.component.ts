@@ -1,5 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { LoggingService } from '../services/log.service';
 import { AuthService } from '../services/auth.service';
 import { DropdownModule } from 'primeng/dropdown';
@@ -31,7 +31,8 @@ export class TutorComponentComponent implements OnInit {
   constructor(
     private loggingService: LoggingService,
     private authservice: AuthService,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -82,5 +83,14 @@ export class TutorComponentComponent implements OnInit {
     this.authservice
       .changeExperienceLevel(username, token, experienceLevel)
       .subscribe();
+  }
+
+  openTask(task: any): void {
+    const type = task.type;
+    this.router.navigate([`/tutor/${type}`], {
+      queryParams: { title: task.title },
+      state: { task },
+    });
+    console.log('Open task:', task);
   }
 }

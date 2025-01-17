@@ -70,15 +70,19 @@
               <div
                 class="submenu"
                 ng-class="{ show: isGroupVisible('TaskGroup1') }"
-              ></div>
-              <ng-container *ngFor="let task of tasks">
-                <div *ngIf="task.topic === 'Variables'">
-                  <div class="task-item">
-                    <!-- Display task details here -->
-                    <p>{{ task.title }}</p>
+              >
+                <ng-container *ngFor="let task of tasks">
+                  <div
+                    *ngIf="task.topic === 'Variables'"
+                    (click)="openTask(task)"
+                  >
+                    <div class="task-item">
+                      <!-- Display task details here -->
+                      <p>{{ task.title }}</p>
+                    </div>
                   </div>
-                </div>
-              </ng-container>
+                </ng-container>
+              </div>
             </div>
             <!-- Task Group 2-->
             <div
@@ -104,78 +108,14 @@
                 class="submenu"
                 ng-class="{ show: isGroupVisible('TaskGroup2') }"
               >
-                <div
-                  ng-click="selectTask('L1C1')"
-                  ng-class="{
-                    active: isTaskActive('L1C1'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('L1C1'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('L1C1')
-                  }"
-                >
-                  L1C1
-                  <i class="status-icon" ng-class="getStatusIcon('L1C1')"></i>
-                </div>
-                <div
-                  ng-click="selectTask('L3C1')"
-                  ng-class="{
-                    active: isTaskActive('L3C1'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('L3C1'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('L3C1')
-                  }"
-                >
-                  L3C1
-                  <i class="status-icon" ng-class="getStatusIcon('L3C1')"></i>
-                </div>
-                <div
-                  ng-click="selectTask('L5C1')"
-                  ng-class="{
-                    active: isTaskActive('L5C1'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('L5C1'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('L5C1')
-                  }"
-                >
-                  L5C1
-                  <i class="status-icon" ng-class="getStatusIcon('L5C1')"></i>
-                </div>
-                <div
-                  ng-click="selectTask('L2C2')"
-                  ng-class="{
-                    active: isTaskActive('L2C2'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('L2C2'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('L2C2')
-                  }"
-                >
-                  L2C2
-                  <i class="status-icon" ng-class="getStatusIcon('L2C2')"></i>
-                </div>
-                <div
-                  ng-click="selectTask('L4C2')"
-                  ng-class="{
-                    active: isTaskActive('L4C2'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('L4C2'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('L4C2')
-                  }"
-                >
-                  L4C2
-                  <i class="status-icon" ng-class="getStatusIcon('L4C2')"></i>
-                </div>
-                <div
-                  ng-click="selectTask('L2C3')"
-                  ng-class="{
-                    active: isTaskActive('L2C3'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('L2C3'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('L2C3')
-                  }"
-                >
-                  L2C3
-                  <i class="status-icon" ng-class="getStatusIcon('L2C3')"></i>
-                </div>
+                <ng-container *ngFor="let task of tasks">
+                  <div *ngIf="task.topic === 'Loops'" (click)="openTask(task)">
+                    <div class="task-item">
+                      <!-- Display task details here -->
+                      <p>{{ task.title }}</p>
+                    </div>
+                  </div>
+                </ng-container>
               </div>
             </div>
             <!-- Task group 3-->
@@ -202,67 +142,17 @@
                 class="submenu"
                 ng-class="{ show: isGroupVisible('TaskGroup3') }"
               >
-                <div
-                  ng-click="selectTask('F1C1')"
-                  ng-class="{
-                    active: isTaskActive('F1C1'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('F1C1'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('F1C1')
-                  }"
-                >
-                  F1C1
-                  <i class="status-icon" ng-class="getStatusIcon('F1C1')"></i>
-                </div>
-                <div
-                  ng-click="selectTask('F1C2')"
-                  ng-class="{
-                    active: isTaskActive('F1C2'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('F1C2'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('F1C2')
-                  }"
-                >
-                  F1C2
-                  <i class="status-icon" ng-class="getStatusIcon('F1C2')"></i>
-                </div>
-                <!-- F3C2 fehlt , bitte hier einfügen -->
-                <div
-                  ng-click="selectTask('F5C2')"
-                  ng-class="{
-                    active: isTaskActive('F5C2'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('F5C2'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('F5C2')
-                  }"
-                >
-                  F5C2
-                  <i class="status-icon" ng-class="getStatusIcon('F5C2')"></i>
-                </div>
-                <div
-                  ng-click="selectTask('F1C3')"
-                  ng-class="{
-                    active: isTaskActive('F1C3'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('F1C3'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('F1C3')
-                  }"
-                >
-                  F1C3
-                  <i class="status-icon" ng-class="getStatusIcon('F1C3')"></i>
-                </div>
-                <div
-                  ng-click="selectTask('F2C3')"
-                  ng-class="{
-                    active: isTaskActive('F2C3'),
-                    activeTaskDifficulty: changeTaskDifficultySelection('F2C3'),
-                    inactiveTaskDifficulty:
-                      !changeTaskDifficultySelection('F2C3')
-                  }"
-                >
-                  F2C3
-                  <i class="status-icon" ng-class="getStatusIcon('F2C3')"></i>
-                </div>
+                <ng-container *ngFor="let task of tasks">
+                  <div
+                    *ngIf="task.topic === 'Functions'"
+                    (click)="openTask(task)"
+                  >
+                    <div class="task-item">
+                      <!-- Display task details here -->
+                      <p>{{ task.title }}</p>
+                    </div>
+                  </div>
+                </ng-container>
               </div>
             </div>
           </div>

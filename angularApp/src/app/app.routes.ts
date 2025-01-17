@@ -23,11 +23,11 @@ export const routes: Routes = [
     component: TutorComponentComponent,
     canActivate: [tutorGuard],
     children: [
-      { path: 'compiler', component: CompilerComponent },
+      { path: 'compiler-task', component: CompilerComponent },
       { path: 'compiler/:title/edit', component: CompilerComponent },
-      { path: 'flowchart', component: FlowchartComponent },
-      { path: 'freetext', component: FreetextComponent },
-      { path: 'gap', component: GapComponent },
+      { path: 'flowchart-task', component: FlowchartComponent },
+      { path: 'free-text-task', component: FreetextComponent },
+      { path: 'gap-task', component: GapComponent },
     ],
   },
   {
