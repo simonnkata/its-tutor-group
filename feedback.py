@@ -78,6 +78,11 @@ def feedback_flowchart(task, data):
     correctSolution = task["solution"]  
     correctNodes = correctSolution.get("nodes")
     correctLinks = correctSolution.get("links")
+    nodesMatch = compareNodes(userNodes, correctNodes)
+    linksMatch = compareLinks(userLinks, correctLinks)
+    if nodesMatch and linksMatch and not checkMissingElements:
+        return (True, task["feedback"])
+
 
 # check if any of the entered nodes are wrong/not part of the correct solution
 def compareNodes(userNodes, correctNodes): 
@@ -86,9 +91,24 @@ def compareNodes(userNodes, correctNodes):
             return False
     return True
 
-        
+# check if the entered links are contained in the correct solution
+def compareLinks(userLinks, correctLinks):
+    for userLink in userLink:
+        if not (userLink in correctLinks):
+            return False
+    return True
 
-
+# check which nodes/links are missing
+def checkMissingElements(userNodes, userLinks, correctNodes, correctLinks):
+    missingNodes = []
+    missingLinks = []
+    for correctNode in correctNodes:
+        if not (correctNode in userNodes):
+            missingNodes.append(correctNode)
+    for correctLink in correctLinks:
+        if not (correctLink in userLinks):
+            missingLinks.append(correctLink)
+    return missingNodes, missingLinks
 
 # check solution for compiler tasks
 def feedback_compiler(task, data):
