@@ -31,6 +31,7 @@ export class TutorComponentComponent implements OnInit{
   constructor(private loggingService: LoggingService, private authservice: AuthService) {}
 
   ngOnInit(): void {
+    
     (window as any).loggingService = this.loggingService;
     (window as any).logHelperFunction = function(data: { [key: string]: any}, token:string ) {
       this.loggingService.updateLogs(data, token).subscribe(
@@ -38,6 +39,7 @@ export class TutorComponentComponent implements OnInit{
           console.log('Log update successful', response);
         },
         (error: any) => {
+          console.log('Log update failed', error);
           console.error('Log update failed', error);
   }
 );

@@ -4,6 +4,7 @@ import { SignupComponent } from './signup/signup.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { tutorGuard } from './guards/tutorGuard';
 import { signupGuard } from './guards/signupGuard';
+import { TaskListComponent } from './task-list/task-list.component';
 
 export const routes: Routes = [
     {path: '',   redirectTo: '/welcome', pathMatch: 'full'},
@@ -15,4 +16,5 @@ export const routes: Routes = [
         canActivate: [signupGuard],
      },
     {path: 'welcome', component: WelcomeComponent },
+    {path: 'tasks', component: TaskListComponent}
 ];

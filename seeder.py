@@ -12,8 +12,8 @@ def generate_password(password):
     return bcrypt.generate_password_hash(password).decode('utf-8')
 
 teachers = [
-    {"username": "Teacher1", "password": generate_password("teacher1"), "firstName": "Teacher", "lastName": "One", "created": datetime.now()},  
-    {"username": "Teacher2", "password": generate_password("teacher2"), "firstName": "Teacher", "lastName": "Two", "created": datetime.now()},  
+    {"username": "Teacher1", "password": generate_password("teacher1"), "firstName": "Teacher", "email": "example@gmail.com", "lastName": "One", "created": datetime.now()},  
+    {"username": "Teacher2", "password": generate_password("teacher2"), "firstName": "Teacher", "email": "maxmusterman@gmail.com", "lastName": "Two", "created": datetime.now()},  
 ]
 
 def seed_teachers():
