@@ -1,0 +1,281 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<div class="student">
+  <div class="main-container">
+    <table class="tutor-general">
+      <tr class="backgroundDarkBlue">
+        <td class="widthTD1 navigationTitle"></td>
+        <td class="tutorTitle underline">Python Tutor</td>
+        <td class="user-info-container" rowspan="2">
+          <div class="user-name">
+            <h1 [(ngModel)]="currentUsername"></h1>
+            <i class="fas fa-user user-icon" style="margin-right: 5px"></i
+            >{{currentUsername}}
+          </div>
+          <div class="difficulty-dropdown">
+            <select
+              ng-model="selectedExperienceLevel"
+              [(ngModel)]="selectedExperienceLevel"
+              (ngModelChange)="onDifficultyChange()"
+              ng-change="onDifficultyChangeTaskView()"
+            >
+              <option value="beginner">Beginner</option>
+              <option value="advanced">Advanced</option>
+              <option value="expert">Expert</option>
+            </select>
+            <!--<p-dropdown
+                    [options]="experienceLevel" 
+                    [(ngModel)]="selectedExperienceLevel"
+                    optionLabel="name"
+                    (onChange)="onDifficultyChange()"/>-->
+          </div>
+          <div>
+            <button class="logout-button" (click)="logout()">
+              Logout <i class="fas fa-sign-out-alt"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="backgroundDarkBlue">
+        <td class="widthTD1 navigationTitle underlineRight"></td>
+        <td>
+          <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+
+            <!--<div id="progress-text" class="progress-text">0% of the tasks completed</div>-->
+            <div class="borderProgressBar"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="sidebar-general underlineRight" rowspan="3">
+          <div class="test123">
+            <!-- Task Group 1-->
+            <div
+              class="taskGroup-container"
+              ng-class="{'current-group': isTaskInGroup('TaskGroup1'), 'non-selected-group': !isGroupSelected('TaskGroup1')}"
+            >
+              <div
+                class="menu-item"
+                ng-click="toggleGroup('TaskGroup1')"
+                ng-class="{'current-group': isTaskInGroup('TaskGroup1')}"
+              >
+                Variables
+                <span
+                  class="arrow"
+                  ng-class="{'down': isGroupVisible('TaskGroup1')}"
+                  >&#9660;</span
+                >
+              </div>
+              <div
+                class="submenu"
+                ng-class="{'show': isGroupVisible('TaskGroup1')}"
+              >
+                <div
+                  ng-click="selectTask('V1C1')"
+                  ng-class="{'active': isTaskActive('V1C1'), 'activeTaskDifficulty': changeTaskDifficultySelection('V1C1'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('V1C1')}"
+                >
+                  V1C1
+                  <i class="status-icon" ng-class="getStatusIcon('V1C1')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('V3C1')"
+                  ng-class="{'active': isTaskActive('V3C1'), 'activeTaskDifficulty': changeTaskDifficultySelection('V3C1'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('V3C1')}"
+                >
+                  V3C1
+                  <i class="status-icon" ng-class="getStatusIcon('V3C1')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('V5C1')"
+                  ng-class="{'active': isTaskActive('V5C1'), 'activeTaskDifficulty': changeTaskDifficultySelection('V5C1'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('V5C1')}"
+                >
+                  V5C1
+                  <i class="status-icon" ng-class="getStatusIcon('V5C1')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('V2C2')"
+                  ng-class="{'active': isTaskActive('V2C2'), 'activeTaskDifficulty': changeTaskDifficultySelection('V2C2'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('V2C2')}"
+                >
+                  V2C2
+                  <i class="status-icon" ng-class="getStatusIcon('V2C2')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('V1C3')"
+                  ng-class="{'active': isTaskActive('V1C3'), 'activeTaskDifficulty': changeTaskDifficultySelection('V1C3'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('V1C3')}"
+                >
+                  V1C3
+                  <i class="status-icon" ng-class="getStatusIcon('V1C3')"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Task Group 2-->
+            <div
+              class="taskGroup-container"
+              ng-class="{'current-group': isTaskInGroup('TaskGroup2'), 'non-selected-group': !isGroupSelected('TaskGroup2')}"
+            >
+              <div
+                class="menu-item"
+                ng-click="toggleGroup('TaskGroup2')"
+                ng-class="{'current-group': isTaskInGroup('TaskGroup2')}"
+              >
+                Loops
+                <span
+                  class="arrow"
+                  ng-class="{'down': isGroupVisible('TaskGroup2')}"
+                  >&#9660;</span
+                >
+              </div>
+              <div
+                class="submenu"
+                ng-class="{'show': isGroupVisible('TaskGroup2')}"
+              >
+                <div
+                  ng-click="selectTask('L1C1')"
+                  ng-class="{'active': isTaskActive('L1C1'), 'activeTaskDifficulty': changeTaskDifficultySelection('L1C1'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('L1C1')}"
+                >
+                  L1C1
+                  <i class="status-icon" ng-class="getStatusIcon('L1C1')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('L3C1')"
+                  ng-class="{'active': isTaskActive('L3C1'), 'activeTaskDifficulty': changeTaskDifficultySelection('L3C1'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('L3C1')}"
+                >
+                  L3C1
+                  <i class="status-icon" ng-class="getStatusIcon('L3C1')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('L5C1')"
+                  ng-class="{'active': isTaskActive('L5C1'), 'activeTaskDifficulty': changeTaskDifficultySelection('L5C1'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('L5C1')}"
+                >
+                  L5C1
+                  <i class="status-icon" ng-class="getStatusIcon('L5C1')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('L2C2')"
+                  ng-class="{'active': isTaskActive('L2C2'), 'activeTaskDifficulty': changeTaskDifficultySelection('L2C2'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('L2C2')}"
+                >
+                  L2C2
+                  <i class="status-icon" ng-class="getStatusIcon('L2C2')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('L4C2')"
+                  ng-class="{'active': isTaskActive('L4C2'), 'activeTaskDifficulty': changeTaskDifficultySelection('L4C2'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('L4C2')}"
+                >
+                  L4C2
+                  <i class="status-icon" ng-class="getStatusIcon('L4C2')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('L2C3')"
+                  ng-class="{'active': isTaskActive('L2C3'), 'activeTaskDifficulty': changeTaskDifficultySelection('L2C3'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('L2C3')}"
+                >
+                  L2C3
+                  <i class="status-icon" ng-class="getStatusIcon('L2C3')"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Task group 3-->
+            <div
+              class="taskGroup-container"
+              ng-class="{'current-group': isTaskInGroup('TaskGroup3'), 'non-selected-group': !isGroupSelected('TaskGroup3')}"
+            >
+              <div
+                class="menu-item"
+                ng-click="toggleGroup('TaskGroup3')"
+                ng-class="{'current-group': isTaskInGroup('TaskGroup3')}"
+              >
+                Functions
+                <span
+                  class="arrow"
+                  ng-class="{'down': isGroupVisible('TaskGroup3')}"
+                  >&#9660;</span
+                >
+              </div>
+              <div
+                class="submenu"
+                ng-class="{'show': isGroupVisible('TaskGroup3')}"
+              >
+                <div
+                  ng-click="selectTask('F1C1')"
+                  ng-class="{'active': isTaskActive('F1C1'), 'activeTaskDifficulty': changeTaskDifficultySelection('F1C1'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('F1C1')}"
+                >
+                  F1C1
+                  <i class="status-icon" ng-class="getStatusIcon('F1C1')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('F1C2')"
+                  ng-class="{'active': isTaskActive('F1C2'), 'activeTaskDifficulty': changeTaskDifficultySelection('F1C2'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('F1C2')}"
+                >
+                  F1C2
+                  <i class="status-icon" ng-class="getStatusIcon('F1C2')"></i>
+                </div>
+                <!-- F3C2 fehlt , bitte hier einfügen -->
+                <div
+                  ng-click="selectTask('F5C2')"
+                  ng-class="{'active': isTaskActive('F5C2'), 'activeTaskDifficulty': changeTaskDifficultySelection('F5C2'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('F5C2')}"
+                >
+                  F5C2
+                  <i class="status-icon" ng-class="getStatusIcon('F5C2')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('F1C3')"
+                  ng-class="{'active': isTaskActive('F1C3'), 'activeTaskDifficulty': changeTaskDifficultySelection('F1C3'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('F1C3')}"
+                >
+                  F1C3
+                  <i class="status-icon" ng-class="getStatusIcon('F1C3')"></i>
+                </div>
+                <div
+                  ng-click="selectTask('F2C3')"
+                  ng-class="{'active': isTaskActive('F2C3'), 'activeTaskDifficulty': changeTaskDifficultySelection('F2C3'), 'inactiveTaskDifficulty': !changeTaskDifficultySelection('F2C3')}"
+                >
+                  F2C3
+                  <i class="status-icon" ng-class="getStatusIcon('F2C3')"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr class="task-container">
+        <td class="task-area">
+          <div ng-include="currentTask.templateUrl" class="task-layout"></div>
+          <!--<div ng-include="currentTask.templateUrl" class="task-layout" onload="calculateProgress()"> </div>-->
+        </td>
+        <!--<td class="python-tutor-container tutor-area" colspan="2" rowspan="2">-->
+        <td class="bottom-left-align">
+          <img
+            id="python-tutor-img"
+            src="assets/pythonTutor.png"
+            alt="Python Tutor Image"
+            class="bottom-left-elements python-tutor"
+            width="20%"
+            height="20%"
+          />
+        </td>
+        <td></td>
+      </tr>
+      <tr class="task-container-nav">
+        <td colspan="2">
+          <div>
+            <button
+              class="previousTask"
+              ng-click="prevTask()"
+              ng-disabled="isPrevDisabled()"
+            >
+              <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button
+              class="nextTask"
+              ng-click="nextTask()"
+              ng-disabled="isNextDisabled()"
+            >
+              Next <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <router-outlet style="overflow: hidden" />
+</div>

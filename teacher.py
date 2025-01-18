@@ -93,6 +93,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                 data['teacher_id'] = teacher["_id"]
                 data['points'] = get_task_points(data['difficultyLevel'])
                 data['taskCreated'] = datetime.now()
+                data['is_deleted'] = False
                 res = db.tasks.insert_one(data)
                 if res.acknowledged:
                     status = "successful"
@@ -114,7 +115,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         code = 500
         status = "fail"
         try:
-            res = db.tasks.find()
+            res = db.tasks.find({"is_deleted": {"$ne": True}})
             status = "successful"
             message = "task found"
             code = 200
@@ -138,7 +139,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         code = 500
         status = "fail"
         try:
-            task = db.tasks.find_one({'title':title})
+            task = db.tasks.find_one({'title':title},{"is_deleted": {"$ne": True}})
             if task:
                 status = "successful"
                 message = "task found"
@@ -169,8 +170,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             current_user = get_jwt_identity()
             teacher = db.teachers.find_one({'username':current_user})
             teacher_id = teacher["_id"]
-            points = get_task_points(data['difficultyLevel'])
-            task = db.tasks.find_one({'title':title})
+            task = db.tasks.find_one({'title':title},{"is_deleted": {"$ne": True}})
             if task:
                 if  teacher_id != task["teacher_id"]:
                     message = "you can only edit your own tasks"
@@ -221,7 +221,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                     code = 403
                     status = "fail"
                 else:
-                    res = db.tasks.delete_one({"title": title})
+                    res = db.tasks.update_one({"title": title}, {"$set": {"is_deleted": True}})
                     if res.acknowledged:
                         status = "successful"
                         message = "task deleted successfully"
@@ -237,17 +237,29 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             code = 500    
         return jsonify({'status': status, "data": res_data, "message":message}), code
     
+    @app.route('/generateTaskTitle', methods=['POST'])
+    @jwt_required()
+    def createTitle():
+        message = ""
+        res_data = {}
+        code = 500
+        status = "fail"
+        try:
+            data = request.get_json()
+            topic = data['topic']
+            type = data['type']
+            title = make_task_title(topic, type)
+            status = "successful"
+            message = "title generated successfully"
+            code = 200
+        except Exception as ex:
+            message = f"{ex}, {data}"
+            status = "fail"
+            code = 500    
+        return jsonify({'status': status, "title": title, "message":message}), code
+    
     def make_task_title(topic, type): 
         topicCount = db.tasks.count_documents({"topic": topic })
         typeCount = db.tasks.count_documents({"type": type })
         title = f"{topic[0]}{topicCount+1}{type[0].upper()}{typeCount + 1}"
         return title
-    
-    def get_task_points(difficultyLevel):
-        match difficultyLevel:
-            case "beginner":
-                return 5
-            case "advanced":
-                return 10
-            case _:
-                return 15

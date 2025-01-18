@@ -1,0 +1,82 @@
+
+
+/* Übersicht */
+.tasks-overview {
+  padding: 20px;
+}
+
+/* Grid für die Tasks */
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 Spalten */
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Task-Karte */
+.task-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Footer bleibt unten */
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 250px; 
+}
+
+/* Header */
+.task-card-header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  font-family: Arial, sans-serif; 
+}
+
+/* Beschreibung */
+.task-card-description {
+  flex-grow: 1; /* Platz zwischen Header und Footer füllen */
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* Footer */
+.task-card-footer {
+  display: flex;
+  justify-content: space-between; /* Abstand zwischen Buttons */
+}
+
+/* Buttons */
+.task-card-footer button {
+  flex: 1; /* Beide Buttons haben gleiche Größe */
+  margin: 0 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Delete-Button */
+.task-card-footer .delete {
+  background-color: #cce7e8; /* Rot */
+  color: rgb(0, 0, 0);
+}
+
+.task-card-footer .delete:hover {
+  background-color: #d32f2f; /* Dunkleres Rot beim Hover */
+}
+
+/* Edit-Button */
+.task-card-footer .edit {
+  background-color: #cce7e8; /* Blau */
+  color: rgb(0, 0, 0);
+}
+
+.task-card-footer .edit:hover {
+  background-color: #8ce3e6; /* Dunkleres Blau beim Hover */
+}

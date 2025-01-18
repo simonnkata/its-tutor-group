@@ -1,0 +1,24 @@
+<div class="tasks-overview">
+  <div class="tasks-grid">
+    <div
+      *ngFor="let task of tasks"
+      class="task-card"
+      [ngStyle]="{ border: '5px solid ' + task.color }"
+    >
+      <div class="task-card-header">
+        <h1>{{ task.title }}</h1>
+      </div>
+      
+      <div class="task-card-description">
+        <p>{{ task.description }}</p>
+      </div>
+      
+      <div class="task-card-footer">
+        <button (click)="delete(task.title)" class="delete">Delete</button>
+        <button (click)="edit(task.title, task.type)" class="edit">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

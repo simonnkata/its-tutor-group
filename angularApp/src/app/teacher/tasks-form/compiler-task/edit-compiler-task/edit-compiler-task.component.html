@@ -1,0 +1,6 @@
+
+<p *ngIf="!task; else taskBox">Loading task...</p>
+
+<ng-template #taskBox>
+    <input type="text" [(ngModel)]="task.title">
+</ng-template>

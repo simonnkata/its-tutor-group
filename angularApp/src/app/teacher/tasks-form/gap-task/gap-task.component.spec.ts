@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaskFormComponent } from './task-form.component';
+import { GapTaskComponent } from './gap-task.component';
 
-describe('TaskFormComponent', () => {
-  let component: TaskFormComponent;
-  let fixture: ComponentFixture<TaskFormComponent>;
+describe('GapTaskComponent', () => {
+  let component: GapTaskComponent;
+  let fixture: ComponentFixture<GapTaskComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TaskFormComponent]
+      imports: [GapTaskComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TaskFormComponent);
+    fixture = TestBed.createComponent(GapTaskComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
