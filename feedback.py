@@ -80,9 +80,14 @@ def feedback_flowchart(task, data):
     correctLinks = correctSolution.get("links")
     nodesMatch = compareNodes(userNodes, correctNodes)
     linksMatch = compareLinks(userLinks, correctLinks)
-    if nodesMatch and linksMatch and not checkMissingElements:
+    isCorrect = nodesMatch and linksMatch
+    isComplete = not checkMissingElements(userNodes, userLinks, correctNodes, correctLinks)
+    if isCorrect and isComplete:
         return (True, task["feedback"])
-
+    if not isComplete:
+        return (False, "Your answer is close but incomplete. Please check if you have added all necessary nodes and links.")
+    return (False, "Unfortunately, your answer is not correct. Try again.")
+    
 
 # check if any of the entered nodes are wrong/not part of the correct solution
 def compareNodes(userNodes, correctNodes): 
