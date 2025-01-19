@@ -1,2 +1,14 @@
-<p>gap works!</p>
-<p>{{ taskTitle }}</p>
+<div>
+  <h2>{{ task.title }}</h2>
+
+  <!-- Display Task Description -->
+  <div id="description">
+    <p>{{ task.description[0].text }}</p>
+  </div>
+  <pre class="code-block">
+    <code style="text-align: left;display: block;" id="gap-section">{{ codeSection }}</code>
+  </pre>
+
+  <!-- Submit Button -->
+  <button (click)="submitAnswer()">Submit Answer</button>
+</div>
