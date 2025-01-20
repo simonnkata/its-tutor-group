@@ -17,6 +17,7 @@ export class FlowchartComponent {
     this.route.queryParams.subscribe((params) => {
       this.taskTitle = params['title'];
       console.log('Task title:', this.taskTitle);
+      
     });
   }
 }

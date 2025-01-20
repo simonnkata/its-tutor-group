@@ -31,9 +31,10 @@ export class GapTaskComponent {
 
   constructor(
     private taskService: TaskService,
-    private router: ActivatedRoute,
     private httpClient: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     taskService.data$.subscribe((data) => {
       this.type = data.type;
@@ -41,7 +42,7 @@ export class GapTaskComponent {
       this.skillLevel = data.skill;
     });
 
-    this.router.queryParams.subscribe((params) => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.type = params['type'];
       this.category = params['category'];
       this.skillLevel = params['skill'];
@@ -106,6 +107,7 @@ export class GapTaskComponent {
     console.log(task);
     this.taskService.createTask(task).subscribe({
       next: (response: { status: string; data: string; message?: string }) => {
+        this.router.navigate(['/teacher/tasks-overview']);
         if (response.status === 'successful') {
           this.showSuccessMessage();
           this.resetForm();

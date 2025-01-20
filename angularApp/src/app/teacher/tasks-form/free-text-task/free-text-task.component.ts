@@ -1,16 +1,16 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { TaskService } from '../../../services/task.service';
 import { FormsModule, NgModel } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgIf, NgForOf } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-free-text-task',
   standalone: true,
-  imports: [NgIf, NgForOf, FormsModule, MatSnackBarModule],
+  imports: [NgIf, NgForOf, FormsModule, MatSnackBarModule, ],
   templateUrl: './free-text-task.component.html',
   styleUrl: './free-text-task.component.sass',
 })
@@ -29,9 +29,10 @@ export class FreeTextTaskComponent {
 
   constructor(
     private taskService: TaskService,
-    private router: ActivatedRoute,
     private httpClient: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     taskService.data$.subscribe((data) => {
       this.type = data.type;
@@ -39,7 +40,7 @@ export class FreeTextTaskComponent {
       this.skillLevel = data.skill;
     });
 
-    this.router.queryParams.subscribe((params) => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.type = params['type'];
       this.category = params['category'];
       this.skillLevel = params['skill'];
@@ -87,6 +88,7 @@ export class FreeTextTaskComponent {
     console.log(task);
     this.taskService.createTask(task).subscribe({
       next: (response: { status: string; data: string; message?: string }) => {
+        this.router.navigate(['/teacher/tasks-overview']);
         if (response.status === 'successful') {
           this.showSuccessMessage();
           this.resetForm();

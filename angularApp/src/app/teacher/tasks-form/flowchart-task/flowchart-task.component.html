@@ -26,7 +26,7 @@
         placeholder="Visualize the code below by creating a flowchart."
       ></textarea>
 
-      <!-- Part 2: Code als Aufgabe -->
+      <!-- Code Section -->
       <div class="code-section">
         <h3>Code Task</h3>
         <textarea
@@ -37,41 +37,75 @@
       </div>
     </div>
 
-    <!-- Flowchart Section -->
-    <div class="flowchart-section">
-      <h2>Flowchart Task</h2>
-      <div
-        class="flowchart-diagram"
-        id="myDiagramDiv"
-        ng-class="{
-          'correct-answer-flow': isCorrectAnswer,
-          'incorrect-answer-flow': !isCorrectAnswer && isAnswered,
-          'incomplete-answer-flow': isAnswerIncomplete && isAnswered
-        }"
-        style="
-          height: 350px;
-          border-radius: 4px;
-          background-color: #1e1e1e;
-          box-sizing: border-box;
-          margin-bottom: 20px;
-        "
-      ></div>
-      <div class="flowchart-options">
-        <select ng-model="selectedLine" style="width: 150px; height: 40px">
-          <option value="" disabled selected>Select a line:</option>
-        </select>
-        <select ng-model="selectedShape" style="width: 150px; height: 40px">
-          <option value="" disabled selected>Select a shape:</option>
-          <option value="Ellipse">Terminator</option>
-          <option value="Rectangle">Process</option>
-          <option value="Diamond">Condition</option>
-        </select>
-        <button ng-click="addNode()" class="check-button">Add Node</button>
-        <button ng-click="refresh()" class="check-button">Refresh</button>
-      </div>
-    </div>
+        <div class="flowchart-task">
+          <h2>Flowchart Diagram Solution</h2>
+          <div id="myDiagramDiv" class="flowchart-diagram"></div>
+            <div class="flowchart-options">
+              <h3>Add Node</h3>
+              <input
+                type="text"
+                [(ngModel)]="nodeName"
+                placeholder="Enter node name"
+                class="node-name-input"
+              />
+              <select [(ngModel)]="selectedShape" class="node-selector">
+                <option value="Default">Default</option>
+                <option value="Start">Start</option>
+                <option value="Process">Process</option>
+                <option value="Decision">Decision</option>
+                <option value="End">End</option>
+              </select>
+              <button (click)="addNode(nodeName)">Add Node</button>
+            </div>
 
-    <!-- Task Solution Section -->
+          <div class="flowchart-options">
+            <h3>Add Link</h3>
+            <select [(ngModel)]="fromNodeKey" class="node-selector" *ngIf="diagram && isGraphLinksModel(diagram.model)">
+              <option *ngFor="let node of getNodeDataArray()" [value]="node['key']">
+                {{ node['key'] }}
+              </option>
+            </select>
+            <select [(ngModel)]="toNodeKey" class="node-selector" *ngIf="diagram && isGraphLinksModel(diagram.model)">
+              <option *ngFor="let node of getNodeDataArray()" [value]="node['key']">
+                {{ node['key'] }}
+              </option>
+            </select>
+            <input
+              type="text"
+              [(ngModel)]="linkText"
+              placeholder="Enter link text"
+              class="link-text-input"
+            />
+            <button (click)="addLink()">Add Link</button>
+          </div>
+
+          <!--Delete Node -->
+          <div class="flowchart-options">
+            <h3>Delete Node</h3>
+            <select [(ngModel)]="selectedNodeKey" class="node-selector">
+              <option *ngFor="let node of diagram?.model?.nodeDataArray" [value]="node['key']">
+                {{ node['key'] }}
+              </option>
+            </select>
+            <button (click)="deleteNode()">Delete Node</button>
+          </div>
+          <div class="flowchart-options">
+            <h3>Delete Link</h3>
+            <select
+              [(ngModel)]="selectedLink"
+              class="node-selector"
+              [disabled]="!diagram || !isGraphLinksModel(diagram.model)">
+              <option
+                *ngFor="let link of getLinkDataArray()"
+                [ngValue]="link">
+                {{ link.from }} → {{ link.to }}
+              </option>
+            </select>
+            <button (click)="deleteLink()">Delete Link</button>
+          </div>
+        </div>
+
+    <!-- Task Solution Section 
     <div class="solution-section">
       <h2>Task Solution</h2>
       <textarea
@@ -79,7 +113,7 @@
         class="solution-editor"
         placeholder="Write the solution here..."
       ></textarea>
-    </div>
+    </div>-->
 
     <!-- Hints Section -->
     <div class="hints-section">
@@ -104,11 +138,15 @@
         <button
           (click)="removeHint(i)"
           style="
-            width: 60px;
-            height: 40px;
-            color: white;
-            background-color: red;
-            border-radius: 20%;
+            width: auto;
+            color: #fff;
+            background-color: #5cb3b3;
+            border: none;
+            border-radius: 5px;
+            padding: 4px 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
           "
         >
           X

@@ -10,12 +10,16 @@
       </div>
       
       <div class="task-card-description">
-        <p>{{ task.description }}</p>
+        <p>{{ task.description}}</p>
       </div>
       
       <div class="task-card-footer">
-        <button (click)="delete(task.title)" class="delete">Delete</button>
-        <button (click)="edit(task.title, task.type)" class="edit">Edit</button>
+        <div class="task-card-footer">
+          <button (click)="delete(task.title)" class="delete">Delete</button>
+          <button (click)="edit(task.title, task.type)" class="edit">Edit</button>
+          <button (click)="show(task.title, task.type)" class="show">Show</button>
+        </div>
+        
       </div>
     </div>
   </div>
