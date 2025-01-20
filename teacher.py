@@ -83,13 +83,15 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             data = request.get_json()
             current_user = get_jwt_identity()
             teacher = db.teachers.find_one({'username':current_user})
-            title = data['title']
+            title = make_task_title(data['topic'], data['type'])
             if db.tasks.find_one({'title':title}):
                 message = "task with that name already exists"
                 code = 401
                 status = "fail"
             else:
+                data['title'] = title
                 data['teacher_id'] = teacher["_id"]
+                data['points'] = get_task_points(data['difficultyLevel'])
                 data['taskCreated'] = datetime.now()
                 data['is_deleted'] = False
                 res = db.tasks.insert_one(data)
@@ -147,7 +149,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                 res_data = task
             else:                
                 message = "no task found with that name"
-                code = 401
+                code = 404
                 status = "fail"
         except Exception as ex:
             message = f"{ex}"
@@ -168,19 +170,21 @@ def register_teacher_routes(app, db, bcrypt, jwt):
             current_user = get_jwt_identity()
             teacher = db.teachers.find_one({'username':current_user})
             teacher_id = teacher["_id"]
+            points = get_task_points(data['difficultyLevel'])
             task = db.tasks.find_one({'title':title},{"is_deleted": {"$ne": True}})
             if task:
                 if  teacher_id != task["teacher_id"]:
                     message = "you can only edit your own tasks"
-                    code = 401
+                    code = 403
                     status = "fail"
                 else:
                     newvalues = { "$set": { 'difficultyLevel': data.get('difficultyLevel'), 
                                             'description': data.get('description'), 
                                             'feedback': data.get('feedback'), 
-                                            'points': data.get('points'), 
+                                            'points': points, 
                                             'hints': data.get('hints'), 
-                                            'solution': data.get('solution'), 
+                                            'solution': data.get('solution'),
+                                            'output' : data.get('output'), 
                                             'keywords': data.get('keywords'), 
                                             'availableLines': data.get('availableLines')
                                             } }
@@ -192,7 +196,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                         res_data = {"title": title}
             else:
                 message = "there is no task with that name"
-                code = 401
+                code = 404
                 status = "fail"
         except Exception as ex:
             message = f"{ex}"
@@ -261,3 +265,12 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         typeCount = db.tasks.count_documents({"type": type })
         title = f"{topic[0]}{topicCount+1}{type[0].upper()}{typeCount + 1}"
         return title
+    
+    def get_task_points(difficultyLevel):
+        match difficultyLevel:
+            case "beginner":
+                return 5
+            case "advanced":
+                return 10
+            case _:
+                return 15
