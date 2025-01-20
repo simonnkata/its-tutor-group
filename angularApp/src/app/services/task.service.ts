@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Subject } from 'rxjs';
 
 
@@ -28,7 +27,7 @@ export class TaskService {
     this.dataSubject.next(data);
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   generateTaskTitle(topic: string, type: string): Observable<any> {
     const StoredUser = localStorage.getItem('currentUser');
@@ -39,7 +38,7 @@ export class TaskService {
       'Content-Type': 'application/json',
     });
     const options = { headers: headers };
-    return this.http.post(
+    return this.httpClient.post(
       `${this.baseUrl}/generateTaskTitle`,
       { topic, type },
       options
@@ -54,7 +53,7 @@ export class TaskService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.http.post(`${this.baseUrl}/task`, task, { headers });
+    return this.httpClient.post(`${this.baseUrl}/task`, task, { headers });
   }
 
   getTasks(): Observable<any> {
@@ -65,7 +64,7 @@ export class TaskService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.http.get(`${this.baseUrl}/task`, { headers });
+    return this.httpClient.get(`${this.baseUrl}/task`, { headers });
   }
 
   deleteTask(title: string) {
@@ -76,7 +75,7 @@ export class TaskService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.http.delete(`${this.baseUrl}/task/${title}`, { headers })
+    return this.httpClient.delete(`${this.baseUrl}/task/${title}`, { headers })
   }
 
   getTask(title: string) {
@@ -87,9 +86,17 @@ export class TaskService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.http.get<any>(`${this.baseUrl}/task/${title}`, { headers });
+    return this.httpClient.get<any>(`${this.baseUrl}/task/${title}`, { headers });
   }
 
+
+  
+    getTaskByTitle(title: string) {
+      // Beispiel-API-Endpunkt
+      return this.httpClient.get(`/api/tasks?title=${title}`);
+    }
+  
+  
   
   
 }

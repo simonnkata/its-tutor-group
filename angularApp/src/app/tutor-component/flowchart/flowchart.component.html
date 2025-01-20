@@ -1,2 +1,13 @@
-<p>flowchart works!</p>
-<p>{{ taskTitle }}</p>
+<p><strong>Task Title:</strong> {{ taskTitle }}</p>
+
+<div class="task-detail" *ngIf="taskDetails && taskDetails.title">
+  <h1>{{ taskDetails.title }}</h1>
+  <p><strong>Type:</strong> {{ taskDetails.type }}</p>
+  <p><strong>Topic:</strong> {{ taskDetails.topic }}</p>
+  <p><strong>Difficulty Level:</strong> {{ taskDetails.difficultyLevel }}</p>
+  <p><strong>Description:</strong> {{ taskDetails.description[0]?.text }}</p>
+</div>
+
+<div *ngIf="!taskDetails || !taskDetails.title">
+  <p>Loading task details...</p>
+</div>
