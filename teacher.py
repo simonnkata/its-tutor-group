@@ -139,7 +139,7 @@ def register_teacher_routes(app, db, bcrypt, jwt):
         code = 500
         status = "fail"
         try:
-            task = db.tasks.find_one({'title':title},{"is_deleted": {"$ne": True}})
+            task = db.tasks.find_one({'title': title, 'is_deleted': {'$ne': True}})
             if task:
                 status = "successful"
                 message = "task found"

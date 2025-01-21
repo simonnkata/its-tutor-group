@@ -11,6 +11,7 @@ app = Flask(__name__)
 bcrypt= Bcrypt(app)
 secret= "Very_secret_key_thatshouldntbesavedinplaintext"
 app.config["SECRET_KEY"]="Very_secret_key_thatshouldntbesavedinplaintext"
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
 jwt=JWTManager(app)
 CORS(app, origins=["http://localhost:4200","http://localhost:4200/tutor"])
 
