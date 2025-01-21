@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-freetext',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './freetext.component.html',
   styleUrls: ['./freetext.component.css'],
 })
@@ -29,8 +30,8 @@ export class FreetextComponent {
       if (this.taskTitle) {
         this.taskService.getTask(this.taskTitle).subscribe((response) => {
           this.task = response.data;
-          this.correctAnswer = this.task.solution;
-          this.correctFeedback = this.task.feedback;
+          this.correctAnswer = this.task.solution.trim();
+          this.correctFeedback = 'Nice good wwork :)';
           console.log(this.task);
         });
       }

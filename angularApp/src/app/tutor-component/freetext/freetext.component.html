@@ -18,11 +18,19 @@
       <!-- Submit Button -->
       <button (click)="submitAnswer()">Submit Answer</button>
 
-      <!-- Feedback anzeigen -->
-      <div *ngIf="isCorrect !== null">
-        <div *ngIf="isCorrect" style="color: green; font-weight: bold;">{{feedback}}</div>
-        <div *ngIf="!isCorrect" style="color: red; font-weight: bold;">{{feedback}}</div>
+      
+    </td>
+    <td>
+      <div class="image-container">
+        <img src="../../../assets/happy_pythonTutor - Kopie.png" alt="Image" />
+        <div *ngIf="isCorrect" class="textbox" style="color: green; font-weight: bold;">
+          {{ feedback }}
+        </div>
+        <div *ngIf="!isCorrect" class="textbox"style="color: red; font-weight: bold;">
+          {{ feedback }}
+        </div>
       </div>
+      
     </td>
   </table>
 </div>
