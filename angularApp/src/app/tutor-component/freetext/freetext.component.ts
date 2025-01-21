@@ -31,7 +31,7 @@ export class FreetextComponent {
         this.taskService.getTask(this.taskTitle).subscribe((response) => {
           this.task = response.data;
           this.correctAnswer = this.task.solution.trim();
-          this.correctFeedback = 'Nice good wwork :)';
+          this.correctFeedback = 'Nice good work :)';
           console.log(this.task);
         });
       }
