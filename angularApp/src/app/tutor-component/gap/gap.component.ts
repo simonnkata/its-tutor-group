@@ -4,8 +4,6 @@ import { TaskService } from '../../services/task.service';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf, NgStyle } from '@angular/common';
-import { ThisReceiver } from '@angular/compiler';
-
 @Component({
   selector: 'app-gap',
   standalone: true,
@@ -17,35 +15,34 @@ export class GapComponent {
   taskTitle: string | null = null;
   task: any = null;
   codeSection: any = null;
-  formattedCodeSection: string = '';
   answers: string[] = [];
   answersCount: number = 0;
+  feedback: string = '';
 
   constructor(private route: ActivatedRoute, public taskService: TaskService) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.taskTitle = params['title'];
+      if (this.taskTitle) {
+        this.codeSection = '';
+        this.taskService.getTask(this.taskTitle).subscribe((response) => {
+          this.task = response.data;
+          this.codeSection = this.task.description[1].code;
+          const gap = document.getElementById('gap-section');
+          if (gap) {
+            gap.innerText = this.codeSection;
+          }
+          this.answersCount = 0;
+          this.processGaps();
+        });
+      }
     });
-    if (this.taskTitle) {
-      this.taskService.getTask(this.taskTitle).subscribe((response) => {
-        this.task = response.data;
-        console.log(this.task);
-        this.codeSection = this.task.description[1].code;
-      });
-    }
   }
-
-  ngAfterViewInit() {
-    this.processGaps();
-  }
-
-  userAnswer: string = '';
 
   processGaps() {
     const gap = document.getElementById('gap-section');
-    var gapContent = gap?.innerHTML;
-
+    var gapContent = gap?.innerHTML || '';
     gapContent = gapContent?.replace(
       new RegExp('&lt;&lt;Gap&gt;&gt;', 'g'),
       (_, index) => {
@@ -54,10 +51,7 @@ export class GapComponent {
         return result;
       }
     );
-
-    if (gapContent) {
-      if (gap) gap.innerHTML = gapContent;
-    }
+    if (gap) gap.innerHTML = gapContent;
   }
 
   submitAnswer() {
@@ -70,7 +64,6 @@ export class GapComponent {
       }
     }
     this.answers = answers;
-    console.log(this.answers);
     this.evaluateAnswer();
   }
 
@@ -88,6 +81,15 @@ export class GapComponent {
           gap.style.border = '3px solid green';
         }
       }
+    }
+    if (correct) {
+      this.feedback = 'Correct!';
+    } else {
+      this.feedback = 'Incorrect!';
+    }
+    const textbox = document.getElementById('feedback');
+    if (textbox) {
+      textbox.style.visibility = 'visible';
     }
   }
 }
