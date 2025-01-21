@@ -1,2 +1,28 @@
-<p>freetext works!</p>
-<p>{{ taskTitle }}</p>
+<div>
+  <table>
+    <td>
+      <h2>{{ task.title }}</h2>
+
+      <!-- Display Task Description -->
+      <div id="description">
+        <p>{{ task.description[0].text }}</p>
+      </div>
+
+      <pre class="code-block">
+      <code style="text-align: left;display: block;" id="gap-section">{{ task.description[1].code }}</code>
+      </pre>
+
+      <!-- Textarea for user input -->
+      <textarea [(ngModel)]="answer" placeholder="Gib hier deine Antwort ein"></textarea>
+
+      <!-- Submit Button -->
+      <button (click)="submitAnswer()">Submit Answer</button>
+
+      <!-- Feedback anzeigen -->
+      <div *ngIf="isCorrect !== null">
+        <div *ngIf="isCorrect" style="color: green; font-weight: bold;">{{feedback}}</div>
+        <div *ngIf="!isCorrect" style="color: red; font-weight: bold;">{{feedback}}</div>
+      </div>
+    </td>
+  </table>
+</div>
