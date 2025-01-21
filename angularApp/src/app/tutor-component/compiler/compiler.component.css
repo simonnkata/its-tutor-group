@@ -50,9 +50,32 @@
 }
 
 .button-check-hint {
-    float: right;
+    float: left;
 }
 .hint-position {
     height: 0px;
 }
+
+.image-container {
+    position: absolute;
+    bottom: 300px;
+    right: 300px;
+  }
+
+  img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  .textbox {
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+    background-color: aliceblue;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100px;
+    border: 1px solid black;
+  }
 

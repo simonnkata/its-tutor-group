@@ -89,4 +89,20 @@ export class TaskService {
     });
     return this.http.get<any>(`${this.baseUrl}/task/${title}`, { headers });
   }
+
+  getFeedback(title: string, userAnswer: string, userOutput: string): Observable<any>  {
+    const StoredUser = localStorage.getItem('currentUser');
+    const UserInfoJson = StoredUser ? JSON.parse(StoredUser) : null;
+    const token = UserInfoJson.token;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+    const options = { headers: headers };
+    return this.http.post(
+      `${this.baseUrl}/feedback/${title}`,
+      { userAnswer, userOutput },
+      options
+    );
+  }
 }

@@ -4,25 +4,30 @@ from datetime import datetime
 import re
 
 def feedback_routes(app, db, bcrypt, jwt):
-    @app.route('/feedback/<title>', methods=['GET'])
+    @app.route('/feedback/<title>', methods=['POST'])
     @jwt_required()
     def feedback(title):
         message = ""
         res_data = {}
         code = 500
         status = "fail"
+        feedback = ""
+        isCorrect = False
+        print("hello")
         try:
             data = request.get_json()
             task = db.tasks.find_one({'title': title})
             if task:
                 taskType = task["type"]
-                if taskType == "gap":
+                print(taskType)
+                if (taskType == "gap"):
                     feedbackAndIsCorrect = feedback_gap(task, data)
-                elif taskType == "freetext":
+                elif (taskType == "freetext"):
                     feedbackAndIsCorrect = feedback_freetext(task, data)
-                elif taskType == "flowchart":
+                elif (taskType == "flowchart"):
                     feedbackAndIsCorrect = feedback_flowchart(task, data)
                 else:
+                    print("here")
                     feedbackAndIsCorrect = feedback_compiler(task, data)
                 isCorrect = feedbackAndIsCorrect[0]
                 feedback = feedbackAndIsCorrect[1]
@@ -38,7 +43,7 @@ def feedback_routes(app, db, bcrypt, jwt):
             message = f"{ex}"
             status = "fail"
             code = 500    
-        return jsonify({'status': status, "data": res_data, "message":message}), code
+        return jsonify({"status": status, "feedback": feedback, "isCorrect": isCorrect, "message":message}), code
     
     # check solution for gap tasks
     def feedback_gap(task, data):
@@ -123,7 +128,8 @@ def feedback_compiler(task, data):
     correctCode = re.sub(r"\s+|#[^\n]*", "", task["solution"])
     correctOutput = re.sub(r"\s+|#[^\n]*", "", task["output"])
     keywords = task["keywords"]    
-    if userCode == correctCode:
+    print(keywords)
+    if (userCode == correctCode):
         return (True, task["feedback"])
     if userOutput == correctOutput: # if code is not exactly like given solution, but gives the correct output
         feedback = check_keywords(keywords, userCode)

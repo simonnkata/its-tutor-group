@@ -2,13 +2,13 @@
     <div class="task-body">
     
         <h3>{{ taskTitle }}</h3>
-        <td colspan="2" class="td-task-description" >
+        <div colspan="2" class="td-task-description" >
             {{ taskDescription }}
             <pre class="code-style">{{ codeSection }}</pre>
-        </td>
+        </div>
         
     <!-- Input for the students solution -->
-    <tr>
+    <div>
         <h4>Your answer:</h4>
         <textarea
           id="solution-editor"
@@ -16,14 +16,18 @@
           placeholder="Write your answer here..."
           [(ngModel)]="userAnswer"
         ></textarea>
-    </tr>
-        <tr>
-            <td class="button-check-hint">
-                <button (click)=null class="check-button">Check</button>
-            </td>
-        </tr>   
     </div>
-    <td>
+        <div class="button-check-hint">
+            <button (click)=submitAnswer() >Submit Answer</button>
+    </div>   
+    <div class="image-container">
+        <img src="../../../assets/happy_pythonTutor - Kopie.png" alt="Image" />
+        <div *ngIf="isCorrect" class="textbox" style="color: green; font-weight: bold;">
+          {{ feedback }}
+        </div>
+        <div *ngIf="!isCorrect" class="textbox"style="color: red; font-weight: bold;">
+          {{ feedback }}
+        </div>
 </div>
 
 
