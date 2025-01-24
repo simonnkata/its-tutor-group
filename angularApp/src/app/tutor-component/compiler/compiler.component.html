@@ -1,2 +1,33 @@
-<p>compiler works!</p>
-<p>{{ taskTitle }}</p>
+<div>
+    <div class="task-body">
+    
+        <h3>{{ taskTitle }}</h3>
+        <div colspan="2" class="td-task-description" >
+            {{ taskDescription }}
+            <pre class="code-style">{{ codeSection }}</pre>
+        </div>
+        
+    <!-- Input for the students solution -->
+    <div>
+        <h4>Your answer:</h4>
+        <textarea
+          id="solution-editor"
+          class="code-style"
+          placeholder="Write your answer here..."
+          [(ngModel)]="userAnswer"
+        ></textarea>
+    </div>
+        <div class="button-check-hint">
+            <button (click)=submitAnswer() >Submit Answer</button>
+    </div>   
+    <div class="image-container">
+        <img src="../../../assets/happy_pythonTutor - Kopie.png" alt="Image" />
+        <div *ngIf="isCorrect" class="textbox" style="color: green; font-weight: bold;">
+          {{ feedback }}
+        </div>
+        <div *ngIf="!isCorrect" class="textbox"style="color: red; font-weight: bold;">
+          {{ feedback }}
+        </div>
+</div>
+
+

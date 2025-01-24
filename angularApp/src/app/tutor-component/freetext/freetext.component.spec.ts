@@ -20,4 +20,4 @@ describe('FreetextComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+})

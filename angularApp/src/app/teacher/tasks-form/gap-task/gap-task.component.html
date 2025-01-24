@@ -34,6 +34,7 @@
           class="code-editor"
           placeholder="Write the code task description here..."
           [(ngModel)]="codeTaskContent"
+          (input)="handleTaskChange()"
         ></textarea>
         <button class="insert-gap-btn" (click)="insertGap()">
           Insert Gap (<<>>)
@@ -44,12 +45,17 @@
     <!-- Task Solution Section -->
     <div class="solution-section">
       <h2>Task Solution</h2>
-      <textarea
-        id="solution-editor"
-        class="solution-editor"
-        placeholder="Write the solution here..."
-        [(ngModel)]="solution"
-      ></textarea>
+
+      <div
+        *ngFor="
+          let solution of solutions;
+          let i = index;
+          trackBy: trackByIndexGap
+        "
+      >
+        <label for="solution{{ i }}">Solution for Gap {{ i + 1 }}:</label>
+        <input type="text" id="solutions{{ i }}" [(ngModel)]="solutions[i]" />
+      </div>
     </div>
 
     <!-- Hints Section -->

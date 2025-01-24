@@ -26,6 +26,7 @@ export class GapTaskComponent {
   description: string = '';
   solution: string = '';
   feedback: string = '';
+  solutions: string[] = [];
 
   codeTaskContent: string = ''; // Code-Inhalt
 
@@ -80,15 +81,53 @@ export class GapTaskComponent {
       const textBefore = this.codeTaskContent.slice(0, start);
       const textAfter = this.codeTaskContent.slice(end);
 
-      this.codeTaskContent = `${textBefore}<<>>${textAfter}`;
+      this.codeTaskContent = `${textBefore}<<Gap>>${textAfter}`;
+      this.solutions.push('');
       setTimeout(() => {
-        textarea.setSelectionRange(start + 2, start + 2);
+        textarea.setSelectionRange(start + 7, start + 7);
         textarea.focus();
       }, 0);
     }
   }
 
+  handleTaskChange(): void {
+    const gapRegex = /<<Gap>>/g;
+    const textarea: HTMLTextAreaElement | null = document.getElementById(
+      'code-task-editor'
+    ) as HTMLTextAreaElement;
+
+    var taskDescription: string | null = textarea.value || '';
+    const gapsInText = taskDescription.match(gapRegex) || [];
+    const currentGapCount = gapsInText.length;
+    console.log('Current gap count:', currentGapCount);
+    // Synchronize solutions with the current gaps
+    this.solutions = this.solutions.slice(0, currentGapCount);
+
+    // Re-number gaps to match their order in the text
+    /* taskDescription = taskDescription.replace(gapRegex, (_, index) => {
+      return `<<Gap ${index + 1}>>`;
+    }); */
+    console.log('Task description:', taskDescription);
+    //textarea.innerHTML = taskDescription;
+  }
+
+  private reindexGaps(): void {
+    const textarea: HTMLTextAreaElement | null = document.getElementById(
+      'code-task-editor'
+    ) as HTMLTextAreaElement;
+
+    var taskDescription: string | null = textarea.value || '';
+    // Adjust gap numbers in taskDescription to match updated solutions
+    let gapCounter = 1;
+    taskDescription = taskDescription.replace(/<<Gap \d+>>/g, () => {
+      return `<<Gap ${gapCounter++}>>`;
+    });
+    textarea.value = taskDescription;
+    // Solution indices automatically match after re-indexing
+  }
+
   save() {
+    console.log(this.solutions);
     var taskDescription = [];
     taskDescription[0] = { text: this.description };
     taskDescription[1] = { code: this.codeTaskContent };
@@ -100,7 +139,7 @@ export class GapTaskComponent {
       description: taskDescription,
       hints: this.hints,
       points: 2,
-      solution: this.solution,
+      solution: this.solutions,
       keywords: [],
       availableLines: [],
     };
@@ -169,5 +208,10 @@ export class GapTaskComponent {
     this.hints = [''];
     this.feedback = '';
     this.codeTaskContent = '';
+    this.solutions = [];
+  }
+
+  trackByIndexGap(index: number): number {
+    return index;
   }
 }

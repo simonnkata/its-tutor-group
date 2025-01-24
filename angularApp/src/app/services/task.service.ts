@@ -90,6 +90,7 @@ export class TaskService {
   }
 
 
+
   
     getTaskByTitle(title: string) {
       // Beispiel-API-Endpunkt
@@ -99,4 +100,20 @@ export class TaskService {
   
   
   
+
+  getFeedback(title: string, userAnswer: string, userOutput: string): Observable<any>  {
+    const StoredUser = localStorage.getItem('currentUser');
+    const UserInfoJson = StoredUser ? JSON.parse(StoredUser) : null;
+    const token = UserInfoJson.token;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+    const options = { headers: headers };
+    return this.httpClient.post(
+      `${this.baseUrl}/feedback/${title}`,
+      { userAnswer, userOutput },
+      options
+    );
+  }
 }
