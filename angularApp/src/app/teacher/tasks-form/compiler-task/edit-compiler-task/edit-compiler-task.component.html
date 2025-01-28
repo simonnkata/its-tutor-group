@@ -2,5 +2,125 @@
 <p *ngIf="!task; else taskBox">Loading task...</p>
 
 <ng-template #taskBox>
-    <input type="text" [(ngModel)]="task.title">
+    
+
+    <div class="compiler-task">
+        <section class="content">
+          <div style="display: flex; width: 100%; gap: 20px">
+            <!-- Task Name Section -->
+            <div class="task-name" style="flex: 1; margin-right: 10px">
+              <h2>Task Name: {{ task.title }}</h2>
+              <!-- <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p> -->
+            </div>
+            <!-- Task Details Section -->
+            <div class="task" style="flex: 1">
+              <h2>Task Details</h2>
+              <ul>
+                <li>Type: {{ task.type }}</li>
+                <li>Category: {{ task.topic }}</li>
+                <li>Skill Level: {{ task.difficultyLevel }}</li>
+              </ul>
+            </div>
+          </div>
+      
+          <!-- Task Description Section -->
+          <div class="task-description">
+            <h2>Task Description</h2>
+            <textarea
+              id="task-rest"
+              class="flexible-textarea"
+              placeholder="Write the main part of the task here..."
+              [(ngModel)]="task.description[0].text"
+            ></textarea>
+      
+            <!-- Part 2: Code als Aufgabe -->
+            <div class="code-section">
+              <h3>Code Task</h3>
+              <textarea
+                id="code-task-editor"
+                class="code-editor"
+                placeholder="Write the code task description here..."
+                [(ngModel)]="task.description[1].code"
+              ></textarea>
+            </div>
+      
+            <!-- Part 3: Rest von Task -->
+            <textarea
+              id="task-rest"
+              class="flexible-textarea"
+              placeholder="Write the remaining part of the task here..."
+              [(ngModel)]="task.description[2].text"
+            ></textarea>
+          </div>
+      
+          <!-- Task Solution Section -->
+          <div class="solution-section">
+            <h2>Task Solution</h2>
+            <textarea
+              id="solution-editor"
+              class="solution-editor"
+              placeholder="Write the solution here..."
+              [(ngModel)]="task.solution"
+            ></textarea>
+          </div>
+      
+          <!-- Hints Section -->
+          <!-- <div class="hints-section">
+            <h2>Hints</h2>
+            <div
+              *ngFor="let hint of hints; let i = index; trackBy: trackByIndex"
+              id="hints-container"
+              style="display: flex"
+            >
+              <textarea
+                [(ngModel)]="hints[i]"
+                [placeholder]="'Hint ' + (i + 1)"
+                style="
+                  resize: vertical;
+                  height: auto;
+                  width: 100%;
+                  margin-bottom: 10px;
+                  overflow: hidden;
+                "
+              >
+              </textarea>
+              <button
+                (click)="removeHint(i)"
+                style="
+                  width: auto;
+                  color: #fff;
+                  background-color: #5cb3b3;
+                  border: none;
+                  border-radius: 5px;
+                  padding: 4px 15px;
+                  font-size: 1rem;
+                  cursor: pointer;
+                  text-align: center;
+                "
+              >
+                X
+              </button>
+            </div>
+            <button class="add-hint-btn" (click)="addHint()">Add New Hint</button>
+          </div> -->
+      
+          <!-- Feedback Section -->
+          <div class="feedback-section">
+            <h2>Feedback</h2>
+            <textarea
+              id="feedback-editor"
+              class="feedback-editor"
+              placeholder="Write feedback here..."
+              [(ngModel)]="task.feedback"
+            ></textarea>
+          </div>
+      
+          <!-- Save Task -->
+          <div class="save-task">
+            <button class="run-btn" (click)="save()" type="submit">Save Task</button>
+          </div>
+        </section>
+      </div>
+      
+
 </ng-template>

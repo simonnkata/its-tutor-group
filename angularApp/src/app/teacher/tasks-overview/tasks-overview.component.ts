@@ -125,13 +125,22 @@ export class TasksOverviewComponent implements OnInit {
   edit(taskTitle: string, type: string): void {
     // Rufe die Task-Daten vom Server ab, um den Ersteller zu überprüfen
     this.taskService.getTask(taskTitle).subscribe({
-      next: (task: any) => {
-        const currentUser = localStorage.getItem('username'); // Aktuellen Benutzer abrufen
-        if (task.createdBy === currentUser) {
-          this.router.navigate([`${type}/${taskTitle}/edit`]);
+      next: (data: any) => {
+        let task = data.data
+        let currentUserString = localStorage.getItem('currentUser')
+        if (!currentUserString) {
+          this.router.navigate(['signup'])
         } else {
-          alert('You did not create this task.');
+          const currentUser = JSON.parse(currentUserString)['username'] // Aktuellen Benutzer abrufen
+
+          if (task.createdBy === currentUser) {
+            this.router.navigate([`teacher/${type}/${taskTitle}/edit`]);
+          } else {
+            console.log(task.createdBy, currentUser)
+            alert('You did not create this task.');
+          }
         }
+
       },
       error: (error) => {
         console.error('Error fetching task details:', error);

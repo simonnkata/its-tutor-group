@@ -56,6 +56,17 @@ export class TaskService {
     return this.httpClient.post(`${this.baseUrl}/task`, task, { headers });
   }
 
+  updateTask(task: any): Observable<any> {
+    const StoredUser = localStorage.getItem('currentUser');
+    const UserInfoJson = StoredUser ? JSON.parse(StoredUser) : null;
+    const token = UserInfoJson.token;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+    return this.httpClient.put(`${this.baseUrl}/task/${task.title}`, task, { headers });
+  }
+
   getTasks(): Observable<any> {
     const StoredUser = localStorage.getItem('currentUser');
     const UserInfoJson = StoredUser ? JSON.parse(StoredUser) : null;

@@ -145,6 +145,10 @@ def register_teacher_routes(app, db, bcrypt, jwt):
                 code = 200
                 del task["_id"]
                 del task["teacher_id"]
+
+                # TODO:: return real user
+                task['createdBy'] = 'teacher'
+
                 res_data = task
             else:                
                 message = "no task found with that name"
