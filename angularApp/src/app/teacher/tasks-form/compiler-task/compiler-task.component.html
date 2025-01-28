@@ -109,6 +109,46 @@
       ></textarea>
     </div>
 
+    <!-- Keywords Section -->
+    <div class="hints-section">
+      <h2>Keywords</h2>
+      <div
+        *ngFor="let keyword of keywords; let i = index; trackBy: trackByIndex"
+        id="hints-container"
+        style="display: flex"
+      >
+        <textarea
+          [(ngModel)]="keywords[i]"
+          placeholder="Add new keyword..."
+          style="
+            resize: vertical;
+            height: auto;
+            width: 100%;
+            margin-bottom: 10px;
+            overflow: hidden;
+          "
+        >
+        </textarea>
+        <button
+          (click)="removeKeyword(i)"
+          style="
+            width: auto;
+            color: #fff;
+            background-color: #5cb3b3;
+            border: none;
+            border-radius: 5px;
+            padding: 4px 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+          "
+        >
+          X
+        </button>
+      </div>
+      <button class="add-hint-btn" (click)="addKeyword()">Add keywords</button>
+    </div>
+
     <!-- Save Task -->
     <div class="save-task">
       <button class="run-btn" (click)="save()" type="submit">Save Task</button>
