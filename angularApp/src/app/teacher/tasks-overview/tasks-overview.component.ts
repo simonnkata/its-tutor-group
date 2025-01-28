@@ -92,7 +92,7 @@ export class TasksOverviewComponent implements OnInit {
       var color;
       if (difficultyLevel == 'beginner') {
         color = '#A3E635';
-      } else if (difficultyLevel == 'intermediate') {
+      } else if (difficultyLevel == 'advance') {
         color = '#FB923C';
       } else {
         color = '#2563EB';
@@ -144,5 +144,3 @@ export class TasksOverviewComponent implements OnInit {
     this.router.navigate([`${type}/${taskTitle}/show`]);
   }
 }
-
-
