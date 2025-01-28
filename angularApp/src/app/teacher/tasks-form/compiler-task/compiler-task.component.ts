@@ -22,6 +22,7 @@ export class CompilerTaskComponent {
   category: string = '';
   skillLevel: string = '';
   hints: string[] = [''];
+  keywords: string[] = [''];
   description: string[] = ['', '', ''];
   solution: string = '';
   feedback: string = '';
@@ -146,5 +147,12 @@ export class CompilerTaskComponent {
     this.solution = '';
     this.hints = [''];
     this.feedback = '';
+  }
+
+  addKeyword(): void {
+    this.keywords.push('');
+  }
+  removeKeyword(index: number): void {
+    this.keywords.splice(index, 1);
   }
 }
