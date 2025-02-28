@@ -21,7 +21,6 @@ export class SignupComponent {
   teacherSignupForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
-    email: ['', Validators.required],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
     disclaimerAccepted: [false, Validators.requiredTrue],
@@ -79,11 +78,12 @@ export class SignupComponent {
   }
 
   onSubmitRegisterTeacher() {
+    console.log('submitting teacher signup form');
+    console.log(this.teacherSignupForm);
     if (this.teacherSignupForm.valid) {
       // Extract username and password from the form
       const username = this.teacherSignupForm.value.username || '';
       const password = this.teacherSignupForm.value.password || '';
-      const email = this.teacherSignupForm.value.email || '';
       const firstName = this.teacherSignupForm.value.firstname || '';
       const lastName = this.teacherSignupForm.value.lastname || '';
       const disclaimerAccepted =
@@ -95,7 +95,7 @@ export class SignupComponent {
         disclaimerAccepted
       ) {
         this.authService
-          .teacherSignup(username, email, firstName, lastName, password)
+          .teacherSignup(username, firstName, lastName, password)
           .subscribe({
             next: (user) => {
               if (user && user.token) {

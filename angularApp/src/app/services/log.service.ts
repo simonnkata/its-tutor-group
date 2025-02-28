@@ -6,39 +6,39 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class LoggingService {
-    constructor(private http: HttpClient, private router: Router,) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  
-  updateLogs(data: { [key: string]: any },token:string) {
+  updateLogs(data: { [key: string]: any }, token: string) {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json' 
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     });
-    const options = {headers: headers};
-    return this.http.post<any>('http://127.0.0.1:5000/upload_logged_data', data, options)
+    const options = { headers: headers };
+    return this.http
+      .post<any>('http://localhost:5001/upload_logged_data', data, options)
       .pipe(
-        catchError(error => {
+        catchError((error) => {
           console.error('Signup error', error);
           return error;
         })
       );
   }
-  updateSolvedExercises(data: { [key: string]: any },token:string) {
+  updateSolvedExercises(data: { [key: string]: any }, token: string) {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json' 
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     });
-    const options = {headers: headers};
-    return this.http.post<any>('http://127.0.0.1:5000/updateSolvedTasks', data, options)
+    const options = { headers: headers };
+    return this.http
+      .post<any>('http://localhost:5001/updateSolvedTasks', data, options)
       .pipe(
-        catchError(error => {
+        catchError((error) => {
           console.error('Error updating solved tasks', error);
           return error;
         })
       );
   }
 }
-
 
 /*loggingService.updateLogs("data").subscribe(
   response => {

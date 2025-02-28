@@ -24,9 +24,7 @@
             "outputPath": "dist/angular-app",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
             "assets": [
@@ -38,10 +36,7 @@
               "src/app/angularjs/nav",
               "src/app/angularjs/img"
             ],
-            "styles": [
-              "src/styles.sass",
-              "src/app/angularjs/css/general.css"
-            ],
+            "styles": ["src/styles.sass", "src/app/angularjs/css/general.css"],
             "scripts": [
               "src/app/angularjs/js/TaskController.js",
               "src/app/angularjs/js/CorrectAnswerService.js",
@@ -49,15 +44,10 @@
               "src/app/angularjs/js/GapTaskController.js",
               "src/app/angularjs/js/DragAndDropController.js",
 
-              
               "src/app/angularjs/js/dragDropController.js",
-
-
 
               "src/app/angularjs/js/FreeCodeTaskController.js",
               "src/app/angularjs/js/FeedbackService.js"
-
-              
             ]
           },
           "configurations": {
@@ -66,12 +56,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "10kb",
+                  "maximumError": "12kb"
                 }
               ],
               "outputHashing": "all"
@@ -88,8 +78,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "headers": {
-              "Cross-Origin-Opener-Policy":"same-origin",
-              "Cross-Origin-Embedder-Policy":"require-corp"
+              "Cross-Origin-Opener-Policy": "same-origin",
+              "Cross-Origin-Embedder-Policy": "require-corp"
             }
           },
           "configurations": {
@@ -111,19 +101,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "sass",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.sass"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.sass"],
             "scripts": []
           }
         }

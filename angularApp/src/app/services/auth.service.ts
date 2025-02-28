@@ -38,7 +38,7 @@ export class AuthService {
 
   signup(username: string, password: string) {
     return this.http
-      .post<any>('http://127.0.0.1:5000/student_signup', { username, password })
+      .post<any>('http://localhost:5001/student_signup', { username, password })
       .pipe(
         map((response) => {
           if (
@@ -75,16 +75,14 @@ export class AuthService {
 
   teacherSignup(
     username: string,
-    email: string,
     firstName: string,
     lastName: string,
     password: string
   ) {
     return this.http
-      .post<any>('http://127.0.0.1:5000/teacher_signup', {
+      .post<any>('http://localhost:5001/teacher_signup', {
         username,
         password,
-        email,
         firstName,
         lastName,
       })
@@ -112,7 +110,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     return this.http
-      .post<any>('http://127.0.0.1:5000/student_login', { username, password })
+      .post<any>('http://localhost:5001/student_login', { username, password })
       .pipe(
         map((response) => {
           if (
@@ -149,7 +147,7 @@ export class AuthService {
 
   teacherLogin(username: string, password: string) {
     return this.http
-      .post<any>('http://127.0.0.1:5000/teacher_login', { username, password })
+      .post<any>('http://localhost:5001/teacher_login', { username, password })
       .pipe(
         map((response) => {
           if (
@@ -203,7 +201,7 @@ export class AuthService {
       localStorage.setItem('currentUser', JSON.stringify(currentUserObj));
       return this.http
         .post<any>(
-          'http://127.0.0.1:5000/changeExpLevel',
+          'http://localhost:5001/changeExpLevel',
           { username, experienceLevel },
           options
         )

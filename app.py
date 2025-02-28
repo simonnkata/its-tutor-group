@@ -14,12 +14,16 @@ secret= "Very_secret_key_thatshouldntbesavedinplaintext"
 app.config["SECRET_KEY"]="Very_secret_key_thatshouldntbesavedinplaintext"
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
 jwt=JWTManager(app)
-CORS(app, origins=["http://localhost:4200","http://localhost:4200/tutor"])
+CORS(app, origins=["http://localhost:4200","http://localhost:4200/tutor", "*"])
 
-client = MongoClient(host='localhost', port=27017)
-db = client['IPT_db']
+client = MongoClient("mongodb://mongo:27017/IPT_db")  
+db = client["IPT_db"]
 register_teacher_routes(app, db, bcrypt, jwt)
 feedback_routes(app, db, bcrypt, jwt)
+
+@app.route('/hello')
+def hello():
+    return "Hello World!"
 
 @app.route('/student_signup', methods=['POST'])
 def save_user():
@@ -159,4 +163,4 @@ def updateSolvedTasks():
 
 
 if __name__=='__main__':
-    app.run(debug=True)
+        app.run(host='0.0.0.0', port=5001)

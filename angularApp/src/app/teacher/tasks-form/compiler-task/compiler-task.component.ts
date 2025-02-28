@@ -80,7 +80,7 @@ export class CompilerTaskComponent {
       hints: this.hints,
       points: 2,
       solution: this.solution,
-      keywords: [],
+      keywords: this.keywords,
       availableLines: [],
     };
     console.log(task);

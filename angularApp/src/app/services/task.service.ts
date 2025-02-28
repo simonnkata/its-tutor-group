@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
-
 interface Task {
   title: string;
   type: string;
@@ -16,10 +15,9 @@ interface Task {
 @Injectable({
   providedIn: 'root',
 })
-
 export class TaskService {
   private dataSubject = new Subject<any>();
-  private baseUrl = 'http://127.0.0.1:5000'; // Flask-Backend-URL
+  private baseUrl = 'http://localhost:5001'; // Flask-Backend-URL
 
   data$ = this.dataSubject.asObservable();
 
@@ -64,7 +62,9 @@ export class TaskService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.httpClient.put(`${this.baseUrl}/task/${task.title}`, task, { headers });
+    return this.httpClient.put(`${this.baseUrl}/task/${task.title}`, task, {
+      headers,
+    });
   }
 
   getTasks(): Observable<any> {
@@ -86,7 +86,7 @@ export class TaskService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.httpClient.delete(`${this.baseUrl}/task/${title}`, { headers })
+    return this.httpClient.delete(`${this.baseUrl}/task/${title}`, { headers });
   }
 
   getTask(title: string) {
@@ -97,22 +97,21 @@ export class TaskService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.httpClient.get<any>(`${this.baseUrl}/task/${title}`, { headers });
+    return this.httpClient.get<any>(`${this.baseUrl}/task/${title}`, {
+      headers,
+    });
   }
 
+  getTaskByTitle(title: string) {
+    // Beispiel-API-Endpunkt
+    return this.httpClient.get(`/api/tasks?title=${title}`);
+  }
 
-
-  
-    getTaskByTitle(title: string) {
-      // Beispiel-API-Endpunkt
-      return this.httpClient.get(`/api/tasks?title=${title}`);
-    }
-  
-  
-  
-  
-
-  getFeedback(title: string, userAnswer: string, userOutput: string): Observable<any>  {
+  getFeedback(
+    title: string,
+    userAnswer: string,
+    userOutput: string
+  ): Observable<any> {
     const StoredUser = localStorage.getItem('currentUser');
     const UserInfoJson = StoredUser ? JSON.parse(StoredUser) : null;
     const token = UserInfoJson.token;
