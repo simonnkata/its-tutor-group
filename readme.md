@@ -51,6 +51,9 @@ If you are using Windows you might run into an "UnautorizedAccess" issue, one fi
    ```
    
 7. Run the `app.py` either with `python app.py` or `python3 app.py` as required by your installation
+8. To populate the database with test teachers and tasks, run python seeder.py This will insert sample teachers and a variety of programming tasks into the database.
+
+
 
 # Final setup
 Ensure you have MongoDB running and a connection open before running the Python app. You should have both the Python app (python app.py) and the development server (ng serve) running at the same time, for the Application to function correctly. Now you should be able to go to [http://localhost:4200](http://localhost:4200) and it should function correctly.
