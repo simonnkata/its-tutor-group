@@ -51,7 +51,7 @@ If you are using Windows you might run into an "UnautorizedAccess" issue, one fi
    ```
    
 7. Run the `app.py` either with `python app.py` or `python3 app.py` as required by your installation
-8. To populate the database with test teachers and tasks, run python seeder.py This will insert sample teachers and a variety of programming tasks into the database.
+8. To populate the database with test teachers and tasks, run `python seeder.py` This will insert sample teachers and a variety of programming tasks into the database.
 
 
 
