@@ -52,32 +52,24 @@
         <td class="sidebar-general underlineRight" rowspan="3">
           <div class="test123">
             <!-- Task Group 1-->
-            <div
-              class="taskGroup-container"
-              ng-class="{
-                'current-group': isTaskInGroup('TaskGroup1'),
-                'non-selected-group': !isGroupSelected('TaskGroup1')
-              }"
-            >
+            <div class="taskGroup-container">
               <div
                 class="menu-item"
-                ng-click="toggleGroup('TaskGroup1')"
-                ng-class="{ 'current-group': isTaskInGroup('TaskGroup1') }"
+                (click)="showTasks[0] = !showTasks[0]"
+                [ngStyle]="{
+                  'background-color':
+                    showTasks[0] == true ? '#2596be' : '#1B5F75'
+                }"
               >
                 Variables
-                <span class="arrow">&#9660;</span>
               </div>
-              <div
-                class="submenu"
-                ng-class="{ show: isGroupVisible('TaskGroup1') }"
-              >
+              <div *ngIf="showTasks[0]">
                 <ng-container *ngFor="let task of tasks">
                   <div
                     *ngIf="task.topic === 'Variables'"
                     (click)="openTask(task)"
                   >
                     <div class="task-item">
-                      <!-- Display task details here -->
                       <p>{{ task.title }}</p>
                     </div>
                   </div>
@@ -85,33 +77,21 @@
               </div>
             </div>
             <!-- Task Group 2-->
-            <div
-              class="taskGroup-container"
-              ng-class="{
-                'current-group': isTaskInGroup('TaskGroup2'),
-                'non-selected-group': !isGroupSelected('TaskGroup2')
-              }"
-            >
+            <div class="taskGroup-container">
               <div
                 class="menu-item"
-                ng-click="toggleGroup('TaskGroup2')"
-                ng-class="{ 'current-group': isTaskInGroup('TaskGroup2') }"
+                (click)="showTasks[1] = !showTasks[1]"
+                [ngStyle]="{
+                  'background-color':
+                    showTasks[1] == true ? '#2596be' : '#1B5F75'
+                }"
               >
                 Loops
-                <span
-                  class="arrow"
-                  ng-class="{ down: isGroupVisible('TaskGroup2') }"
-                  >&#9660;</span
-                >
               </div>
-              <div
-                class="submenu"
-                ng-class="{ show: isGroupVisible('TaskGroup2') }"
-              >
+              <div *ngIf="showTasks[1]">
                 <ng-container *ngFor="let task of tasks">
                   <div *ngIf="task.topic === 'Loops'" (click)="openTask(task)">
                     <div class="task-item">
-                      <!-- Display task details here -->
                       <p>{{ task.title }}</p>
                     </div>
                   </div>
@@ -119,36 +99,24 @@
               </div>
             </div>
             <!-- Task group 3-->
-            <div
-              class="taskGroup-container"
-              ng-class="{
-                'current-group': isTaskInGroup('TaskGroup3'),
-                'non-selected-group': !isGroupSelected('TaskGroup3')
-              }"
-            >
+            <div class="taskGroup-container">
               <div
                 class="menu-item"
-                ng-click="toggleGroup('TaskGroup3')"
-                ng-class="{ 'current-group': isTaskInGroup('TaskGroup3') }"
+                (click)="showTasks[2] = !showTasks[2]"
+                [ngStyle]="{
+                  'background-color':
+                    showTasks[2] == true ? '#2596be' : '#1B5F75'
+                }"
               >
                 Functions
-                <span
-                  class="arrow"
-                  ng-class="{ down: isGroupVisible('TaskGroup3') }"
-                  >&#9660;</span
-                >
               </div>
-              <div
-                class="submenu"
-                ng-class="{ show: isGroupVisible('TaskGroup3') }"
-              >
+              <div *ngIf="showTasks[2]">
                 <ng-container *ngFor="let task of tasks">
                   <div
                     *ngIf="task.topic === 'Functions'"
                     (click)="openTask(task)"
                   >
                     <div class="task-item">
-                      <!-- Display task details here -->
                       <p>{{ task.title }}</p>
                     </div>
                   </div>

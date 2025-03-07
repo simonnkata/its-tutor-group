@@ -2,9 +2,13 @@ FROM node:22 AS builder
 
 WORKDIR /app
 
+COPY package.json package-lock.json ./
+
+RUN npm install
+
 COPY . .
 
-RUN npm install && npm run ng build
+RUN npm run ng build
 
 FROM nginx:alpine
 

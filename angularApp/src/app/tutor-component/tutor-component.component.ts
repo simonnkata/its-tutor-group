@@ -27,6 +27,7 @@ export class TutorComponentComponent implements OnInit {
   currentUsername: String = this.currentUserInfo.username;
   selectedExperienceLevel: Experience = this.experienceLevel[0];
   tasks: any;
+  showTasks = [false, false, false];
 
   constructor(
     private loggingService: LoggingService,
@@ -86,6 +87,7 @@ export class TutorComponentComponent implements OnInit {
   }
 
   openTask(task: any): void {
+    console.log('task open');
     const type = task.type;
     this.router.navigate([`/tutor/${type}`], {
       queryParams: { title: task.title },
